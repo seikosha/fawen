@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>login</title>
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="js/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="js/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-expand navbar-light bg-light">
+        <a class="navbar-brand pl-5" href="#">法问</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto pl-5">
+                <li class="nav-item">
+                    <a class="nav-link" href="myQuestions.html">我的提问 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item pl-3">
+                    <a class="nav-link" href="myAnswers.html">我的回答</a>
+                </li>
+                <li class="nav-item pl-3">
+                    <a class="nav-link" href="personal.html">我的个人页面</a>
+                </li>
+                <li class="nav-item pl-3">
+                    <a class="nav-link" href="mails.html">站内私信</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav float-right">
+                <li class="nav-item pr-3">
+                    <a class="nav-link" href="register.html">注册</a>
+                </li>
+                <li class="nav-item pr-3">
+                    <a class="nav-link" href="#">登录</a>
+                </li>
+            </ul>
+            <form class="form-inline">
+                <input class="form-control" type="search" placeholder="关键字" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">搜索</button>
+            </form>
+        </div>
+    </nav>
+</div>
+
+<div class="row pt-3">
+    <div class="col-2"></div>
+    <div class="col-8">
+        <form class="pt-3">
+            <div class="form-group">
+                <label for="exampleFormControlInput1">用户名</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="必须">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput2">密码</label>
+                <input type="email" class="form-control" id="exampleFormControlInput2" placeholder="必须">
+            </div>
+        </form>
+    </div>
+    <div class="col-2"></div>
+</div>
+
+<div class="row pt-3">
+    <div class="col text-center">
+        <button type="button" class="btn btn-secondary btn-lg">提交</button>
+            <a href="#" class="text-danger pl-5">忘记密码？</a>
+    </div>
+</div>
+
+</body>
+</html>
