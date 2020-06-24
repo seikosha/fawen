@@ -11,49 +11,107 @@
     <script src="js/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="js/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-
 </head>
 <body>
 
-<div class="container-fluid col-md-12">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">法问</a>
+<div class="container">
+<nav class="navbar navbar-expand navbar-light bg-light">
+    <a class="navbar-brand pl-5" href="#">法问</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+        <ul class="navbar-nav mr-auto pl-5">
+            <li class="nav-item">
                 <a class="nav-link" href="#">我的提问 <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item pl-3">
                 <a class="nav-link" href="#">我的回答</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item pl-3">
                 <a class="nav-link" href="#">我的个人页面</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item pl-3">
                 <a class="nav-link" href="#">站内私信</a>
             </li>
-
         </ul>
-        <ul class="navbar-nav float-right text-center">
-            <li class="nav-item text-center">
+        <ul class="navbar-nav float-right">
+            <li class="nav-item pr-3">
                 <a class="nav-link" href="#">注册</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item pr-3">
                 <a class="nav-link" href="#">登录</a>
             </li>
         </ul>
+        <form class="form-inline ">
+            <input class="form-control" type="search" placeholder="关键字" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">搜索</button>
+        </form>
     </div>
 </nav>
+
+
+<div class="row">
+
+<div class="col text-center pl-3 pt-5">
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">有关法律的一切问题，请发问！</h5>
+            <a href="#" class="btn btn-primary">了解我们的初衷</a>
+        </div>
+    </div>
+
+    <div class="list-group pt-5">
+        <button type="button" class="list-group-item list-group-item-action">历史精选</button>
+        <button type="button" class="list-group-item list-group-item-action">明星解答者</button>
+        <button type="button" class="list-group-item list-group-item-action">社区公约</button>
+    </div>
 </div>
-<div class="list-group col-md-2 float-left">
-    <button type="button" class="list-group-item list-group-item-action">历史精选</button>
-    <button type="button" class="list-group-item list-group-item-action">明星解答者</button>
-    <button type="button" class="list-group-item list-group-item-action">社区公约</button>
+
+
+<div class="col-8 pt-5 pl-5">
+    <div class="pl-5 row h-100">
+    <div class="col pt-5">
+        <button type="button" class="w-75 h-75 btn btn-outline-dark">我有问题</button>
+    </div>
+    <div class="col pt-5">
+        <button type="button" class="w-75 h-75 btn btn-outline-info">我能解答</button>
+    </div>
+    </div>
 </div>
+
+
+
+<div class="col pt-5">
+    <div class="card">
+        <div class="card-header">
+            按地区浏览案件
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">北京</li>
+            <li class="list-group-item">上海</li>
+            <li class="list-group-item">广州</li>
+        </ul>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            按类型浏览案件
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">民事</li>
+            <li class="list-group-item">刑事</li>
+            <li class="list-group-item">行政</li>
+        </ul>
+    </div>
+</div>
+</div>
+</div>
+
+
+
+
 </body>
 
 </html>
