@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>starUsers</title>
+    <script src="../static/js/vue.js"></script>
+    <script src="../static/js/vue-router.js"></script>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="../static/js/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="../static/js/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="../static/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-expand navbar-light bg-light">
+        <a class="navbar-brand pl-5" href="#">法问</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto pl-5">
+                <li class="nav-item">
+                    <a class="nav-link" href="../templates/myQuestions.html">我的提问 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item pl-3">
+                    <a class="nav-link" href="../templates/myAnswers.html">我的回答</a>
+                </li>
+                <li class="nav-item pl-3">
+                    <a class="nav-link" href="../templates/personal.html">我的个人页面</a>
+                </li>
+                <li class="nav-item pl-3">
+                    <a class="nav-link" href="../templates/mails.html">站内私信</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav float-right">
+                <li class="nav-item pr-3">
+                    <a class="nav-link" href="../templates/register.html">注册</a>
+                </li>
+                <li class="nav-item pr-3">
+                    <a class="nav-link" href="../templates/login.html">登录</a>
+                </li>
+            </ul>
+            <form class="form-inline">
+                <input class="form-control" type="search" placeholder="关键字" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">搜索</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="row">
+        <p class="text-dark pt-3">解决问题最多的用户</p>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                <tr class="active">
+                    <th>序号</th>
+                    <th>用户名</th>
+                    <th>跟帖数</th>
+                    <th>已解决问题</th>
+                    <th>擅长类型</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Jacky</td>
+                    <td>18</td>
+                    <td>17</td>
+                    <td>刑事</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Mike</td>
+                    <td>12</td>
+                    <td>8</td>
+                    <td>民事</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Logan</td>
+                    <td>11</td>
+                    <td>3</td>
+                    <td>行政</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link text-dark" href="#">首页</a></li>
+                    <li class="page-item"><a class="page-link text-dark" href="#">上一页</a></li>
+                    <li class="page-item"><a class="page-link text-dark" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link text-dark" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link text-dark" href="#">下一页</a></li>
+                    <li class="page-item"><a class="page-link text-dark" href="#">尾页</a></li>
+                </ul>
+            </nav>
+    </div>
+
+    <div class="row">
+        <p class="text-dark pt-3">获赞最多的用户</p>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                <tr class="active">
+                    <th>序号</th>
+                    <th>用户名</th>
+                    <th>跟帖数</th>
+                    <th>已解决问题</th>
+                    <th>擅长类型</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Jacky</td>
+                    <td>18</td>
+                    <td>17</td>
+                    <td>刑事</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Mike</td>
+                    <td>12</td>
+                    <td>8</td>
+                    <td>民事</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Logan</td>
+                    <td>11</td>
+                    <td>3</td>
+                    <td>行政</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link text-dark" href="#">首页</a></li>
+                <li class="page-item"><a class="page-link text-dark" href="#">上一页</a></li>
+                <li class="page-item"><a class="page-link text-dark" href="#">1</a></li>
+                <li class="page-item"><a class="page-link text-dark" href="#">2</a></li>
+                <li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
+                <li class="page-item"><a class="page-link text-dark" href="#">下一页</a></li>
+                <li class="page-item"><a class="page-link text-dark" href="#">尾页</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+</body>
+</html>
