@@ -36,7 +36,7 @@
                 </li>
             </ul>
 
-            <div id="welcome" class="text-info pr-5" >欢迎您！{{username}}</div>
+            <div id="welcome" class="text-info pr-5" >欢迎您！{{message}}</div>
 
             <form class="form-inline ">
                 <input class="form-control" type="search" placeholder="关键字" aria-label="Search">
@@ -95,9 +95,6 @@
 <script>
     let app = new Vue({
         el: '#welcome',
-        data: {
-            username: 'UserName'
-        }
     })
 </script>
 </html>

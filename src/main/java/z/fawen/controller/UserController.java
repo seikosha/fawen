@@ -1,6 +1,5 @@
 package z.fawen.controller;
 
-import com.fasterxml.jackson.core.JsonToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,9 +17,10 @@ public class UserController {
     @GetMapping("/queryUserList")
     public List<User> queryUserList(){
         List<User> userList = userMapper.queryUserList();
-        for (User user : userList) {
-            System.out.println(user);
-        }
+
+//        for (User user : userList) {
+//            System.out.println(user.getUsername());
+//        }
         return userList;
     }
 }
