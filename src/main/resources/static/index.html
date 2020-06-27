@@ -25,7 +25,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto pl-5">
             <li class="nav-item">
-                <a class="nav-link" href="../templates/myQuestions.html">我的提问 <span class="sr-only">(current)</span></a>
+                <router-link to="/myQuestions" id="myQ" class="nav-link">我的提问 <span class="sr-only">(current)</span></>
             </li>
             <li class="nav-item pl-3">
                 <a class="nav-link" href="../templates/myAnswers.html">我的回答</a>
@@ -117,7 +117,8 @@
     <div>{{message.username}}</div>
     <div>{{message.location}}</div>
 </div>
-
+<router-view>
+</router-view>
 
 
 </body>
@@ -140,6 +141,22 @@
             axios.get('/queryUserList').then(response=>(this.message=response.data[0]));
         }
     })
+</script>
+
+<script type="module">
+    import myQuestions from "../templates/myQuestions.vue";
+
+    const routes = [
+        {path: '/myQuestions', component: myQuestions}
+    ]
+
+    const router = new VueRouter({
+        routes
+    })
+
+    const myQ = new Vue({
+        router
+    }).$mount('#myQ')
 </script>
 
 </html>
