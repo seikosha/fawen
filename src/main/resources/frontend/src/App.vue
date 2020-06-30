@@ -4,7 +4,7 @@
       <el-row id="header">
         <el-header>
           <el-col :span="5" id="title">
-            <span>法问</span>
+            <router-link to="/" tag="a" id="title_link">法问</router-link>
           </el-col>
           <el-col :span="14">
             <el-menu
@@ -36,61 +36,25 @@
         </el-header>
       </el-row>
 
-      <el-container>
-        <el-aside id="leftside" width="200px">
-          <el-card class="box-card">
-            <div slot="header" class="clearfix">
-              <span>法问</span>
+      <router-view></router-view>
 
-            </div>
-            <div v-for="o in 4" :key="o" class="text item">
-              {{'列表内容 ' + o }}
-            </div>
-          </el-card>
-        </el-aside>
+      <el-footer></el-footer>
 
-        <el-main id="main">
-          <el-row>
-            <el-button id="buttonl" type="primary" plain>我有问题</el-button>
-            <el-button id="buttonr" type="success" plain>我能解答</el-button>
-          </el-row>
-        </el-main>
-
-        <el-aside id="rightside" width="200px">
-          <el-card class="box-card">
-            <div slot="header" class="clearfix">
-              <span>按地区浏览历史回答</span>
-
-            </div>
-            <div v-for="o in 4" :key="o" class="text item">
-              {{'列表内容 ' + o }}
-            </div>
-          </el-card>
-          <el-card class="box-card">
-            <div slot="header" class="clearfix">
-              <span>按类型浏览历史回答</span>
-
-            </div>
-            <div v-for="o in 4" :key="o" class="text item">
-              {{'列表内容 ' + o }}
-            </div>
-          </el-card>
-        </el-aside>
-      </el-container>
-
-      <el-footer>2020 Powered by ZZ</el-footer>
     </el-container>
+
   </div>
 
 </template>
 
 <script>
-  import HelloWorld from "./components/HelloWorld.vue";
+import index from "./components/index";
+import ask from "./components/ask";
 
   export default {
     name: "app",
     components: {
-      HelloWorld
+      index,
+      ask
     },
 
   };
@@ -165,36 +129,9 @@
     clear: both
   }
 
-  #leftside
-  {
-    position:relative;
-    top:20px;
-    left:33px;
-  }
-
-  #rightside{
-    position:relative;
-    top:20px;
-    right:16px;
-  }
-
-
-  #buttonl,
-  #buttonr{
-    width:240px;
-    height:240px;
-    margin:auto;
-    position:relative;
-    top:20px;
-  }
-
-  #buttonl{
-    right:20px;
-  }
-
-  #buttonr{
-    left:20px;
-  }
+#title_link{
+  text-decoration: none;
+}
 
 
 </style>

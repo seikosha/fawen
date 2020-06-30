@@ -4,15 +4,16 @@ import VueRouter from 'vue-router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
-import HelloWorld from './components/HelloWorld'
-
+import index from "./components/index"
+import ask from "./components/ask";
 
 Vue.use(VueRouter)
 Vue.use(ElementUI)
 
 const routes = [
 
-  { path: '/', component: HelloWorld },
+  { path: '/', component: index},
+  { path: '/ask', component: ask }
 ]
 
 const router = new VueRouter({
