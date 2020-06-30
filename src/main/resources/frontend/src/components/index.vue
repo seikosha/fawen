@@ -15,7 +15,7 @@
     <el-main id="main">
       <el-row>
         <router-link to="/ask"><el-button id="buttonl" type="primary" plain>我有问题</el-button></router-link>
-        <el-button id="buttonr" type="success" plain>我能解答</el-button>
+        <router-link to="/answer"><el-button id="buttonr" type="success" plain>我能解答</el-button></router-link>
       </el-row>
     </el-main>
 

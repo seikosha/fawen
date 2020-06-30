@@ -85,7 +85,7 @@
 <el-aside id="rightside" width="200px">
   <el-card class="box-card">
     <div slot="header" class="clearfix">
-      <span>按地区浏览历史回答</span>
+      <span>如何正确描述问题？</span>
 
     </div>
     <div v-for="o in 4" :key="o" class="text item">
@@ -94,7 +94,7 @@
   </el-card>
   <el-card class="box-card">
     <div slot="header" class="clearfix">
-      <span>按类型浏览历史回答</span>
+      <span>历史精选提问</span>
 
     </div>
     <div v-for="o in 4" :key="o" class="text item">

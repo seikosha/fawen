@@ -49,12 +49,14 @@
 <script>
 import index from "./components/index";
 import ask from "./components/ask";
+import answer from "./components/answer";
 
   export default {
     name: "app",
     components: {
       index,
-      ask
+      ask,
+      answer
     },
 
   };
