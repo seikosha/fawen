@@ -3,11 +3,13 @@
     <el-aside id="leftside" width="200px">
       <el-card class="box-card">
         <div slot="header" class="clearfix">
-          <span>法问</span>
-
+          <span>在法问，请发问！</span>
         </div>
-        <div v-for="o in 4" :key="o" class="text item">
-          {{'列表内容 ' + o }}
+        <div class="text item">
+          <router-link to="/historic_selection" tag="span" class="left_card">历史精选贴</router-link><br><br>
+          <span>明星回答者</span><br><br>
+          <span>论坛公约</span><br><br>
+          <span>网站公告</span>
         </div>
       </el-card>
     </el-aside>
@@ -43,8 +45,15 @@
 </template>
 
 <script>
+  import App from '../App'
+  import historic_selection from "./historic_selection";
+
     export default {
-        name: "index"
+        name: "index",
+        components:{
+          App,
+          historic_selection
+        }
     }
 </script>
 
@@ -67,7 +76,7 @@
   #buttonr{
     width:240px;
     height:240px;
-    margin:auto;
+    margin:auto;ß
     position:relative;
     top:20px;
   }
@@ -80,7 +89,7 @@
     left:20px;
   }
 
-  /*#ask{*/
-  /*  text-decoration: none;*/
-  /*}*/
+  .left_card:hover{
+    cursor: pointer;
+  }
 </style>

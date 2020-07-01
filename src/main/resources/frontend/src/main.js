@@ -15,6 +15,7 @@ import mails from "./components/mails";
 import register from "./components/register";
 import login from "./components/login";
 
+
 Vue.use(VueRouter)
 Vue.use(ElementUI)
 Vue.prototype.$echarts = echarts;
