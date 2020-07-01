@@ -12,6 +12,8 @@ import my_questions from "./components/my_questions";
 import my_answers from "./components/my_answers";
 import personal from "./components/personal";
 import mails from "./components/mails";
+import register from "./components/register";
+import login from "./components/login";
 
 Vue.use(VueRouter)
 Vue.use(ElementUI)
@@ -25,7 +27,9 @@ const routes = [
   { path: '/my_questions', component: my_questions},
   { path: '/my_answers', component: my_answers},
   { path: '/personal', component: personal},
-  { path: '/mails', component: mails}
+  { path: '/mails', component: mails},
+  { path: '/register', component: register},
+  { path: '/login', component: login}
 ]
 
 const router = new VueRouter({

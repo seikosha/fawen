@@ -19,8 +19,8 @@
               <el-menu-item index="2"><router-link to="/my_answers" tag="span">我的回答</router-link></el-menu-item>
               <el-menu-item index="3"><router-link to="/personal" tag="span">个人页面</router-link></el-menu-item>
               <el-menu-item index="4"><router-link to="/mails" tag="span">站内私信</router-link></el-menu-item>
-              <el-menu-item index="5">注册</el-menu-item>
-              <el-menu-item index="6">登录</el-menu-item>
+              <el-menu-item index="5"><router-link to="/register" tag="span">注册</router-link></el-menu-item>
+              <el-menu-item index="6"><router-link to="/login" tag="span">登录</router-link></el-menu-item>
             </el-menu>
           </el-col>
           <el-col :span="5">
@@ -53,6 +53,8 @@ import answer from "./components/answer";
 import my_questions from "./components/my_questions";
 import my_answers from "./components/my_answers";
 import personal from "./components/personal";
+import register from "./components/register";
+import login from "./components/login";
 
   export default {
     name: "app",
@@ -62,7 +64,9 @@ import personal from "./components/personal";
       answer,
       my_questions,
       my_answers,
-      personal
+      personal,
+      register,
+      login
     },
 
   };
