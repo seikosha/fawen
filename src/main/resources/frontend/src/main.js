@@ -3,15 +3,19 @@ import App from './App'
 import VueRouter from 'vue-router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import echarts from 'echarts';
 
 import index from "./components/index"
 import ask from "./components/ask";
 import answer from "./components/answer";
 import my_questions from "./components/my_questions";
 import my_answers from "./components/my_answers";
+import personal from "./components/personal";
+import mails from "./components/mails";
 
 Vue.use(VueRouter)
 Vue.use(ElementUI)
+Vue.prototype.$echarts = echarts;
 
 const routes = [
 
@@ -19,7 +23,9 @@ const routes = [
   { path: '/ask', component: ask },
   { path: '/answer', component: answer},
   { path: '/my_questions', component: my_questions},
-  { path: '/my_answers', component: my_answers}
+  { path: '/my_answers', component: my_answers},
+  { path: '/personal', component: personal},
+  { path: '/mails', component: mails}
 ]
 
 const router = new VueRouter({
