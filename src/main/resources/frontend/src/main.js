@@ -7,6 +7,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 import index from "./components/index"
 import ask from "./components/ask";
 import answer from "./components/answer";
+import my_questions from "./components/my_questions";
+import my_answers from "./components/my_answers";
 
 Vue.use(VueRouter)
 Vue.use(ElementUI)
@@ -15,7 +17,9 @@ const routes = [
 
   { path: '/', component: index},
   { path: '/ask', component: ask },
-  { path: '/answer', component: answer}
+  { path: '/answer', component: answer},
+  { path: '/my_questions', component: my_questions},
+  { path: '/my_answers', component: my_answers}
 ]
 
 const router = new VueRouter({

@@ -15,8 +15,8 @@
               text-color="#000000"
               gutter="20"
             >
-              <el-menu-item index="1">我的提问</el-menu-item>
-              <el-menu-item index="2">我的回答</el-menu-item>
+              <el-menu-item index="1"><router-link to="/my_questions" tag="span">我的提问</router-link></el-menu-item>
+              <el-menu-item index="2"><router-link to="/my_answers" tag="span">我的回答</router-link></el-menu-item>
               <el-menu-item index="3">个人页面</el-menu-item>
               <el-menu-item index="4">站内私信</el-menu-item>
               <el-menu-item index="5">注册</el-menu-item>
@@ -50,13 +50,17 @@
 import index from "./components/index";
 import ask from "./components/ask";
 import answer from "./components/answer";
+import my_questions from "./components/my_questions";
+import my_answers from "./components/my_answers";
 
   export default {
     name: "app",
     components: {
       index,
       ask,
-      answer
+      answer,
+      my_questions,
+      my_answers
     },
 
   };
