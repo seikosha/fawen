@@ -14,6 +14,7 @@ import personal from "./components/personal";
 import mails from "./components/mails";
 import register from "./components/register";
 import login from "./components/login";
+import historic_selection from "./components/historic_selection";
 
 
 Vue.use(VueRouter)
@@ -30,7 +31,10 @@ const routes = [
   { path: '/personal', component: personal},
   { path: '/mails', component: mails},
   { path: '/register', component: register},
-  { path: '/login', component: login}
+  { path: '/login', component: login},
+  { path: '/historic_selection', component: historic_selection}
+
+
 ]
 
 const router = new VueRouter({
