@@ -13,8 +13,8 @@
     </select>
 
     <insert id="addUser" parameterType="User">
-        insert into user (id,username,email,location,status,description,password,create_time,last_login_time,stars,bests,solves,challenges)
-        values(#{id},#{username},#{email},#{location},#{status},#{description},#{password},#{create_time},#{last_login_time},#{stars},#{bests},#{solves},#{challenges})
+        insert into user (username,password,email,location,status,description,create_time)
+        values(#{username},#{password},#{email},#{location},#{status},#{description},#{create_time})
     </insert>
 
     <update id="updateUser" parameterType="User">
