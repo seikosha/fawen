@@ -38,8 +38,6 @@
 
       <router-view></router-view>
 
-
-
       <el-footer></el-footer>
 
     </el-container>
@@ -58,6 +56,7 @@ import personal from "./components/personal";
 import register from "./components/register";
 import login from "./components/login";
 import historic_selection from "./components/historic_selection";
+import star_user from "./components/star_user";
 
   export default {
     name: "app",
@@ -70,7 +69,8 @@ import historic_selection from "./components/historic_selection";
       personal,
       register,
       login,
-      historic_selection
+      historic_selection,
+      star_user
     },
 
   };
