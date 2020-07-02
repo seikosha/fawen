@@ -3,6 +3,7 @@
     <left_card></left_card>
     <buttons></buttons>
     <right_card></right_card>
+
   </el-container>
 </template>
 
@@ -16,6 +17,7 @@
 
     export default {
         name: "index",
+
         components:{
           App,
           historic_selection,
@@ -23,7 +25,9 @@
           left_card,
           right_card,
           buttons
-        }
+        },
+
+
     }
 </script>
 

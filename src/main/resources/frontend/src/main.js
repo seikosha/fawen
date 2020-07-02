@@ -25,6 +25,7 @@ import posts from "./components/posts";
 Vue.use(VueRouter)
 Vue.use(ElementUI)
 Vue.prototype.$echarts = echarts;
+// Vue.use(axios)
 
 const routes = [
 
@@ -52,6 +53,7 @@ const router = new VueRouter({
   mode: 'history'
 })
 
+
 new Vue({
   el: '#app',
   //用<App/>代替根元素
@@ -61,5 +63,8 @@ new Vue({
   //将上面声明的路由器传递到根Vue实例
   router
 }).$mount('#app')//将这个实例挂载到id=app的根元素上
+
+
+
 
 

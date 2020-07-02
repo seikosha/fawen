@@ -38,7 +38,12 @@
 
       <router-view></router-view>
 
-      <el-footer></el-footer>
+      <el-footer>
+        <div id="welcome">
+          <div>{{message.username}}</div>
+          <div>{{message.location}}</div>
+        </div>
+      </el-footer>
 
     </el-container>
 
@@ -60,6 +65,7 @@ import star_user from "./components/star_user";
 import constitution from "./components/constitution";
 
   export default {
+
     name: "app",
     components: {
       index,
@@ -74,10 +80,22 @@ import constitution from "./components/constitution";
       star_user,
       constitution
     },
-
-  };
-
+    el:'#welcome',
+    data(){
+      return{
+        message:{
+          username:null,
+          location:null
+        }
+      }
+    },
+    mounted() {
+      const axios = require('axios');
+      axios.get('/queryUserList').then(response=>(this.message=response.data[0]));
+  }}
 </script>
+
+
 
 <style>
   .el-header,
