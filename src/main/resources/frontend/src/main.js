@@ -16,6 +16,10 @@ import register from "./components/register";
 import login from "./components/login";
 import historic_selection from "./components/historic_selection";
 import star_user from "./components/star_user";
+import left_card from "./components/left_card";
+import right_card from "./components/right_card";
+import constitution from "./components/constitution";
+import posts from "./components/posts";
 
 
 Vue.use(VueRouter)
@@ -34,7 +38,11 @@ const routes = [
   { path: '/register', component: register},
   { path: '/login', component: login},
   { path: '/historic_selection', component: historic_selection},
-  { path: '/star_user', component: star_user}
+  { path: '/star_user', component: star_user},
+  { path: '/left_card', component: left_card},
+  { path: '/right_card', component: right_card},
+  { path: '/constitution', component: constitution},
+  { path: '/posts', component: posts}
 
 
 ]

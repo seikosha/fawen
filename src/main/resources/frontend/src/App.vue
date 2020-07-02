@@ -57,6 +57,7 @@ import register from "./components/register";
 import login from "./components/login";
 import historic_selection from "./components/historic_selection";
 import star_user from "./components/star_user";
+import constitution from "./components/constitution";
 
   export default {
     name: "app",
@@ -70,7 +71,8 @@ import star_user from "./components/star_user";
       register,
       login,
       historic_selection,
-      star_user
+      star_user,
+      constitution
     },
 
   };

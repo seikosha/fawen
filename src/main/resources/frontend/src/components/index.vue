@@ -1,16 +1,8 @@
 <template>
   <el-container>
     <left_card></left_card>
-
-    <el-main id="main">
-      <el-row>
-        <router-link to="/ask"><el-button id="buttonl" type="primary" plain>我有问题</el-button></router-link>
-        <router-link to="/answer"><el-button id="buttonr" type="success" plain>我能解答</el-button></router-link>
-      </el-row>
-    </el-main>
-
+    <buttons></buttons>
     <right_card></right_card>
-
   </el-container>
 </template>
 
@@ -20,6 +12,7 @@
   import star_user from "./star_user";
   import left_card from "./left_card";
   import right_card from "./right_card";
+  import buttons from "./buttons";
 
     export default {
         name: "index",
@@ -28,28 +21,12 @@
           historic_selection,
           star_user,
           left_card,
-          right_card
+          right_card,
+          buttons
         }
     }
 </script>
 
 <style scoped>
-  #buttonl,
-  #buttonr{
-    width:240px;
-    height:240px;
-    margin:auto;ß
-    position:relative;
-    top:20px;
-  }
-
-  #buttonl{
-    right:20px;
-  }
-
-  #buttonr{
-    left:20px;
-  }
-
 
 </style>

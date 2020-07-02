@@ -7,16 +7,20 @@
       <div class="text item">
         <router-link to="/historic_selection" tag="span" class="left_card">历史精选贴</router-link><br><br>
         <router-link to="/star_user" tag="span" class="left_card">明星回答者</router-link><br><br>
-        <span>论坛公约</span><br><br>
-        <span>网站公告</span>
+        <router-link to="/constitution" tag="span" class="left_card">论坛公约</router-link><br><br>
+        <router-link to="/posts" tag="span" class="left_card">网站公告</router-link>
       </div>
     </el-card>
   </el-aside>
 </template>
 
 <script>
+
+
     export default {
-        name: "left_card"
+        name: "left_card",
+      constitution:{
+      }
     }
 </script>
 
