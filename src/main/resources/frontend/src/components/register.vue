@@ -38,17 +38,6 @@
       v-model="textarea"
       style="margin-bottom: 15px">
     </el-input>
-    <span>上传头像：</span>
-    <el-upload
-      class="avatar-uploader"
-      action="https://jsonplaceholder.typicode.com/posts/"
-      :show-file-list="false"
-      :on-success="handleAvatarSuccess"
-      :before-upload="beforeAvatarUpload"
-      style="margin-bottom: 15px">
-      <img v-if="imageUrl" :src="imageUrl" class="avatar">
-      <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-    </el-upload>
     <el-button v-on:click="submit" type="info" plain>提交</el-button>
   </el-col>
   <br>
@@ -189,29 +178,21 @@
             password: '',
             email:'',
             textarea: '',
-            imageUrl: '',
             value:'',
             value1:''
           }
         },
         methods:{
-          handleAvatarSuccess(res, file) {
-            this.imageUrl = URL.createObjectURL(file.raw);
-          },
-          beforeAvatarUpload(file) {
-            const isJPG = file.type === 'image/jpeg';
-            const isLt2M = file.size / 1024 / 1024 < 2;
-
-            if (!isJPG) {
-              this.$message.error('上传头像图片只能是 JPG 格式!');
-            }
-            if (!isLt2M) {
-              this.$message.error('上传头像图片大小不能超过 2MB!');
-            }
-            return isJPG && isLt2M;
-        },
           submit(){
             const axios = require('axios');
+            let myDate = new Date();
+            let year = myDate.getFullYear();
+            let month = myDate.getMonth()+1;
+            let day = myDate.getDate();
+            let hour = myDate.getHours();
+            let minute = myDate.getMinutes();
+            let second = myDate.getSeconds();
+
             axios.get('/addUser',{
               params:{
                 username: this.username,
@@ -220,10 +201,11 @@
                 location:this.options.value,
                 status:this.status_options.value1,
                 description:this.textarea,
-              }
-            }).then(response=>(console.log('sucess in adding user!')));
+                create_time: year.toString().concat('-').concat(month).concat('-').concat(day).concat(' ').concat(hour).concat(':').concat(minute).concat(':').concat(second),}
+            }).then(response=>(console.log('vila！')));
           }
-    }}
+        }
+    }
 </script>
 
 <style scoped>

@@ -21,4 +21,5 @@ public class User {
     private int bests;
     private int solves;
     private int challenges;
+    private String image_url;
 }

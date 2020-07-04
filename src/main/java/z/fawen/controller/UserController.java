@@ -26,4 +26,5 @@ public class UserController {
     public int addUser(User user){
         return userMapper.addUser(user);
     }
+
 }
