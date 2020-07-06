@@ -1,15 +1,15 @@
 <template>
 <el-container>
-  <el-col span="5"></el-col>
+  <el-col :span="5"></el-col>
 
-  <el-col span="14" style="margin-top: 20px">
+  <el-col :span="14" style="margin-top: 20px">
 
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
       <el-form-item label="用户名：" prop="username">
         <el-input v-model="ruleForm.username"></el-input>
       </el-form-item>
       <el-form-item label="密码：" prop="password">
-        <el-input v-model="ruleForm.password" type="password"></el-input>
+        <el-input v-model="ruleForm.password"></el-input>
       </el-form-item>
       <el-form-item label="邮箱地址：" prop="email">
         <el-input v-model="ruleForm.email"></el-input>
@@ -62,11 +62,11 @@
         </el-select>
       </el-form-item>
 
-      <el-form-item label="个人简介" prop="desciption">
-        <el-input type="textarea" v-model="ruleForm.description"></el-input>
+      <el-form-item label="个人简介" prop="description">
+        <el-input type="textarea" v-model="ruleForm.description" placeholder="请输入您的个人简介"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submit">立即创建</el-button>
+        <el-button type="primary" @click="submit('ruleForm')">立即创建</el-button>
         <el-button @click="resetForm('ruleForm')">重置</el-button>
       </el-form-item>
     </el-form>
@@ -77,11 +77,12 @@
 
 
 
-  <el-col span="5"></el-col>
+  <el-col :span="5"></el-col>
 </el-container>
 </template>
 
 <script>
+
   export default {
     name:"register",
     data() {
@@ -89,6 +90,8 @@
       let checkEmail = (rule, value, callback) => {
         if(!regExp.test(value)){
           return callback(new Error('邮箱地址不正确'));
+        } else{
+          callback();
         }
       }
       return {
@@ -124,24 +127,11 @@
         }
       };
     },
-    methods: {
-      submit(){
-        const axios = require('axios');
-        axios.get('/addUser',{
-          params:{
-            username: this.ruleForm.username,
-            password: this.ruleForm.password,
-            email:this.ruleForm.email,
-            location:this.ruleForm.location,
-            status:this.ruleForm.status,
-            description:this.ruleForm.description,
-          }
-        }).then(response=>(console.log('sucess in adding user!')));
-      },
-      // submitForm(formName) {
-      //   const axios = require('axios');
-      //   this.$refs[formName].validate((valid) => {
-      //     if (valid) {
+     methods: {
+      // submit(formName){
+      //   this.$refs[formName].validate((valid)=>{
+      //     if(valid){
+      //       const axios = require('axios');
       //       axios.get('/addUser',{
       //         params:{
       //           username: this.ruleForm.username,
@@ -149,19 +139,46 @@
       //           email:this.ruleForm.email,
       //           location:this.ruleForm.location,
       //           status:this.ruleForm.status,
-      //           description:this.ruleForm.textarea,
-      //         }
-      //       }).then(response=>(console.log('success in adding user!')));
-      //     } else {
+      //           description:this.ruleForm.description,
+      //         },}).then(response=>(
+      //         console.log('User Add Successful!')))`
+      //     }else{
       //       console.log('注册失败');
       //       return false;
       //     }
       //   });
       // },
-      resetForm(formName) {
-        this.$refs[formName].resetFields();
-      }
-    }
+
+      submit(formName){
+        console.log(this.$refs[formName]);
+        const axios = require('axios');
+
+        this.$refs.ruleForm.validate((valid)=>{if(valid){
+          console.log(valid)
+          axios.get('/addUser',{
+            params:{
+              username: this.ruleForm.username,
+              password: this.ruleForm.password,
+              email:this.ruleForm.email,
+              location:this.ruleForm.location,
+              status:this.ruleForm.status,
+              description:this.ruleForm.description,
+            },}).then(response=>(
+            console.log('User Add Successful!')))
+        } else{
+          console.log('注册失败');
+          return false;
+        }})},
+
+
+
+
+        resetForm(formName) {
+          this.$refs[formName].resetFields();
+        }
+      },
+
+
   }
 </script>
 
