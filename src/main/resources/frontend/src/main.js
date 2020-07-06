@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import echarts from 'echarts';
+import Vuex from 'vuex'
 
 import index from "./components/index"
 import ask from "./components/ask";
@@ -24,6 +25,7 @@ import posts from "./components/posts";
 
 Vue.use(VueRouter)
 Vue.use(ElementUI)
+Vue.use(Vuex)
 Vue.prototype.$echarts = echarts;
 // Vue.use(axios)
 

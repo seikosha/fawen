@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <el-container>
-      <header1></header1>
+      <header1 v-show="true"></header1>
+      <header2 v-show="false"></header2>
 
       <router-view></router-view>
 
@@ -31,6 +32,7 @@ import historic_selection from "./components/historic_selection";
 import star_user from "./components/star_user";
 import constitution from "./components/constitution";
 import header1 from "./components/header1";
+import header2 from "./components/header2";
 
   export default {
 
@@ -47,7 +49,8 @@ import header1 from "./components/header1";
       historic_selection,
       star_user,
       constitution,
-      header1
+      header1,
+      header2
     },
     el:'#welcome',
 

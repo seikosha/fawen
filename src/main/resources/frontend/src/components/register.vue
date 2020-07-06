@@ -9,7 +9,7 @@
         <el-input v-model="ruleForm.username"></el-input>
       </el-form-item>
       <el-form-item label="密码：" prop="password">
-        <el-input v-model="ruleForm.password"></el-input>
+        <el-input type="password" v-model="ruleForm.password"></el-input>
       </el-form-item>
       <el-form-item label="邮箱地址：" prop="email">
         <el-input v-model="ruleForm.email"></el-input>
@@ -150,11 +150,8 @@
       // },
 
       submit(formName){
-        console.log(this.$refs[formName]);
-        const axios = require('axios');
-
+        const axios = require('axios')
         this.$refs.ruleForm.validate((valid)=>{if(valid){
-          console.log(valid)
           axios.get('/addUser',{
             params:{
               username: this.ruleForm.username,
@@ -164,14 +161,12 @@
               status:this.ruleForm.status,
               description:this.ruleForm.description,
             },}).then(response=>(
+            this.$router.push('/'),
             console.log('User Add Successful!')))
         } else{
           console.log('注册失败');
           return false;
         }})},
-
-
-
 
         resetForm(formName) {
           this.$refs[formName].resetFields();

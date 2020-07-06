@@ -17,8 +17,7 @@
           <el-menu-item index="2"><router-link to="/my_answers" tag="span">我的回答</router-link></el-menu-item>
           <el-menu-item index="3"><router-link to="/personal" tag="span">个人页面</router-link></el-menu-item>
           <el-menu-item index="4"><router-link to="/mails" tag="span">站内私信</router-link></el-menu-item>
-          <el-menu-item index="5"><router-link to="/register" tag="span" >注册</router-link></el-menu-item>
-          <el-menu-item index="6"><router-link to="/login" tag="span">登录</router-link></el-menu-item>
+          <span>欢迎您，尊敬的{{username}}</span>
 
         </el-menu>
       </el-col>
@@ -30,6 +29,7 @@
           <el-col :span="4">
             <el-button icon="el-icon-search" type="info" plain></el-button>
           </el-col>
+
         </el-row>
       </el-col>
     </el-header>
@@ -38,7 +38,12 @@
 
 <script>
     export default {
-        name: "header2"
+        name: "header2",
+        data() {
+          return {
+            username: 'bababia'
+          }
+        }
     }
 </script>
 
