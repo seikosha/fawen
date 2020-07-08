@@ -104,7 +104,7 @@
           this.$refs.ruleForm.validate((valid)=>{if(valid){
             axios.get('/addContent',{
               params:{
-                uid:1,
+                uid:this.uid,
                 title: this.ruleForm.title,
                 content: this.ruleForm.content,
                 category:this.ruleForm.category,
@@ -146,13 +146,7 @@
             ],
             location:[
               {required:true, message:'请选择所在地区',trigger:'change'}
-            ],
-            // uid:[
-            //   {required:false}
-            // ],
-            // create_time:[
-            //   {required:false}
-            // ]
+            ]
           }
         };
       },
@@ -164,13 +158,15 @@
 
 
       beforeCreate() {
-        // const axios = require('axios')
-        // axios.get('/queryUserByUsername',{
-        //   params:{
-        //     username:this.$store.state.Authorization
-        //   },}).then(response=>(
-        //     this.uid=response.id,
-        //     console.log(this.uid)))
+        const axios = require('axios')
+        console.log('加载之前取uid'+this.$store.state.Authorization);
+        axios.get('/queryUserByUsername',{
+          params:{
+            username:this.$store.state.Authorization
+          },}).then(response=>(
+            this.uid=response.data,
+
+            console.log(this.uid)))
         if(this.$store.state.Authorization==null|this.$store.state.Authorization===''||this.$store.state.Authorization===undefined){
           this.$router.push('/login');
         }

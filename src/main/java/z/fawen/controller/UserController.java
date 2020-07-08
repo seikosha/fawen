@@ -22,9 +22,9 @@ public class UserController {
     }
 
     @GetMapping("/queryUserByUsername")
-    public User queryUserByUsername(String username){
-        User userList =  userMapper.queryUserByUsername(username);
-        return userList;
+    public Integer queryUserByUsername(String username){
+        User userList = userMapper.queryUserByUsername(username);
+        return userList.getId();
     }
 
     @GetMapping("/addUser")
