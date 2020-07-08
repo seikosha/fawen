@@ -5,6 +5,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import echarts from 'echarts';
 import Vuex from 'vuex'
+import store from './store';
 
 import index from "./components/index"
 import ask from "./components/ask";
@@ -63,7 +64,8 @@ new Vue({
   //声明App组件，这样上面的<App/>元素就可以生效
   components: { App },
   //将上面声明的路由器传递到根Vue实例
-  router
+  router,
+  store
 }).$mount('#app')//将这个实例挂载到id=app的根元素上
 
 

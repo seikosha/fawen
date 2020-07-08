@@ -20,10 +20,14 @@
 </template>
 
 <script>
+    import {mapMutations} from "vuex";
+
     export default {
         name: "login",
         data(){
+          let userToken;
           return{
+            userToken,
             ruleForm: {
               username: '',
               password: '',
@@ -42,11 +46,23 @@
     },
       methods: {
         submitForm(formName) {
+          const axios = require('axios');
           this.$refs[formName].validate((valid) => {
             if (valid) {
-              alert('submit!');
+              axios.get('/loginQuery?username='+this.ruleForm.username+'&password='+this.ruleForm.password+'')
+              .then(response=>{
+                if(response.data[0].username === this.ruleForm.username){
+                  this.userToken = response.data[0].username;
+                  console.log('userToken:'+this.userToken);
+                  this.$store.commit('changeLogin',{Authorization: this.userToken});
+                  this.$router.push('/');
+                }
+              }).catch(err => {
+                console.log('服务器连接失败');
+                console.log(err);
+              })
             } else {
-              console.log('error submit!!');
+              console.log('用户信息错误!!');
               return false;
             }
           });

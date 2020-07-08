@@ -1,15 +1,15 @@
 <template>
   <div id="app">
     <el-container>
-      <header1 v-show="true"></header1>
-      <header2 v-show="false"></header2>
+      <header1 v-show="header1_token"></header1>
+      <header2 v-show="header2_token"></header2>
 
       <router-view></router-view>
 
       <el-footer>
         <div id="welcome">
           <div>{{message.username}}</div>
-          <div>{{message.location}}</div>
+          <div>{{login_query}}</div>
         </div>
       </el-footer>
 
@@ -33,9 +33,10 @@ import star_user from "./components/star_user";
 import constitution from "./components/constitution";
 import header1 from "./components/header1";
 import header2 from "./components/header2";
+import store from './store';
 
   export default {
-
+    store,
     name: "app",
     components: {
       index,
@@ -57,14 +58,21 @@ import header2 from "./components/header2";
     data(){
       return{
         message:{
-          username:null,
-          location:null
-        }
+          username:null
+        },
+        login_query:'',
+        header1_token: true,
+        header2_token: false
       }
     },
     mounted() {
+      if(store.state.Authorization != null || store.state.Authorization !== ''){
+        this.header1_token = false;
+        this.header2_token = true;
+      }
       const axios = require('axios');
       axios.get('/queryUserList').then(response=>(this.message=response.data[0]));
+      axios.get('/')
   }}
 </script>
 

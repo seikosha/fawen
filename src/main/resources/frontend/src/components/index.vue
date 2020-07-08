@@ -16,6 +16,7 @@
   import buttons from "./buttons";
   import header1 from "./header1";
 
+
     export default {
         name: "index",
 

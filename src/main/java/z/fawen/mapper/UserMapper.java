@@ -14,6 +14,8 @@ public interface UserMapper {
 
     User queryUserById(int id);
 
+    List<User> loginQuery(String username, String password);
+
     int addUser(User user);
 
     int updateUser(User user);
