@@ -22,13 +22,13 @@ import left_card from "./components/left_card";
 import right_card from "./components/right_card";
 import constitution from "./components/constitution";
 import posts from "./components/posts";
+import logout from "./components/logout";
 
 
 Vue.use(VueRouter)
 Vue.use(ElementUI)
 Vue.use(Vuex)
 Vue.prototype.$echarts = echarts;
-// Vue.use(axios)
 
 const routes = [
 
@@ -46,9 +46,8 @@ const routes = [
   { path: '/left_card', component: left_card},
   { path: '/right_card', component: right_card},
   { path: '/constitution', component: constitution},
-  { path: '/posts', component: posts}
-
-
+  { path: '/posts', component: posts},
+  { path: '/logout', component: logout}
 ]
 
 const router = new VueRouter({
@@ -67,6 +66,52 @@ new Vue({
   router,
   store
 }).$mount('#app')//将这个实例挂载到id=app的根元素上
+
+const axios = require('axios');
+//异步请求前在header里加入token
+axios.interceptors.request.use(
+  config => {
+    if(config.url==='/login'||config.url==='/register'){  //如果是登录和注册操作，则不需要携带header里面的token
+    }else{
+      if (localStorage.getItem('Authorization')) {
+        config.headers.Authorizatior = localStorage.getItem('Authorization');
+      }
+    }
+    return config;
+  },
+  error => {
+    return Promise.reject(error);
+  });
+//异步请求后，判断token是否过期
+axios.interceptors.response.use(
+  response =>{
+    return response;
+  },
+  error => {
+    if(error.response){
+      switch (error.response.status) {
+        case 401:
+          localStorage.removeItem('Authorization');
+          this.$router.push('/');
+      }
+    }
+  }
+)
+//异步请求前判断请求的连接是否需要token
+// router.beforeEach((to, from, next) => {
+//   if (to.path === '/') {
+//     next();
+//   } else {
+//     let token = localStorage.getItem('Authorization');
+//     console.log("我是浏览器本地缓存的token: "+token);
+//     if (token === 'null' || token === '') {
+//       next('/');
+//     } else {
+//       next();
+//     }
+//   }
+// });
+
 
 
 

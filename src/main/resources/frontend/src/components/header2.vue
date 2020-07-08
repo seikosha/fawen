@@ -17,7 +17,8 @@
           <el-menu-item index="2"><router-link to="/my_answers" tag="span">我的回答</router-link></el-menu-item>
           <el-menu-item index="3"><router-link to="/personal" tag="span">个人页面</router-link></el-menu-item>
           <el-menu-item index="4"><router-link to="/mails" tag="span">站内私信</router-link></el-menu-item>
-          <span>欢迎您，尊敬的{{username}}</span>
+          <el-menu-item index="5"><router-link to="/logout" tag="span">登出</router-link></el-menu-item>
+          <span>欢迎 {{username}}</span>
 
         </el-menu>
       </el-col>
@@ -41,7 +42,7 @@
         name: "header2",
         data() {
           return {
-            username: 'bababia'
+            username: ''+this.$store.state.Authorization+''
           }
         }
     }

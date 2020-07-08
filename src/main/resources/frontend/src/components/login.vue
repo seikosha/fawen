@@ -20,7 +20,6 @@
 </template>
 
 <script>
-    import {mapMutations} from "vuex";
 
     export default {
         name: "login",
@@ -45,6 +44,9 @@
         }
     },
       methods: {
+        refresh:function(){
+          this.$router.go(0)
+        },
         submitForm(formName) {
           const axios = require('axios');
           this.$refs[formName].validate((valid) => {
@@ -54,8 +56,11 @@
                 if(response.data[0].username === this.ruleForm.username){
                   this.userToken = response.data[0].username;
                   console.log('userToken:'+this.userToken);
+                  console.log('before:'+this.$store.state.Authorization);
                   this.$store.commit('changeLogin',{Authorization: this.userToken});
                   this.$router.push('/');
+                  this.refresh();
+                  console.log('after:'+this.$store.state.Authorization);
                 }
               }).catch(err => {
                 console.log('服务器连接失败');

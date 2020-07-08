@@ -1,18 +1,13 @@
 <template>
   <div id="app">
     <el-container>
-      <header1 v-show="header1_token"></header1>
-      <header2 v-show="header2_token"></header2>
+      <header1 v-show="header1_token" ></header1>
+      <header2 v-show="header2_token" ></header2>
 
       <router-view></router-view>
 
       <el-footer>
-        <div id="welcome">
-          <div>{{message.username}}</div>
-          <div>{{login_query}}</div>
-        </div>
       </el-footer>
-
     </el-container>
 
   </div>
@@ -53,27 +48,37 @@ import store from './store';
       header1,
       header2
     },
-    el:'#welcome',
+
+
 
     data(){
       return{
+
         message:{
           username:null
         },
-        login_query:'',
+        login_query:''+store.state.Authorization+'',
         header1_token: true,
         header2_token: false
       }
     },
-    mounted() {
-      if(store.state.Authorization != null || store.state.Authorization !== ''){
+
+
+
+    created() {
+      console.log('验证信息：'+this.$store.state.Authorization);
+      if(this.$store.state.Authorization == null) {
+        console.log('验证为null');
+      }else if (this.$store.state.Authorization === ''){
+        console.log('验证为空字符串')
+      }else{
         this.header1_token = false;
         this.header2_token = true;
+
       }
-      const axios = require('axios');
-      axios.get('/queryUserList').then(response=>(this.message=response.data[0]));
-      axios.get('/')
-  }}
+    },
+
+  }
 </script>
 
 
