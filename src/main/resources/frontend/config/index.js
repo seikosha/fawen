@@ -22,6 +22,14 @@ module.exports = {
           target:'http://127.0.0.1:8080',
           changeOrigin:true
         },
+        '/addContent':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
+        },
+        '/queryUserByUsername':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
+        }
     },
 
     // Various Dev Server settings

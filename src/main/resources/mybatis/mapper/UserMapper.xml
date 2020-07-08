@@ -8,13 +8,18 @@
         select * from user;
     </select>
 
-    <select id="selectUserById" resultType="User">
-        select * from user where id = #{id}
+    <select id="queryUserByUsername" resultType="User">
+        select * from user where username = #{username}
     </select>
 
     <insert id="addUser" parameterType="User">
         insert into user (username,password,email,location,status,description,create_time)
         values(#{username},#{password},#{email},#{location},#{status},#{description},#{create_time})
+    </insert>
+
+    <insert id="addContent" parameterType="Content">
+        insert into content (uid,title,content,category,location,create_time)
+        values(#{uid},#{title},#{content},#{category},#{location},#{create_time})
     </insert>
 
     <update id="updateUser" parameterType="User">

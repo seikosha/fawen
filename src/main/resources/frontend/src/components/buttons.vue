@@ -12,8 +12,8 @@
         name: "buttons",
       methods:{
           check_ask(){
+            console.log('点击提问时的按钮'+this.$store.state.Authorization)
             if(this.$store.state.Authorization!=null && this.$store.state.Authorization !== '' && this.$store.state.Authorization !== undefined){
-              this.$store.commit('changeLogin',{Authorization: this.userToken});
               this.$router.push('/ask');
             }else{
               this.$router.push('/login');
@@ -21,7 +21,6 @@
           },
           check_answer(){
             if(this.$store.state.Authorization!=null && this.$store.state.Authorization !== '' && this.$store.state.Authorization !== undefined){
-              this.$store.commit('changeLogin',{Authorization: this.userToken});
               this.$router.push('/answer');
             }else{
               this.$router.push('/login');
