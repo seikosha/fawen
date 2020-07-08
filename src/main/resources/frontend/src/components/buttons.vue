@@ -1,15 +1,33 @@
 <template>
   <el-main id="main">
     <el-row>
-      <router-link to="/ask"><el-button id="buttonl" type="primary" plain>我有问题</el-button></router-link>
-      <router-link to="/answer"><el-button id="buttonr" type="success" plain>我能解答</el-button></router-link>
+      <el-button id="buttonl" type="primary" plain @click="check_ask">我有问题</el-button>
+      <el-button id="buttonr" type="success" plain @click="check_answer">我能解答</el-button>
     </el-row>
   </el-main>
 </template>
 
 <script>
     export default {
-        name: "buttons"
+        name: "buttons",
+      methods:{
+          check_ask(){
+            if(this.$store.state.Authorization!=null && this.$store.state.Authorization !== '' && this.$store.state.Authorization !== undefined){
+              this.$store.commit('changeLogin',{Authorization: this.userToken});
+              this.$router.push('/ask');
+            }else{
+              this.$router.push('/login');
+            }
+          },
+          check_answer(){
+            if(this.$store.state.Authorization!=null && this.$store.state.Authorization !== '' && this.$store.state.Authorization !== undefined){
+              this.$store.commit('changeLogin',{Authorization: this.userToken});
+              this.$router.push('/answer');
+            }else{
+              this.$router.push('/login');
+            }
+          }
+        }
     }
 </script>
 

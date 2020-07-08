@@ -128,27 +128,6 @@
       };
     },
      methods: {
-      // submit(formName){
-      //   this.$refs[formName].validate((valid)=>{
-      //     if(valid){
-      //       const axios = require('axios');
-      //       axios.get('/addUser',{
-      //         params:{
-      //           username: this.ruleForm.username,
-      //           password: this.ruleForm.password,
-      //           email:this.ruleForm.email,
-      //           location:this.ruleForm.location,
-      //           status:this.ruleForm.status,
-      //           description:this.ruleForm.description,
-      //         },}).then(response=>(
-      //         console.log('User Add Successful!')))`
-      //     }else{
-      //       console.log('注册失败');
-      //       return false;
-      //     }
-      //   });
-      // },
-
       submit(formName){
         const axios = require('axios')
         this.$refs.ruleForm.validate((valid)=>{if(valid){
