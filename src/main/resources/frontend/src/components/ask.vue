@@ -101,6 +101,7 @@
       methods: {
         submit(formName){
           const axios = require('axios')
+          let myDate = new Date();
           this.$refs.ruleForm.validate((valid)=>{if(valid){
             axios.get('/addContent',{
               params:{
@@ -109,7 +110,7 @@
                 content: this.ruleForm.content,
                 category:this.ruleForm.category,
                 location:this.ruleForm.location,
-                // create_time:'',
+                create_time:myDate.getFullYear()+'-'+(myDate.getMonth()+1)+'-'+myDate.getDate()+' '+myDate.getHours()+':'+myDate.getMinutes()+':'+myDate.getSeconds(),
               },}).then(response=>(
               console.log('问题发布成功！')))
           } else{
@@ -135,7 +136,7 @@
           rules: {
             title: [
               { required:true, message:'请输入标题',trigger:'blur'},
-              { min: 8, max: 16, message:'长度在8-16个字符之间',trigger: 'blur'}
+              { min: 8, max: 36, message:'长度在8-36个字符之间',trigger: 'blur'}
             ],
             content:[
               { required:true, message:'请输入内容描述',trigger:'blur'},
@@ -164,9 +165,8 @@
           params:{
             username:this.$store.state.Authorization
           },}).then(response=>(
-            this.uid=response.data,
-
-            console.log(this.uid)))
+            this.uid=response.data
+            ))
         if(this.$store.state.Authorization==null|this.$store.state.Authorization===''||this.$store.state.Authorization===undefined){
           this.$router.push('/login');
         }

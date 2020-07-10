@@ -23,6 +23,7 @@ import right_card from "./components/right_card";
 import constitution from "./components/constitution";
 import posts from "./components/posts";
 import logout from "./components/logout";
+import content from "./components/content";
 
 
 Vue.use(VueRouter)
@@ -47,7 +48,8 @@ const routes = [
   { path: '/right_card', component: right_card},
   { path: '/constitution', component: constitution},
   { path: '/posts', component: posts},
-  { path: '/logout', component: logout}
+  { path: '/logout', component: logout},
+  { path: '/content', component: content}
 ]
 
 const router = new VueRouter({
@@ -97,20 +99,7 @@ axios.interceptors.response.use(
     }
   }
 )
-//异步请求前判断请求的连接是否需要token
-// router.beforeEach((to, from, next) => {
-//   if (to.path === '/') {
-//     next();
-//   } else {
-//     let token = localStorage.getItem('Authorization');
-//     console.log("我是浏览器本地缓存的token: "+token);
-//     if (token === 'null' || token === '') {
-//       next('/');
-//     } else {
-//       next();
-//     }
-//   }
-// });
+
 
 
 

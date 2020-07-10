@@ -29,6 +29,7 @@ import constitution from "./components/constitution";
 import header1 from "./components/header1";
 import header2 from "./components/header2";
 import store from './store';
+import content from "./components/content";
 
   export default {
     store,
@@ -46,7 +47,8 @@ import store from './store';
       star_user,
       constitution,
       header1,
-      header2
+      header2,
+      content
     },
 
 
