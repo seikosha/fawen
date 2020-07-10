@@ -16,9 +16,11 @@ public interface UserMapper {
 
     User queryUserByUsername(String username);
 
-    Content queryReplyIdByContent(String content);
+    List<Content> queryContentByUid(int uid);
 
     List<User> loginQuery(String username, String password);
+
+
 
     int addUser(User user);
 

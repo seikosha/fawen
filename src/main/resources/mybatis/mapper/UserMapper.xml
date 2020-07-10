@@ -12,9 +12,6 @@
         select * from user where username = #{username}
     </select>
 
-    <select id="queryReplyIdByContent" resultType="Content">
-        select * from content where content = #{content}
-    </select>
 
     <insert id="addUser" parameterType="User">
         insert into user (username,password,email,location,status,description,create_time)
@@ -42,6 +39,12 @@
     <select id="loginQuery" parameterType="User" resultType="User">
         select * from user where username = #{username} and password = #{password}
     </select>
+
+    <select id="queryContentByUid" resultType="content">
+        select * from content where uid =#{uid}
+    </select>
+
+
 
 
 </mapper>

@@ -166,7 +166,7 @@
           params:{
             username:this.$store.state.Authorization
           },}).then(response=>(
-            this.uid=response.data
+            this.uid=response.data.id
             ))
         if(this.$store.state.Authorization==null|this.$store.state.Authorization===''||this.$store.state.Authorization===undefined){
           this.$router.push('/login');

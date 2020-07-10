@@ -16,6 +16,7 @@ public class UserController {
     @Autowired
     private UserMapper userMapper;
 
+    //query
     @GetMapping("/queryUserList")
     public List<User> queryUserList(){
         List<User> userList = userMapper.queryUserList();
@@ -23,19 +24,30 @@ public class UserController {
     }
 
     @GetMapping("/queryUserByUsername")
-    public Integer queryUserByUsername(String username){
+    public User queryUserByUsername(String username){
         User userList = userMapper.queryUserByUsername(username);
-        return userList.getId();
+        return userList;
     }
 
-    @GetMapping("/addUser")
-    public int addUser(User user){
-        return userMapper.addUser(user);
+    @GetMapping("/queryContentByUid")
+    public List<Content> queryContentByUid(int uid){
+        List<Content> contentList = userMapper.queryContentByUid(uid);
+        return contentList;
     }
+
+
 
     @GetMapping("/loginQuery")
     public List<User> loginQuery(String username, String password){
         return userMapper.loginQuery(username, password);
+    }
+
+
+
+    //add
+    @GetMapping("/addUser")
+    public int addUser(User user){
+        return userMapper.addUser(user);
     }
 
     @GetMapping("/addContent")
@@ -44,9 +56,5 @@ public class UserController {
     @GetMapping("/addReply")
     public int addReply(Reply reply){return userMapper.addReply(reply);}
 
-    @GetMapping("/queryReplyIdByContent")
-    public int queryReplyIdByContent(String content){
-        Content replyList = userMapper.queryReplyIdByContent(content);
-        return replyList.getId();
-    }
+
 }
