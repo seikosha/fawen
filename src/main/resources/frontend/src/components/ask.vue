@@ -113,6 +113,7 @@
                 create_time:myDate.getFullYear()+'-'+(myDate.getMonth()+1)+'-'+myDate.getDate()+' '+myDate.getHours()+':'+myDate.getMinutes()+':'+myDate.getSeconds(),
               },}).then(response=>(
               console.log('问题发布成功！')))
+              this.$router.push('/content');
           } else{
             console.log('问题发布失败');
             return false;

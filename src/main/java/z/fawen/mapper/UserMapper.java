@@ -3,6 +3,7 @@ package z.fawen.mapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 import z.fawen.pojo.Content;
+import z.fawen.pojo.Reply;
 import z.fawen.pojo.User;
 
 import java.util.List;
@@ -15,11 +16,15 @@ public interface UserMapper {
 
     User queryUserByUsername(String username);
 
+    Content queryReplyIdByContent(String content);
+
     List<User> loginQuery(String username, String password);
 
     int addUser(User user);
 
     int addContent(Content content);
+
+    int addReply(Reply reply);
 
     int updateUser(User user);
 

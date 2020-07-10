@@ -29,6 +29,14 @@ module.exports = {
         '/queryUserByUsername':{
           target:'http://127.0.0.1:8080',
           changeOrigin:true
+        },
+        '/addReply':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
+        },
+        '/queryReplyIdByContent':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
         }
     },
 

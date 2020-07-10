@@ -12,6 +12,10 @@
         select * from user where username = #{username}
     </select>
 
+    <select id="queryReplyIdByContent" resultType="Content">
+        select * from content where content = #{content}
+    </select>
+
     <insert id="addUser" parameterType="User">
         insert into user (username,password,email,location,status,description,create_time)
         values(#{username},#{password},#{email},#{location},#{status},#{description},#{create_time})
@@ -20,6 +24,11 @@
     <insert id="addContent" parameterType="Content">
         insert into content (uid,title,content,category,location,create_time)
         values(#{uid},#{title},#{content},#{category},#{location},#{create_time})
+    </insert>
+
+    <insert id="addReply" parameterType="Reply">
+        insert into reply (cid,uid,content,create_time)
+        values(#{cid},#{uid},#{content},#{create_time})
     </insert>
 
     <update id="updateUser" parameterType="User">

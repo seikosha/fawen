@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import z.fawen.mapper.UserMapper;
 import z.fawen.pojo.Content;
+import z.fawen.pojo.Reply;
 import z.fawen.pojo.User;
 
 import java.util.List;
@@ -39,4 +40,13 @@ public class UserController {
 
     @GetMapping("/addContent")
     public int addContent(Content content){return userMapper.addContent(content);}
+
+    @GetMapping("/addReply")
+    public int addReply(Reply reply){return userMapper.addReply(reply);}
+
+    @GetMapping("/queryReplyIdByContent")
+    public int queryReplyIdByContent(String content){
+        Content replyList = userMapper.queryReplyIdByContent(content);
+        return replyList.getId();
+    }
 }
