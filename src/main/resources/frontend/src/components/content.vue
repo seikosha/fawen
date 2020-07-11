@@ -11,6 +11,17 @@
     <hr>
   </div>
 
+  <el-row v-for="item in items" :key="item.reply_time">
+    <span >回复人：<a href="#">{{item.replyer_uid}}</a></span><span>{{' '+item.reply_time}}</span>
+    <div class="maintext">{{item.reply_body}}</div>
+    <div style="float: right; margin-top:30px">
+      <el-button type="primary" size="small" plain>赞同</el-button>
+      <el-button type="danger" size="small" plain>挑战</el-button>
+      <el-button type="warning" plain size="small">最佳</el-button>
+      <el-button type="success" plain size="small">已解决问题</el-button>
+    </div>
+  </el-row>
+
 
 
   <hr>
@@ -33,12 +44,12 @@
 </template>
 
 <script>
-  import reply from "./reply";
-
     export default {
         name: "content",
         data() {
           return {
+            items:[{item:{reply_time:'',replyer_uid:0,reply_body:''}}],
+
             content:{},
             cid:0,
             ruleForm:{
@@ -73,6 +84,7 @@
             },
           },
       beforeCreate() {
+        let _this = this;
         const axios = require('axios')
         //authenticate user
         axios.get('/queryUserByUsername',{
@@ -87,22 +99,33 @@
             uid:this.uid
           },}).then(response=>{
           this.content=response.data[response.data.length-1]
+          this.cid=response.data[response.data.length-1].id
+
+        //get the replies of current post
+        axios.get('/queryReplyByCid',{
+          params:{
+            cid:this.cid
+          },}).then(response=>{
+            // this.items=response.data
+          for(let i=0;i<response.data.length;i++){
+            _this.items.push({reply_time:response.data[i].create_time,replyer_uid: response.data[i].uid,reply_body: response.data[i].content});
+            // _this.items.push({replyer_uid:response.data[i].uid});
+            // _this.items.push({reply_body:response.data[i].content});
+          }
+          _this.items.shift();
+        console.log(_this.items);
+        })
         })
         ))
 
         if(this.$store.state.Authorization==null|this.$store.state.Authorization===''||this.$store.state.Authorization===undefined){
           this.$router.push('/login');
         }
+
+
+
+
       },
-
-
-
-
-
-      components:{
-          reply
-      },
-
 
     }
 

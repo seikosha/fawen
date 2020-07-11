@@ -24,7 +24,6 @@ import constitution from "./components/constitution";
 import posts from "./components/posts";
 import logout from "./components/logout";
 import content from "./components/content";
-import reply from "./components/reply";
 
 
 Vue.use(VueRouter)
@@ -51,7 +50,6 @@ const routes = [
   { path: '/posts', component: posts},
   { path: '/logout', component: logout},
   { path: '/content', component: content},
-  { path: '/reply', component: reply}
 ]
 
 const router = new VueRouter({

@@ -35,6 +35,17 @@ public class UserController {
         return contentList;
     }
 
+    @GetMapping("/queryReplyByCid")
+    public List<Reply> queryReplyByCid(int cid){
+        List<Reply> replyList = userMapper.queryReplyByCid(cid);
+        return replyList;
+    }
+
+    @GetMapping("/queryUsernameById")
+    public String queryUsernameById(int id){
+        String username = userMapper.queryUsernameById(id);
+        return username;
+    }
 
 
     @GetMapping("/loginQuery")

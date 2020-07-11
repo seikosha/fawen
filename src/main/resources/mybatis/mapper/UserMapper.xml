@@ -40,11 +40,16 @@
         select * from user where username = #{username} and password = #{password}
     </select>
 
-    <select id="queryContentByUid" resultType="content">
+    <select id="queryContentByUid" resultType="Content">
         select * from content where uid =#{uid}
     </select>
 
+    <select id="queryReplyByCid" resultType="Reply">
+        select * from reply where cid=#{cid}
+    </select>
 
-
+    <select id="queryUsernameById" resultType="String">
+        select username from user where id = #{id}
+    </select>
 
 </mapper>

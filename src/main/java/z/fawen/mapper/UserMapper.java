@@ -20,7 +20,9 @@ public interface UserMapper {
 
     List<User> loginQuery(String username, String password);
 
+    List<Reply> queryReplyByCid(int cid);
 
+    String queryUsernameById(int id);
 
     int addUser(User user);
 
