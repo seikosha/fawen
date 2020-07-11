@@ -8,10 +8,11 @@
     <span><a href="#">{{this.$store.state.Authorization}}</a></span><span>{{' '+content.create_time}}</span>
     <hr>
     <div class="maintext">{{content.content}}</div>
-    <hr>
+
   </div>
 
   <el-row v-for="item in items" :key="item.reply_time">
+    <hr>
     <span >回复人：<a href="#">{{item.replyer_uid}}</a></span><span>{{' '+item.reply_time}}</span>
     <div class="maintext">{{item.reply_body}}</div>
     <div style="float: right; margin-top:30px">
@@ -106,25 +107,30 @@
           params:{
             cid:this.cid
           },}).then(response=>{
-            // this.items=response.data
           for(let i=0;i<response.data.length;i++){
             _this.items.push({reply_time:response.data[i].create_time,replyer_uid: response.data[i].uid,reply_body: response.data[i].content});
-            // _this.items.push({replyer_uid:response.data[i].uid});
-            // _this.items.push({reply_body:response.data[i].content});
           }
           _this.items.shift();
-        console.log(_this.items);
+          console.log(_this.items)
+          for (let i = 0; i < response.data.length ; i++) {
+
+            axios.get('/queryUsernameById',{
+              params:{
+                id:_this.items[i].replyer_uid
+              },}).then(response=>{
+              _this.items[i].replyer_uid=response.data;
+              console.log(_this.items[i].replyer_uid);
+            })
+          }
         })
         })
         ))
 
+
+
         if(this.$store.state.Authorization==null|this.$store.state.Authorization===''||this.$store.state.Authorization===undefined){
           this.$router.push('/login');
         }
-
-
-
-
       },
 
     }

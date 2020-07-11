@@ -22,7 +22,7 @@ public interface UserMapper {
 
     List<Reply> queryReplyByCid(int cid);
 
-    String queryUsernameById(int id);
+    String queryUsernameById(Integer id);
 
     int addUser(User user);
 

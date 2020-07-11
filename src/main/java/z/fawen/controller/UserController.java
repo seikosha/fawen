@@ -42,7 +42,7 @@ public class UserController {
     }
 
     @GetMapping("/queryUsernameById")
-    public String queryUsernameById(int id){
+    public String queryUsernameById(Integer id){
         String username = userMapper.queryUsernameById(id);
         return username;
     }
