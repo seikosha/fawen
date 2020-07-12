@@ -13,14 +13,18 @@
 
   <el-row v-for="item in items" :key="item.reply_time">
     <hr>
-    <span >回复人：<a href="#">{{item.replyer_uid}}</a></span><span>{{' '+item.reply_time}}</span>
+    <span>回复人：<a href="#">{{item.replyer_uid}}</a></span><span>{{' '+item.reply_time}}</span>
+    <span>获赞数：{{item.reply_star}}</span>
     <div class="maintext">{{item.reply_body}}</div>
+
+
     <div style="float: right; margin-top:30px">
       <el-button type="primary" size="small" plain>赞同</el-button>
       <el-button type="danger" size="small" plain>挑战</el-button>
       <el-button type="warning" plain size="small">最佳</el-button>
       <el-button type="success" plain size="small">已解决问题</el-button>
     </div>
+
   </el-row>
 
 
@@ -49,8 +53,8 @@
         name: "content",
         data() {
           return {
-            items:[{item:{reply_time:'',replyer_uid:0,reply_body:''}}],
 
+            items:[{item:{reply_time:'',replyer_uid:0,reply_body:'',reply_star:0}}],
             content:{},
             cid:0,
             ruleForm:{
@@ -64,6 +68,17 @@
           }
         },
       methods:{
+          star_on:function(){
+            this.item.staroff_token=false;
+            this.item.staron_token=true;
+          },
+          star_off:function(){
+            this.item.staroff_token=true;
+            this.item.staron_token=false;
+          },
+          refresh:function(){
+            this.$router.go(0)
+          },
           submit(formName){
             const axios = require('axios')
             let myDate = new Date();
@@ -75,7 +90,8 @@
                     content: this.ruleForm.reply,
                     create_time:myDate.getFullYear()+'-'+(myDate.getMonth()+1)+'-'+myDate.getDate()+' '+myDate.getHours()+':'+myDate.getMinutes()+':'+myDate.getSeconds(),
                   },}).then(response=>(
-                  console.log('回复发布成功！')
+                  console.log('回复发布成功！'),
+                  this.refresh()
                   ))
               } else{
                 console.log('问题发布失败');
@@ -108,25 +124,20 @@
             cid:this.cid
           },}).then(response=>{
           for(let i=0;i<response.data.length;i++){
-            _this.items.push({reply_time:response.data[i].create_time,replyer_uid: response.data[i].uid,reply_body: response.data[i].content});
+            _this.items.push({reply_time:response.data[i].create_time,replyer_uid: response.data[i].uid,reply_body: response.data[i].content,reply_star: response.data[i].stars});
           }
           _this.items.shift();
-          console.log(_this.items)
           for (let i = 0; i < response.data.length ; i++) {
-
             axios.get('/queryUsernameById',{
               params:{
                 id:_this.items[i].replyer_uid
               },}).then(response=>{
               _this.items[i].replyer_uid=response.data;
-              console.log(_this.items[i].replyer_uid);
             })
           }
         })
         })
         ))
-
-
 
         if(this.$store.state.Authorization==null|this.$store.state.Authorization===''||this.$store.state.Authorization===undefined){
           this.$router.push('/login');

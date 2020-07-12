@@ -4,7 +4,6 @@
 
   <el-main>
   <h2> 法问社区公约 </h2>
-
   </el-main>
 
   <right_card></right_card>
