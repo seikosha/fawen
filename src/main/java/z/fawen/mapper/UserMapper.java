@@ -30,6 +30,8 @@ public interface UserMapper {
 
     int addReply(Reply reply);
 
+    int addStar(int id);
+
     int updateUser(User user);
 
     int deleteUser(int id);

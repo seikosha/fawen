@@ -67,5 +67,8 @@ public class UserController {
     @GetMapping("/addReply")
     public int addReply(Reply reply){return userMapper.addReply(reply);}
 
+    @GetMapping("/addStar")
+    public int addStar(int id){return userMapper.addStar(id);}
+
 
 }

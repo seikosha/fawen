@@ -32,6 +32,10 @@
         update user set username=#{username},email=#{email},location=#{location},status=#{status},description=#{description},password=#{password},last_login_time=#{last_login_time},stars=#{stars},bests=#{bests},solves=#{solves},challenges=#{challenges}
     </update>
 
+    <update id="addStar" parameterType="Reply">
+        update reply set stars = stars + 1 where id=#{id}
+    </update>
+
     <delete id="deleteUser" parameterType="int">
         delete from user where id = #{id}
     </delete>
@@ -51,5 +55,7 @@
     <select id="queryUsernameById" resultType="String">
         select username from user where id = #{id}
     </select>
+
+
 
 </mapper>

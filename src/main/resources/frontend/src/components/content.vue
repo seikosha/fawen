@@ -13,13 +13,14 @@
 
   <el-row v-for="item in items" :key="item.reply_time">
     <hr>
+    <el-checkbox v-model="item.checked"></el-checkbox>
     <span>回复人：<a href="#">{{item.replyer_uid}}</a></span><span>{{' '+item.reply_time}}</span>
     <span>获赞数：{{item.reply_star}}</span>
     <div class="maintext">{{item.reply_body}}</div>
 
 
     <div style="float: right; margin-top:30px">
-      <el-button type="primary" size="small" plain>赞同</el-button>
+      <el-button type="primary" size="small" plain @click="like">赞同</el-button>
       <el-button type="danger" size="small" plain>挑战</el-button>
       <el-button type="warning" plain size="small">最佳</el-button>
       <el-button type="success" plain size="small">已解决问题</el-button>
@@ -53,7 +54,7 @@
         name: "content",
         data() {
           return {
-
+            checked:false,
             items:[{item:{reply_time:'',replyer_uid:0,reply_body:'',reply_star:0}}],
             content:{},
             cid:0,
@@ -68,13 +69,9 @@
           }
         },
       methods:{
-          star_on:function(){
-            this.item.staroff_token=false;
-            this.item.staron_token=true;
-          },
-          star_off:function(){
-            this.item.staroff_token=true;
-            this.item.staron_token=false;
+          like:function(){
+            const axios = require('axios')
+            axios.get('/addStar')
           },
           refresh:function(){
             this.$router.go(0)
