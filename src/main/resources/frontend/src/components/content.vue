@@ -11,26 +11,25 @@
 
   </div>
 
-  <el-row v-for="item in items" :key="item.reply_time">
+  <el-row v-for="(item,index) in items" :key="item.reply_time">
     <hr>
-    <el-checkbox v-model="item.checked"></el-checkbox>
     <span>回复人：<a href="#">{{item.replyer_uid}}</a></span><span>{{' '+item.reply_time}}</span>
     <span>获赞数：{{item.reply_star}}</span>
     <div class="maintext">{{item.reply_body}}</div>
 
-
     <div style="float: right; margin-top:30px">
-      <el-button type="primary" size="small" plain @click="like">赞同</el-button>
+      <el-button type="primary" size="small" plain @click="like(index)" :id="index" v-bind:disabled="item.liked">赞同<span>{{item.rid}}</span></el-button>
       <el-button type="danger" size="small" plain>挑战</el-button>
       <el-button type="warning" plain size="small">最佳</el-button>
       <el-button type="success" plain size="small">已解决问题</el-button>
     </div>
-
   </el-row>
-
-
-
   <hr>
+
+
+
+
+
   <el-form :model="ruleForm" :rules="rules" ref="ruleForm">
   <el-form-item label="回复内容" prop="reply" id="reply">
     <el-input
@@ -54,8 +53,8 @@
         name: "content",
         data() {
           return {
-            checked:false,
-            items:[{item:{reply_time:'',replyer_uid:0,reply_body:'',reply_star:0}}],
+
+            items:[{item:{reply_time:'',replyer_uid:0,reply_body:'',reply_star:0,rid:0,liked:false}}],
             content:{},
             cid:0,
             ruleForm:{
@@ -69,10 +68,17 @@
           }
         },
       methods:{
-          like:function(){
-            const axios = require('axios')
-            axios.get('/addStar')
-          },
+        like:function(index){
+          let _this=this;
+          const axios = require('axios')
+          axios.get('/addStar',{
+            params:{
+              id:_this.items[index].rid
+            },}).then(response=>{
+            _this.items[index].liked=true;
+            this.$forceUpdate();
+          })
+        },
           refresh:function(){
             this.$router.go(0)
           },
@@ -97,6 +103,7 @@
               })
             },
           },
+
       beforeCreate() {
         let _this = this;
         const axios = require('axios')
@@ -121,7 +128,7 @@
             cid:this.cid
           },}).then(response=>{
           for(let i=0;i<response.data.length;i++){
-            _this.items.push({reply_time:response.data[i].create_time,replyer_uid: response.data[i].uid,reply_body: response.data[i].content,reply_star: response.data[i].stars});
+            _this.items.push({reply_time:response.data[i].create_time,replyer_uid: response.data[i].uid,reply_body: response.data[i].content,reply_star: response.data[i].stars,rid:response.data[i].id});
           }
           _this.items.shift();
           for (let i = 0; i < response.data.length ; i++) {
@@ -130,6 +137,7 @@
                 id:_this.items[i].replyer_uid
               },}).then(response=>{
               _this.items[i].replyer_uid=response.data;
+              _this.items[i].liked=false;
             })
           }
         })
