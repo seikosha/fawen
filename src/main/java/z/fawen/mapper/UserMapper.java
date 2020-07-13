@@ -32,6 +32,10 @@ public interface UserMapper {
 
     int addStar(int id);
 
+    int addSolve(int id);
+
+    int addBest(int id);
+
     int updateUser(User user);
 
     int deleteUser(int id);

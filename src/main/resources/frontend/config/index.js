@@ -49,7 +49,16 @@ module.exports = {
         '/addStar':{
           target:'http://127.0.0.1:8080',
           changeOrigin:true
+        },
+        '/addSolve':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
+        },
+        '/addBest':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
         }
+
     },
 
     // Various Dev Server settings

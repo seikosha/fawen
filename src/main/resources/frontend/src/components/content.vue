@@ -18,10 +18,10 @@
     <div class="maintext">{{item.reply_body}}</div>
 
     <div style="float: right; margin-top:30px">
-      <el-button type="primary" size="small" plain @click="like(index)" :id="index" v-bind:disabled="item.liked">赞同<span>{{item.rid}}</span></el-button>
+      <el-button type="primary" size="small" plain @click="like(index)" v-bind:disabled="item.liked">赞同<span>{{item.rid}}</span></el-button>
       <el-button type="danger" size="small" plain>挑战</el-button>
-      <el-button type="warning" plain size="small">最佳</el-button>
-      <el-button type="success" plain size="small">已解决问题</el-button>
+      <el-button type="warning" plain size="small" @click="best(index)" v-bind:disabled="item.bested">最佳</el-button>
+      <el-button type="success" plain size="small" @click="solve(index)" v-bind:disabled="item.solved">已解决问题</el-button>
     </div>
   </el-row>
   <hr>
@@ -54,7 +54,7 @@
         data() {
           return {
 
-            items:[{item:{reply_time:'',replyer_uid:0,reply_body:'',reply_star:0,rid:0,liked:false}}],
+            items:[{item:{reply_time:'',replyer_uid:0,reply_body:'',reply_star:0,rid:0,liked:false,solved:false,bested:false}}],
             content:{},
             cid:0,
             ruleForm:{
@@ -79,29 +79,51 @@
             this.$forceUpdate();
           })
         },
-          refresh:function(){
-            this.$router.go(0)
+        solve:function(index){
+          let _this=this;
+          const axios = require('axios')
+          axios.get('/addSolve',{
+            params:{
+              id:_this.items[index].rid
+            },}).then(response=>{
+              _this.items[index].solved=true;
+              this.$forceUpdate();
+          })
+        },
+        best:function(index){
+          let _this=this;
+          const axios = require('axios')
+          axios.get('/addBest',{
+            params:{
+              id:_this.items[index].rid
+            },}).then(response=>{
+              _this.items[index].bested=true;
+              this.$forceUpdate();
+          })
+        },
+        refresh:function(){
+          this.$router.go(0)
+        },
+        submit(formName){
+          const axios = require('axios')
+          let myDate = new Date();
+          this.$refs[formName].validate((valid) => {if(valid){
+              axios.get('/addReply',{
+                params:{
+                  cid:this.cid,
+                  uid:this.uid,
+                  content: this.ruleForm.reply,
+                  create_time:myDate.getFullYear()+'-'+(myDate.getMonth()+1)+'-'+myDate.getDate()+' '+myDate.getHours()+':'+myDate.getMinutes()+':'+myDate.getSeconds(),
+                },}).then(response=>(
+                console.log('回复发布成功！'),
+                this.refresh()
+                ))
+            } else{
+              console.log('问题发布失败');
+              return false;
+            }
+            })
           },
-          submit(formName){
-            const axios = require('axios')
-            let myDate = new Date();
-            this.$refs[formName].validate((valid) => {if(valid){
-                axios.get('/addReply',{
-                  params:{
-                    cid:this.cid,
-                    uid:this.uid,
-                    content: this.ruleForm.reply,
-                    create_time:myDate.getFullYear()+'-'+(myDate.getMonth()+1)+'-'+myDate.getDate()+' '+myDate.getHours()+':'+myDate.getMinutes()+':'+myDate.getSeconds(),
-                  },}).then(response=>(
-                  console.log('回复发布成功！'),
-                  this.refresh()
-                  ))
-              } else{
-                console.log('问题发布失败');
-                return false;
-              }
-              })
-            },
           },
 
       beforeCreate() {
@@ -138,6 +160,8 @@
               },}).then(response=>{
               _this.items[i].replyer_uid=response.data;
               _this.items[i].liked=false;
+              _this.items[i].solved=false;
+              _this.items[i].bested=false;
             })
           }
         })

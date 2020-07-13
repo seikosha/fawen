@@ -70,5 +70,11 @@ public class UserController {
     @GetMapping("/addStar")
     public int addStar(int id){return userMapper.addStar(id);}
 
+    @GetMapping("/addSolve")
+    public int addSolve(int id){return userMapper.addSolve(id);}
+
+    @GetMapping("/addBest")
+    public int addBest(int id){return userMapper.addBest(id);}
+
 
 }

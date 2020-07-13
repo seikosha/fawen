@@ -36,6 +36,14 @@
         update reply set stars = stars + 1 where id=#{id}
     </update>
 
+    <update id="addSolve" parameterType="Reply">
+        update reply set solve = 1 where id=#{id}
+    </update>
+
+    <update id="addBest" parameterType="Reply">
+        update reply set best = 1 where id=#{id}
+    </update>
+
     <delete id="deleteUser" parameterType="int">
         delete from user where id = #{id}
     </delete>
