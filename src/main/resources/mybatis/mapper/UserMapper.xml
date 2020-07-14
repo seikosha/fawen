@@ -44,6 +44,10 @@
         update reply set best = 1 where id=#{id}
     </update>
 
+    <update id="addChallenge" parameterType="Reply">
+        update reply set challenges = challenges + 1 where id=#{id}
+    </update>
+
     <delete id="deleteUser" parameterType="int">
         delete from user where id = #{id}
     </delete>

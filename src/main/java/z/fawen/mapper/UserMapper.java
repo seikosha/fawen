@@ -36,6 +36,8 @@ public interface UserMapper {
 
     int addBest(int id);
 
+    int addChallenge(int id);
+
     int updateUser(User user);
 
     int deleteUser(int id);

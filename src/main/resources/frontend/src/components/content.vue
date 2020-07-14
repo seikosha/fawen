@@ -19,7 +19,7 @@
 
     <div style="float: right; margin-top:30px">
       <el-button type="primary" size="small" plain @click="like(index)" v-bind:disabled="item.liked">赞同<span>{{item.rid}}</span></el-button>
-      <el-button type="danger" size="small" plain>挑战</el-button>
+      <el-button type="danger" size="small" plain @click="challenge(index)">挑战</el-button>
       <el-button type="warning" plain size="small" @click="best(index)" v-bind:disabled="item.bested">最佳</el-button>
       <el-button type="success" plain size="small" @click="solve(index)" v-bind:disabled="item.solved">已解决问题</el-button>
     </div>
@@ -34,7 +34,7 @@
   <el-form-item label="回复内容" prop="reply" id="reply">
     <el-input
       type="textarea"
-      placeholder="请输入您的解答"
+      placeholder="请输入您的回答"
       v-model="ruleForm.reply"
     >
     </el-input>
@@ -53,7 +53,7 @@
         name: "content",
         data() {
           return {
-
+            placeholder_text:'请输入您的回答',
             items:[{item:{reply_time:'',replyer_uid:0,reply_body:'',reply_star:0,rid:0,liked:false,solved:false,bested:false}}],
             content:{},
             cid:0,
@@ -99,6 +99,17 @@
             },}).then(response=>{
               _this.items[index].bested=true;
               this.$forceUpdate();
+          })
+        },
+        challenge:function(index){
+          let _this=this;
+          const axios = require('axios')
+          axios.get('/addChallenge',{
+            params:{
+              id:_this.items[index].rid
+            },}).then(response=>{
+            document.getElementById("reply").scrollIntoView();
+            _this.ruleForm.reply="我对"+_this.items[index].replyer_uid+"提出的如下意见存有不同看法："+_this.items[index].reply_body;
           })
         },
         refresh:function(){

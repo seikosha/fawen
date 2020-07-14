@@ -76,5 +76,7 @@ public class UserController {
     @GetMapping("/addBest")
     public int addBest(int id){return userMapper.addBest(id);}
 
+    @GetMapping("/addChallenge")
+    public int addChallenge(int id){return userMapper.addChallenge(id);}
 
 }
