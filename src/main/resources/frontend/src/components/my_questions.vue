@@ -6,32 +6,13 @@
       <el-col :span="14">
         <div style="margin-top: 15px">
         <el-table
-          :data="tableData"
           style="width: 100%"
-          :row-class-name="tableRowClassName">
-          <el-table-column
-            prop="id"
-            label="序号"
-            width="60"
-            align="center">
-          </el-table-column>
-          <el-table-column
-            prop="name"
-            label="标题"
-            align="center">
-          </el-table-column>
-          <el-table-column
-            prop="date"
-            label="更新日期"
-            width="120"
-            align="center">
-          </el-table-column>
-          <el-table-column
-            prop="follow"
-            label="跟帖数"
-            width="80"
-            align="center">
-          </el-table-column>
+          :data="items"
+          >
+          <template v-for="(item,index) in tableHead">
+            <el-table-column :prop="item.column_name" :label="item.column_comment" :key="index"></el-table-column>
+          </template>
+
         </el-table>
         </div>
 
@@ -60,31 +41,55 @@
         }
         return '';
       }},
-    data() {
-      return {
-        tableData: [{
-          id:1,
-          date: '2016-05-02',
-          name: '王小虎',
-          follow: 1,
-        }, {
-          id:2,
-          date: '2016-05-04',
-          name: '王小虎',
-          follow: 2
-        }, {
-          id:3,
-          date: '2016-05-01',
-          name: '王小虎',
-          follow: 3,
-        }, {
-          id:4,
-          date: '2016-05-03',
-          name: '王小虎',
-          follow: 4
-        }]
-      }}
-  }
+      data() {
+        return {
+          tableHead:[
+            {
+              column_name:"title",column_comment:"标题"
+            },
+            {
+              column_name: "create_time",column_comment: "创建时间"
+            },
+            {
+              column_name: "update_time",column_comment: "更新时间"
+            }
+          ],
+          items:[{column_name:'',cid:0,uid:0,title:'虽然很艰难',content:'日子还要过',category:'',location:'',create_time:'2020-1-1',update_time:'2020-1-2',count_reply:0}],
+        }},
+
+      beforeCreate() {
+        let _this = this;
+        const axios = require('axios')
+        //authenticate user
+        axios.get('/queryUserByUsername',{
+          params:{
+            username:this.$store.state.Authorization
+          },}).then(response=>(
+          this.uid=response.data.id,
+          axios.get('/queryContentByUid',{
+            params:{
+              uid:this.uid
+            },}).then(response=>{
+            for (let i = 0; i < response.data.length; i++) {
+              _this.items.push({cid:response.data[i].id,uid:response.data[i].uid,title:response.data[i].title,content:response.data[i].content,category:response.data[i].category,location:response.data[i].location,create_time:response.data[i].create_time,update_time:response.data[i].update_time})
+            }
+            _this.items.shift();
+            console.log(_this.items)
+          })
+
+        ))
+
+        if(_this.$store.state.Authorization==null|_this.$store.state.Authorization===''||_this.$store.state.Authorization===undefined){
+          this.$router.push('/login')};
+
+
+
+
+
+
+  }}
+
+
 </script>
 
 <style scoped>

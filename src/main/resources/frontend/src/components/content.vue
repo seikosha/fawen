@@ -173,11 +173,13 @@
               _this.items[i].liked=false;
               _this.items[i].solved=false;
               _this.items[i].bested=false;
+
             })
           }
         })
         })
         ))
+
 
         if(this.$store.state.Authorization==null|this.$store.state.Authorization===''||this.$store.state.Authorization===undefined){
           this.$router.push('/login');
