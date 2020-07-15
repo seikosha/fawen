@@ -24,6 +24,10 @@ public interface UserMapper {
 
     String queryUsernameById(Integer id);
 
+    int queryReplyCount(int uid, int cid);
+
+    String queryLastUpdateTime(int cid);
+
     int addUser(User user);
 
     int addContent(Content content);

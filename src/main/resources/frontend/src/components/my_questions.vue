@@ -10,7 +10,7 @@
           :data="items"
           >
           <template v-for="(item,index) in tableHead">
-            <el-table-column :prop="item.column_name" :label="item.column_comment" :key="index"></el-table-column>
+            <el-table-column align="center" :prop="item.column_name" :label="item.column_comment" :key="item.update_time"></el-table-column>
           </template>
 
         </el-table>
@@ -52,29 +52,54 @@
             },
             {
               column_name: "update_time",column_comment: "更新时间"
+            },
+            {
+              column_name:"reply_count",column_comment: "回复数"
             }
           ],
-          items:[{column_name:'',cid:0,uid:0,title:'虽然很艰难',content:'日子还要过',category:'',location:'',create_time:'2020-1-1',update_time:'2020-1-2',count_reply:0}],
+          items:[{column_name:'',cid:0,uid:0,title:'虽然很艰难',content:'日子还要过',category:'',location:'',create_time:'2020-1-1',update_time:'2020-1-2',reply_count:0}],
         }},
 
       beforeCreate() {
         let _this = this;
         const axios = require('axios')
+
         //authenticate user
         axios.get('/queryUserByUsername',{
           params:{
             username:this.$store.state.Authorization
           },}).then(response=>(
           this.uid=response.data.id,
+
+          //get table contents
           axios.get('/queryContentByUid',{
             params:{
               uid:this.uid
             },}).then(response=>{
             for (let i = 0; i < response.data.length; i++) {
-              _this.items.push({cid:response.data[i].id,uid:response.data[i].uid,title:response.data[i].title,content:response.data[i].content,category:response.data[i].category,location:response.data[i].location,create_time:response.data[i].create_time,update_time:response.data[i].update_time})
+              _this.items.push({cid:response.data[i].id,uid:response.data[i].uid,title:response.data[i].title,content:response.data[i].content,category:response.data[i].category,location:response.data[i].location,create_time:response.data[i].create_time,reply_count:0,update_time:''})
             }
             _this.items.shift();
-            console.log(_this.items)
+
+            //get reply_count & update_time
+            for (let i = 0; i < response.data.length ; i++) {
+              axios.get('/queryReplyCount',{
+                params:{
+                  uid:_this.items[i].uid,
+                  cid:_this.items[i].cid
+                },}).then(response=>{
+                _this.items[i].reply_count=response.data;
+
+                //get last update time
+                axios.get('/queryLastUpdateTime',{
+                  params:{
+                    cid:_this.items[i].cid
+                  },}).then(response=>{
+                    _this.items[i].update_time=response.data;
+                })
+
+              })
+            }
           })
 
         ))

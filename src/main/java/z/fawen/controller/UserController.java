@@ -47,13 +47,16 @@ public class UserController {
         return username;
     }
 
-
     @GetMapping("/loginQuery")
     public List<User> loginQuery(String username, String password){
         return userMapper.loginQuery(username, password);
     }
 
+    @GetMapping("/queryReplyCount")
+    public int queryReplyCount(int uid, int cid){ return userMapper.queryReplyCount(uid,cid);}
 
+    @GetMapping("/queryLastUpdateTime")
+    public String queryLastUpdateTime(int cid){return userMapper.queryLastUpdateTime(cid);}
 
     //add
     @GetMapping("/addUser")

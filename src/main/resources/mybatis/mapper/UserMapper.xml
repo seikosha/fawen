@@ -68,6 +68,14 @@
         select username from user where id = #{id}
     </select>
 
+    <select id="queryReplyCount" resultType="int">
+        select count(*) from reply where uid=#{uid} and cid = #{cid}
+    </select>
+
+    <select id="queryLastUpdateTime" resultType="String">
+        select max(create_time) from reply where cid = #{cid}
+    </select>
+
 
 
 </mapper>
