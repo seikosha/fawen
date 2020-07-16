@@ -64,6 +64,10 @@
         select * from reply where cid=#{cid}
     </select>
 
+    <select id="queryReplyByUid" resultType="Reply">
+        select * from reply where uid=#{uid}
+    </select>
+
     <select id="queryUsernameById" resultType="String">
         select username from user where id = #{id}
     </select>

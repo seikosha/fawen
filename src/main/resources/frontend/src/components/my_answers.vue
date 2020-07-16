@@ -26,51 +26,19 @@
     <el-main>
       您的回复：<br>
       <div style="margin-top: 20px">
+
+<!--        标题、跟帖日期、赞同数、挑战数、是否解决问题-->
+
           <el-table
-            :data="tableData"
             style="width: 100%"
-            :row-class-name="tableRowClassName">
-            <el-table-column
-              prop="id"
-              label="序号"
+            :data="items"
+          >
+            <template v-for="(item,index) in tableHead">
+              <el-table-column align="center" :prop="item.column_name" :label="item.column_comment" :key="item.create_time"></el-table-column>
+            </template>
 
-              align="center">
-            </el-table-column>
-            <el-table-column
-              prop="name"
-              label="标题"
-              align="center">
-            </el-table-column>
-            <el-table-column
-              prop="date"
-              label="更新日期"
-              align="center">
-            </el-table-column>
-            <el-table-column
-              prop="follow"
-              label="跟帖数"
-              align="center">
-            </el-table-column>
-            <el-table-column
-              prop="agree"
-              label="赞同"
-
-              align="center">
-            </el-table-column>
-            <el-table-column
-              prop="battle"
-              label="挑战"
-
-              align="center">
-            </el-table-column>
-            <el-table-column
-              prop="solved"
-              label="是否解决"
-
-              align="center">
-            </el-table-column>
           </el-table>
-      </div>
+        </div>
 
 
         <div class="block">
@@ -109,7 +77,7 @@
 
 <script>
     export default {
-        name: "my_answers",
+      name: "my_answers",
       methods: {
         tableRowClassName({row, rowIndex}) {
           if (rowIndex === 1) {
@@ -119,45 +87,59 @@
           }
           return '';
         }},
-      data() {
-        return {
-          agrees:6,
-          battles:2,
-          tableData: [{
-            id:1,
-            date: '2016-05-02',
-            name: '王小虎',
-            follow: 1,
-            agree:1,
-            battle:2,
-            solved:'否'
-          }, {
-            id:2,
-            date: '2016-05-04',
-            name: '王小虎',
-            follow: 2,
-            agree:1,
-            battle:2,
-            solved:'否'
-          }, {
-            id:3,
-            date: '2016-05-01',
-            name: '王小虎',
-            follow: 3,
-            agree:1,
-            battle:2,
-            solved:'是'
-          }, {
-            id:4,
-            date: '2016-05-03',
-            name: '王小虎',
-            follow: 4,
-            agree:1,
-            battle:2,
-            solved:'是'
-          }]
-        }}
-    }
+      data(){
+        return{
+          tableHead:[
+            {
+              column_name:"title",column_comment:"标题"
+            },
+            {
+              column_name: "create_time",column_comment: "跟帖日期"
+            },
+            {
+              column_name: "stars",column_comment: "赞同数"
+            },
+            {
+              column_name:"challenges",column_comment: "挑战数"
+            },
+            {
+              column_name: "solved",column_comment: "是否解决问题"
+            }
+          ],
+          items:[{column_name:'',title:'虽然很艰难',create_time:'',stars:0,challenges:0,solved:''}],
+        }},
+      beforeCreate() {
+        let _this = this;
+        const axios = require('axios')
+        //authenticate user
+        axios.get('/queryUserByUsername',{
+          params:{
+            username:this.$store.state.Authorization
+          },}).then(response=>(
+          this.uid=response.data.id,
+          axios.get('/queryReplyByUid',{
+            params:{
+              uid:this.uid
+            },}).then(response=>{
+            for (let i = 0; i < response.data.length ; i++) {
+              _this.items.push({title:response.data[i].content,create_time:response.data[i].create_time,stars: response.data[i].stars,challenges: response.data[i].challenges,solved: response.data[i].solve});
+              if(_this.items[i].solved === true){
+                _this.items[i].solved = '是';
+              }else{
+                _this.items[i].solved ='否';
+              }
+            }
+            _this.items.shift();
+            console.log(_this.items);
+          })
+
+
+
+        ))
+        if(this.$store.state.Authorization==null|this.$store.state.Authorization===''||this.$store.state.Authorization===undefined){
+          this.$router.push('/login');
+    }}}
+
 </script>
 
 <style scoped>

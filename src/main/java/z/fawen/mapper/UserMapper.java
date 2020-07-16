@@ -22,6 +22,8 @@ public interface UserMapper {
 
     List<Reply> queryReplyByCid(int cid);
 
+    List<Reply> queryReplyByUid(Integer uid);
+
     String queryUsernameById(Integer id);
 
     int queryReplyCount(int uid, int cid);

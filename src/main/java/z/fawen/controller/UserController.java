@@ -41,6 +41,12 @@ public class UserController {
         return replyList;
     }
 
+    @GetMapping("/queryReplyByUid")
+    public List<Reply> queryReplyByUid(Integer uid){
+        List<Reply> replyList = userMapper.queryReplyByUid(uid);
+        return replyList;
+    }
+
     @GetMapping("/queryUsernameById")
     public String queryUsernameById(Integer id){
         String username = userMapper.queryUsernameById(id);
