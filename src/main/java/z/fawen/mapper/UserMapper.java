@@ -15,6 +15,8 @@ public interface UserMapper {
 
     List<User> queryUserList();
 
+    List<Content> queryContentList();
+
     User queryUserByUsername(String username);
 
     List<Content> queryContentByUid(int uid);

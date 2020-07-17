@@ -17,45 +17,19 @@
       </el-col>
       <el-col :span="14">
         <div  style="margin-top: 15px">
-        <el-table
-          :data="tableData"
-          style="width: 100%"
-          :row-class-name="tableRowClassName"
+
+          <el-table
+            style="width: 100%"
+            :data="items"
           >
+            <template v-for="(item,index) in tableHead">
+              <el-table-column align="center" :prop="item.column_name" :label="item.column_comment" :key="item.update_time"></el-table-column>
+            </template>
 
-        <el-table-column
-          prop="id"
-          label="序号"
-          id="id"
-          align="center">
-        </el-table-column>
+          </el-table>
 
-        <el-table-column
-          prop="name"
-          label="标题"
-          align="center">
-        </el-table-column>
-        <el-table-column
-          prop="date"
-          label="最后更新时间"
-          align="center">
-        </el-table-column>
-          <el-table-column
-            prop="follow"
-            label="跟帖数"
-            align="center">
-          </el-table-column>
-          <el-table-column
-            prop="replyer"
-            label="最新回复者"
-            align="center">
-          </el-table-column>
-          <el-table-column
-            prop="type"
-            label="案件类型"
-            align="center">
-          </el-table-column>
-        </el-table>
+
+
         </div>
 
         <div class="block">
@@ -108,36 +82,60 @@
         }},
       data() {
         return {
-          tableData: [{
-            id:1,
-            date: '2016-05-02',
-            name: '我被人打了怎么办？',
-            follow:1,
-            replyer: 'Jacky',
-            type:'刑事'
-          }, {
-            id:2,
-            date: '2016-05-04',
-            name: '别人欠我钱没还怎么办',
-            follow:2,
-            replyer: 'Becky',
-            type:'民事'
-          }, {
-            id:3,
-            date: '2016-05-01',
-            name: '老婆要跟我离婚，怎么分财产？',
-            follow:3,
-            replyer: 'Frade',
-            type:'民事'
-          }, {
-            id:4,
-            date: '2016-05-03',
-            name: '我被车撞了怎么索赔？',
-            follow:4,
-            replyer: 'Dinesh',
-            type:'民事'
-          }]
-        }}
+          tableHead:[
+            {
+              column_name:"poster",column_comment:"提问人"
+            },
+            {
+              column_name: "title",column_comment: "标题"
+            },
+            {
+              column_name: "category",column_comment: "类型"
+            },
+            {
+              column_name:"location",column_comment: "地区"
+            },
+            {
+              column_name:"create_time",column_comment:"发帖时间"
+            }
+          ],
+          items:[{column_name:'',poster:'',title:'',category:'',location:'',create_time:'2020-1-1'}],
+        }},
+
+      beforeCreate() {
+        let _this = this;
+        const axios = require('axios')
+
+        //authenticate user
+        axios.get('/queryUserByUsername',{
+          params:{
+            username:this.$store.state.Authorization
+          },}).then(response=>(
+          this.uid=response.data.id,
+          axios.get('/queryContentList').then(response=>{
+            for (let i = 0; i < response.data.length; i++) {
+              _this.items.push({poster:response.data[i].uid,title:response.data[i].title,category:response.data[i].category,location:response.data[i].location,create_time:response.data[i].create_time})
+            }
+            _this.items.shift();
+            for (let i = 0; i < response.data.length; i++) {
+              axios.get('/queryUsernameById',{
+                params:{
+                  id:_this.items[i].poster
+                }}).then(response=>{
+                  _this.items[i].poster=response.data
+              })
+            }
+          })
+
+
+
+
+        ))
+        if(_this.$store.state.Authorization==null|_this.$store.state.Authorization===''||_this.$store.state.Authorization===undefined){
+          this.$router.push('/login')};
+      }
+
+
     }
 </script>
 

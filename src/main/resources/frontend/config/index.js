@@ -97,6 +97,10 @@ module.exports = {
         '/queryMail':{
           target:'http://127.0.0.1:8080',
           changeOrigin:true
+        },
+        '/queryContentList':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
         }
 
     },

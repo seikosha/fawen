@@ -24,6 +24,12 @@ public class UserController {
         return userList;
     }
 
+    @GetMapping("/queryContentList")
+    public List<Content> queryContentList(){
+        List<Content> contentList = userMapper.queryContentList();
+        return contentList;
+    }
+
     @GetMapping("/queryUserByUsername")
     public User queryUserByUsername(String username){
         User userList = userMapper.queryUserByUsername(username);

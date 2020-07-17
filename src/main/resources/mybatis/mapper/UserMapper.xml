@@ -8,6 +8,10 @@
         select * from user;
     </select>
 
+    <select id="queryContentList" resultType="Content">
+        select * from content order by create_time desc;
+    </select>
+
     <select id="queryUserByUsername" resultType="User">
         select * from user where username = #{username}
     </select>
