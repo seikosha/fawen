@@ -80,6 +80,25 @@
         select max(create_time) from reply where cid = #{cid}
     </select>
 
+    <select id="queryCategory" resultType="Integer">
+        select count(*) from content where uid = #{uid} and category=#{category} group by category
+    </select>
+
+    <select id="queryReplyData" resultType="Integer">
+        select count(id),sum(best),sum(solve='true') from reply where uid = #{uid}
+    </select>
+
+    <select id="queryReplyStars" resultType="Integer">
+        select sum(stars) from reply where uid = #{uid}
+    </select>
+
+    <select id="queryReplyBest" resultType="Integer">
+        select sum(best) from reply where uid = #{uid}
+    </select>
+
+    <select id="queryReplySolve" resultType="Integer">
+        select sum(solve='true') from reply where uid = #{uid}
+    </select>
 
 
 </mapper>

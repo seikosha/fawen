@@ -30,6 +30,16 @@ public interface UserMapper {
 
     String queryLastUpdateTime(int cid);
 
+    Integer queryCategory(Integer uid,String category);
+
+    Integer queryReplyData(int uid);
+
+    Integer queryReplyStars(int uid);
+
+    Integer queryReplyBest(int uid);
+
+    Integer queryReplySolve(int uid);
+
     int addUser(User user);
 
     int addContent(Content content);

@@ -73,6 +73,26 @@ module.exports = {
         '/queryReplyByUid':{
           target:'http://127.0.0.1:8080',
           changeOrigin:true
+        },
+        '/queryCategory':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
+        },
+        '/queryReplyData':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
+        },
+        '/queryReplyStars':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
+        },
+        '/queryReplyBest':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
+        },
+        '/queryReplySolve':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
         }
 
     },

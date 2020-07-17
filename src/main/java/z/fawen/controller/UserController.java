@@ -64,6 +64,21 @@ public class UserController {
     @GetMapping("/queryLastUpdateTime")
     public String queryLastUpdateTime(int cid){return userMapper.queryLastUpdateTime(cid);}
 
+    @GetMapping("/queryCategory")
+    public Integer queryCategory(Integer uid,String category){return userMapper.queryCategory(uid,category);}
+
+    @GetMapping("/queryReplyData")
+    public Integer queryReplyData(int uid){return userMapper.queryReplyData(uid);}
+
+    @GetMapping("/queryReplyStars")
+    public Integer queryReplyStars(int uid){return userMapper.queryReplyStars(uid);}
+
+    @GetMapping("/queryReplyBest")
+    public Integer queryReplyBest(int uid){return userMapper.queryReplyBest(uid);}
+
+    @GetMapping("/queryReplySolve")
+    public Integer queryReplySolve(int uid){return userMapper.queryReplySolve(uid);}
+
     //add
     @GetMapping("/addUser")
     public int addUser(User user){
