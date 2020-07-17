@@ -27,8 +27,6 @@
       您的回复：<br>
       <div style="margin-top: 20px">
 
-<!--        标题、跟帖日期、赞同数、挑战数、是否解决问题-->
-
           <el-table
             style="width: 100%"
             :data="items"

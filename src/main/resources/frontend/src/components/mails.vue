@@ -14,36 +14,16 @@
 
   <el-col span="16" style="margin-top: 15px" id="main">
 
-      <el-table
-        ref="multipleTable"
-        :data="tableData"
-        tooltip-effect="dark"
-        style="width: 80%"
-        @selection-change="handleSelectionChange">
-        <el-table-column
-          type="selection"
-          width="55">
-        </el-table-column>
-        <el-table-column
-          label="来信时间"
-          width="120">
-          <template slot-scope="scope">{{ scope.row.date }}</template>
-        </el-table-column>
-        <el-table-column
-          prop="name"
-          label="来信者"
-          width="120">
-        </el-table-column>
-        <el-table-column
-          prop="address"
-          label="标题"
-          show-overflow-tooltip>
-        </el-table-column>
-      </el-table>
-      <div style="margin-top: 20px">
-        <el-button @click="toggleSelection([tableData[1], tableData[2]])">切换第二、第三行的选中状态</el-button>
-        <el-button @click="toggleSelection()">删除</el-button>
-      </div>
+    <el-table
+      style="width: 100%"
+      :data="items"
+    >
+      <template v-for="(item,index) in tableHead">
+        <el-table-column align="center" :prop="item.column_name" :label="item.column_comment" :key="item.create_time"></el-table-column>
+      </template>
+
+    </el-table>
+
 
 
   </el-col>
@@ -55,54 +35,52 @@
         name: "mails",
         data() {
           return {
-            tableData: [{
-              date: '2016-05-03',
-              name: '大包',
-              address: '上海市普陀区金沙江路 1518 弄'
-            }, {
-              date: '2016-05-02',
-              name: '王小虎',
-              address: '上海市普陀区金沙江路 1518 弄'
-            }, {
-              date: '2016-05-04',
-              name: '王小虎',
-              address: '上海市普陀区金沙江路 1518 弄'
-            }, {
-              date: '2016-05-01',
-              name: '王小虎',
-              address: '上海市普陀区金沙江路 1518 弄'
-            }, {
-              date: '2016-05-08',
-              name: '王小虎',
-              address: '上海市普陀区金沙江路 1518 弄'
-            }, {
-              date: '2016-05-06',
-              name: '王小虎',
-              address: '上海市普陀区金沙江路 1518 弄'
-            }, {
-              date: '2016-05-07',
-              name: '王小虎',
-              address: '上海市普陀区金沙江路 1518 弄'
-            }],
-            multipleSelection: []
-          }
-        },
+            tableHead:[
+              {
+                column_name:"title",column_comment:"标题"
+              },
+              {
+                column_name: "sender_name",column_comment: "发信人"
+              },
+              {
+                column_name: "send_time",column_comment: "发信时间"
+              }
+            ],
+            items:[{column_name:'',title:'标题',sender_name:'',send_time:''}],
+        }},
 
-        methods: {
-          toggleSelection(rows) {
-            if (rows) {
-              rows.forEach(row => {
-                this.$refs.multipleTable.toggleRowSelection(row);
-              });
-            } else {
-              this.$refs.multipleTable.clearSelection();
-            }
-          },
-          handleSelectionChange(val) {
-            this.multipleSelection = val;
-          }
-        }
-    }
+      beforeCreate() {
+        let _this = this;
+        const axios = require('axios')
+
+        axios.get('/queryUserByUsername',{
+          params:{
+            username:this.$store.state.Authorization
+          },}).then(response=>(
+          this.uid=response.data.id,
+            axios.get('/queryMail',{
+              params:{
+                receiver_id:_this.uid
+              },}).then(response=>{
+              for (let i = 0; i < response.data.length ; i++) {
+                _this.items.push({title:response.data[i].title,send_time:response.data[i].send_time,sender_name:response.data[i].sender_id});
+              }
+              _this.items.shift();
+
+              for (let i = 0; i < response.data.length ; i++) {
+                axios.get('/queryUsernameById',{
+                  params:{
+                    id:response.data[i].sender_id
+                  }}).then(response=>{
+                  _this.items[i].sender_name=response.data;
+                })
+              }
+            })
+        ))
+        if(this.$store.state.Authorization==null|this.$store.state.Authorization===''||this.$store.state.Authorization===undefined){
+          this.$router.push('/login');
+        }}}
+
 </script>
 
 <style scoped>

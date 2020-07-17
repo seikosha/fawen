@@ -3,6 +3,7 @@ package z.fawen.mapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 import z.fawen.pojo.Content;
+import z.fawen.pojo.Mail;
 import z.fawen.pojo.Reply;
 import z.fawen.pojo.User;
 
@@ -39,6 +40,8 @@ public interface UserMapper {
     Integer queryReplyBest(int uid);
 
     Integer queryReplySolve(int uid);
+
+    List<Mail> queryMail(int receiver_id);
 
     int addUser(User user);
 
