@@ -42,7 +42,7 @@
             data_crime:0,
             data_uncertain:0,
             data_reply:0,
-            data_star:0,
+            data_stars:0,
             data_solved:0,
             data_best:0
           }
@@ -68,10 +68,8 @@
                 },}).then(response=>{
                 if(response.data!=''||response.data!=null||response.data!=undefined||response.data!=0){
                   _this.data_civil=response.data;
-                  console.log('civil:'+_this.data_civil)
                 }else{
                   _this.data_civil=0;
-                  console.log('civil:'+_this.data_civil)
                 }
 
                 axios.get('/queryCategory',{
@@ -81,10 +79,8 @@
                   },}).then(response=>{
                   if(response.data!=''||response.data!=null||response.data!=undefined||response.data!=0){
                     _this.data_admin=response.data;
-                    console.log('admin:'+_this.data_admin)
                   }else{
                     _this.data_admin=0;
-                    console.log('admin:'+_this.data_admin)
                   }
                   axios.get('/queryCategory',{
                     params:{
@@ -93,10 +89,8 @@
                     },}).then(response=>{
                     if(response.data!=''||response.data!=null||response.data!=undefined||response.data!=0){
                       _this.data_crime=response.data;
-                      console.log('crime:'+_this.data_crime)
                     }else{
                       _this.data_crime=0;
-                      console.log('crime:'+_this.data_crime)
                     }
                     axios.get('/queryCategory',{
                       params:{
@@ -105,48 +99,99 @@
                       },}).then(response=>{
                       if(response.data!=''||response.data!=null||response.data!=undefined||response.data!=0){
                         _this.data_uncertain=response.data;
-                        console.log('uncertain:'+_this.data_uncertain)
                       }else{
                         _this.data_uncertain=0;
-                        console.log('uncertain:'+_this.data_uncertain)
                       }
-                      console.log('后面的数据：'+_this.data_civil)
-                      let myChart = echarts.init(document.getElementById('type_chart'));
-                      let myChart1 = echarts.init(document.getElementById('review_chart'));
-                      let option = {
-                        title: {
-                          text: '解答问题类型'
-                        },
-                        tooltip: {},
-                        yAxis: {
-                          data: ['刑事', '民事', '行政', '其他']
-                        },
-                        xAxis: {},
-                        series: [{
-                          name: '解答数',
-                          type: 'bar',
-                          data: [_this.data_crime,_this.data_civil,_this.data_admin,_this.data_uncertain]
-                        }]}
-                      myChart.setOption(option);
 
-                        let option1 = {
-                          title:{
-                            text: '回答质量'
-                          },
-                          tooltip:{},
-                          yAxis:{
-                            data: ['回答','赞同','解决问题','最佳答案']
-                          },
-                          xAxis:{},
-                          series: [{
-                            name: '获评数',
-                            type: 'bar',
-                            data: [50, 30, 10,20]
-                          }]
+                      //use uid to query counts from reply
+
+                      axios.get('/queryReplyData',{
+                        params:{
+                          uid:_this.uid,
+                        }}).then(response=>{
+                        if(response.data!=''||response.data!=null||response.data!=undefined||response.data!=0){
+                          _this.data_reply=response.data;
+                          console.log(_this.data_reply)
+                        }else{
+                          _this.data_reply=0;
+                          console.log(_this.data_reply)
                         }
-                        myChart1.setOption(option1);
-                        window.addEventListener('resize',function() {myChart.resize()});
-                        window.addEventListener('resize',function() {myChart1.resize()});
+                        axios.get('/queryReplyStars',{
+                          params:{
+                            uid:_this.uid
+                          }}).then(response=>{
+                          if(response.data!=''||response.data!=null||response.data!=undefined||response.data!=0){
+                          _this.data_stars=response.data;
+                            console.log(_this.data_stars)
+                        }else{
+                          _this.data_stars=0;
+                            console.log(_this.data_stars)
+                        }
+                          axios.get('/queryReplySolve',{
+                            params:{
+                              uid:_this.uid
+                            }}).then(response=>{
+                            if(response.data!=''||response.data!=null||response.data!=undefined||response.data!=0){
+                              _this.data_solved=response.data;
+                              console.log(_this.data_solved)
+                            }else{
+                              _this.data_solved=0;
+                              console.log(_this.data_solved)
+                            }
+                            axios.get('/queryReplyBest',{
+                              params:{
+                                uid:_this.uid
+                              }}).then(response=>{
+                              if(response.data!=''||response.data!=null||response.data!=undefined||response.data!=0){
+                                _this.data_best=response.data;
+                                console.log(_this.data_best)
+                              }else{
+                                _this.data_best=0;
+                                console.log(_this.data_best)
+                              }
+
+                              let myChart = echarts.init(document.getElementById('type_chart'));
+                              let myChart1 = echarts.init(document.getElementById('review_chart'));
+                              let option = {
+                                title: {
+                                  text: '解答问题类型'
+                                },
+                                tooltip: {},
+                                yAxis: {
+                                  data: ['刑事', '民事', '行政', '其他']
+                                },
+                                xAxis: {},
+                                series: [{
+                                  name: '解答数',
+                                  type: 'bar',
+                                  data: [_this.data_crime,_this.data_civil,_this.data_admin,_this.data_uncertain]
+                                }]}
+                              myChart.setOption(option);
+
+                              let option1 = {
+                                title:{
+                                  text: '回答质量'
+                                },
+                                tooltip:{},
+                                yAxis:{
+                                  data: ['回答','赞同','解决问题','最佳答案']
+                                },
+                                xAxis:{},
+                                series: [{
+                                  name: '获评数',
+                                  type: 'bar',
+                                  data: [_this.data_reply, _this.data_stars, _this.data_solved,_this.data_best]
+                                }]
+                              }
+                              myChart1.setOption(option1);
+                              window.addEventListener('resize',function() {myChart.resize()});
+                              window.addEventListener('resize',function() {myChart1.resize()});
+                            })
+                          })
+                        })
+                      })
+
+
 
                     })
                   })
