@@ -21,6 +21,7 @@
           <el-table
             style="width: 100%"
             :data="items"
+            @row-click="forward"
           >
             <template v-for="(item,index) in tableHead">
               <el-table-column align="center" :prop="item.column_name" :label="item.column_comment" :key="item.update_time"></el-table-column>
@@ -79,7 +80,18 @@
             return 'success-row';
           }
           return '';
-        }},
+
+        },
+        forward(row){
+          // this.$router.push('/content');
+          let thisRowData=this;
+          thisRowData=row;
+          console.log(row);
+        }
+
+
+
+        },
       data() {
         return {
           tableHead:[
