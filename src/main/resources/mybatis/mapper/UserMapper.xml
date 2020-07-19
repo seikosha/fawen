@@ -32,6 +32,11 @@
         values(#{cid},#{uid},#{content},#{create_time})
     </insert>
 
+    <insert id="addLiked" parameterType="Liked">
+        insert into liked (liker_id,receiver_id,rid)
+        values(#{liker_id},#{receiver_id},#{rid})
+    </insert>
+
     <update id="updateUser" parameterType="User">
         update user set username=#{username},email=#{email},location=#{location},status=#{status},description=#{description},password=#{password},last_login_time=#{last_login_time},stars=#{stars},bests=#{bests},solves=#{solves},challenges=#{challenges}
     </update>

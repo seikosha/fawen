@@ -22,9 +22,10 @@
             style="width: 100%"
             :data="items"
             @row-click="forward"
+            id="column"
           >
             <template v-for="(item,index) in tableHead">
-              <el-table-column align="center" :prop="item.column_name" :label="item.column_comment" :key="item.update_time"></el-table-column>
+              <el-table-column align="center" :prop="item.column_name" :label="item.column_comment" :key="item.update_time" ></el-table-column>
             </template>
 
           </el-table>
@@ -167,4 +168,9 @@
   position:relative;
   right:5px;
 }
+
+#column{
+  cursor: pointer;
+}
+
 </style>

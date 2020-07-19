@@ -18,7 +18,7 @@
     <div class="maintext">{{item.reply_body}}</div>
 
     <div style="float: right; margin-top:30px">
-      <el-button type="primary" size="small" plain @click="like(index)" v-bind:disabled="item.liked">赞同<span>{{item.rid}}</span></el-button>
+      <el-button type="primary" size="small" plain @click="like(index)" v-bind:disabled="item.liked">赞同</el-button>
       <el-button type="danger" size="small" plain @click="challenge(index)">挑战</el-button>
       <el-button type="warning" plain size="small" @click="best(index)" v-bind:disabled="item.bested">最佳</el-button>
       <el-button type="success" plain size="small" @click="solve(index)" v-bind:disabled="item.solved">已解决问题</el-button>

@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import z.fawen.mapper.UserMapper;
-import z.fawen.pojo.Content;
-import z.fawen.pojo.Mail;
-import z.fawen.pojo.Reply;
-import z.fawen.pojo.User;
+import z.fawen.pojo.*;
 
 import java.util.List;
 
@@ -105,6 +102,9 @@ public class UserController {
     @GetMapping("/addReply")
     public int addReply(Reply reply){return userMapper.addReply(reply);}
 
+    @GetMapping("/addLiked")
+    public int addLike(Liked liked){ return userMapper.addLiked(liked);}
+
     @GetMapping("/addStar")
     public int addStar(int id){return userMapper.addStar(id);}
 
@@ -116,5 +116,7 @@ public class UserController {
 
     @GetMapping("/addChallenge")
     public int addChallenge(int id){return userMapper.addChallenge(id);}
+
+
 
 }

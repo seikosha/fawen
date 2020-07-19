@@ -2,10 +2,7 @@ package z.fawen.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
-import z.fawen.pojo.Content;
-import z.fawen.pojo.Mail;
-import z.fawen.pojo.Reply;
-import z.fawen.pojo.User;
+import z.fawen.pojo.*;
 
 import java.util.List;
 
@@ -52,6 +49,8 @@ public interface UserMapper {
     int addContent(Content content);
 
     int addReply(Reply reply);
+
+    int addLiked(Liked liked);
 
     int addStar(int id);
 

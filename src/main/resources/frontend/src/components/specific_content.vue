@@ -18,7 +18,10 @@
         <div class="maintext">{{item.reply_body}}</div>
 
         <div style="float: right; margin-top:30px">
-          <el-button type="primary" size="small" plain @click="like(index)" v-bind:disabled="item.liked">赞同<span>{{item.rid}}</span></el-button>
+          <span v-show="item.like_success">点赞成功！</span>
+          <span v-show="item.best_success">此回答为最佳答案！</span>
+          <span v-show="item.solve_success">成功解决问题！</span>
+          <el-button type="primary" size="small" plain @click="like(index)" v-bind:disabled="item.liked">赞同</el-button>
           <el-button type="danger" size="small" plain @click="challenge(index)">挑战</el-button>
           <el-button type="warning" plain size="small" @click="best(index)" v-bind:disabled="item.bested">最佳</el-button>
           <el-button type="success" plain size="small" @click="solve(index)" v-bind:disabled="item.solved">已解决问题</el-button>
@@ -54,7 +57,7 @@
       data() {
         return {
           placeholder_text:'请输入您的回答',
-          items:[{item:{reply_time:'',replyer_uid:0,reply_body:'',reply_star:0,rid:0,liked:false,solved:false,bested:false}}],
+          items:[{item:{reply_time:'',replyer_uid:0,reply_body:'',reply_star:0,rid:0,liked:false,solved:false,bested:false,like_success:false,best_success:false,solve_success:false}}],
           content:{},
           cid:0,
           ruleForm:{
@@ -76,7 +79,11 @@
               id:_this.items[index].rid
             },}).then(response=>{
             _this.items[index].liked=true;
+            _this.items[index].like_success=true;
+            _this.items[index].solve_success=false;
+            _this.items[index].best_success=false;
             this.$forceUpdate();
+            console.log(_this.items[index])
           })
         },
         solve:function(index){
@@ -87,6 +94,9 @@
               id:_this.items[index].rid
             },}).then(response=>{
             _this.items[index].solved=true;
+            _this.items[index].like_success=false;
+            _this.items[index].solve_success=true;
+            _this.items[index].best_success=false;
             this.$forceUpdate();
           })
         },
@@ -98,6 +108,9 @@
               id:_this.items[index].rid
             },}).then(response=>{
             _this.items[index].bested=true;
+            _this.items[index].like_success=false;
+            _this.items[index].solve_success=false;
+            _this.items[index].best_success=true;
             this.$forceUpdate();
           })
         },
@@ -180,6 +193,9 @@
                     _this.items[i].liked=false;
                     _this.items[i].solved=false;
                     _this.items[i].bested=false;
+                    _this.items[i].like_success=false;
+                    _this.items[i].best_success=false;
+                    _this.items[i].solve_success=false;
                   })
 
                 }
@@ -199,5 +215,14 @@
 </script>
 
 <style scoped>
+  .maintext{
+    margin-top: 20px;
+    white-space: pre-wrap;
+    word-wrap:break-word;
+    text-align: left;
+  }
 
+  #reply{
+    margin-top:20px;
+  }
 </style>
