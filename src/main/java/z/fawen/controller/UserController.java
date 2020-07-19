@@ -89,6 +89,10 @@ public class UserController {
 
     @GetMapping("/queryMail")
     public List<Mail> queryMail(int receiver_id){return userMapper.queryMail(receiver_id);}
+
+    @GetMapping("/queryContentByTitleAndTime")
+    public List<Content> queryContentByTitleAndTime(String title, String create_time){return userMapper.queryContentByTitleAndTime(title,create_time);}
+
     //add
     @GetMapping("/addUser")
     public int addUser(User user){

@@ -101,6 +101,10 @@ module.exports = {
         '/queryContentList':{
           target:'http://127.0.0.1:8080',
           changeOrigin:true
+        },
+        '/queryContentByTitleAndTime':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
         }
 
     },

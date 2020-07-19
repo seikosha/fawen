@@ -108,5 +108,9 @@
         select * from mail where receiver_id=#{receiver_id}
     </select>
 
+    <select id="queryContentByTitleAndTime" resultType="Content">
+        select * from content where title=#{title} and create_time = #{create_time}
+    </select>
+
 
 </mapper>

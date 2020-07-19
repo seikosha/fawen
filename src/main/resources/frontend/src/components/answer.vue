@@ -83,14 +83,12 @@
 
         },
         forward(row){
-          // this.$router.push('/content');
           let thisRowData=this;
           thisRowData=row;
           let rowTitle = row.title;
           let rowTime = row.create_time;
-
-          this.$store.commit('saveContent',{CurrentContent: rowTitle+rowTime});
-          console.log('当前内容：'+this.$store.state.CurrentContent)
+          this.$store.commit('saveContent',{CurrentContent: rowTime+rowTitle});
+          this.$router.push('/specific_content');
         }
 
 

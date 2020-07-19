@@ -25,6 +25,7 @@ import posts from "./components/posts";
 import logout from "./components/logout";
 import content from "./components/content";
 import test from "./components/test";
+import specific_content from "./components/specific_content";
 
 
 Vue.use(VueRouter)
@@ -51,7 +52,8 @@ const routes = [
   { path: '/posts', component: posts},
   { path: '/logout', component: logout},
   { path: '/content', component: content},
-  { path: '/test', component: test}
+  { path: '/test', component: test},
+  { path: '/specific_content', component: specific_content}
 ]
 
 const router = new VueRouter({

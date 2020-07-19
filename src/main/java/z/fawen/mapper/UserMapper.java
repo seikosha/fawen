@@ -45,6 +45,8 @@ public interface UserMapper {
 
     List<Mail> queryMail(int receiver_id);
 
+    List<Content> queryContentByTitleAndTime(String title,String create_time);
+
     int addUser(User user);
 
     int addContent(Content content);

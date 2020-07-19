@@ -31,6 +31,7 @@ import header2 from "./components/header2";
 import store from './store';
 import content from "./components/content";
 import test from "./components/test";
+import specific_content from "./components/specific_content";
 
   export default {
     store,
@@ -50,7 +51,8 @@ import test from "./components/test";
       header1,
       header2,
       content,
-      test
+      test,
+      specific_content
     },
 
 
