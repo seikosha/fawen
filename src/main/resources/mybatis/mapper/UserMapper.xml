@@ -33,8 +33,8 @@
     </insert>
 
     <insert id="addLiked" parameterType="Liked">
-        insert into liked (liker_id,receiver_id,rid)
-        values(#{liker_id},#{receiver_id},#{rid})
+        insert into liked (liker_id,rid)
+        values(#{liker_id},#{rid})
     </insert>
 
     <update id="updateUser" parameterType="User">
@@ -115,6 +115,10 @@
 
     <select id="queryContentByTitleAndTime" resultType="Content">
         select * from content where title=#{title} and create_time = #{create_time}
+    </select>
+
+    <select id="queryLiked" resultType="Integer">
+        select if (exists(select id from liked where liker_id=#{liker_id} and rid=#{rid}),1,0);
     </select>
 
 

@@ -83,7 +83,13 @@
             _this.items[index].solve_success=false;
             _this.items[index].best_success=false;
             this.$forceUpdate();
-            console.log(_this.items[index])
+            axios.get('/addLiked',{
+              params:{
+                liker_id:_this.uid,
+                rid:_this.items[index].rid
+              }}).then(response=>{
+                console.log('添加liked成功！')
+            })
           })
         },
         solve:function(index){
@@ -196,6 +202,23 @@
                     _this.items[i].like_success=false;
                     _this.items[i].best_success=false;
                     _this.items[i].solve_success=false;
+                    console.log('rid是：'+_this.items[i].rid)
+                    console.log('uid是:'+_this.uid)
+                    axios.get('/queryLiked',{
+                      params:{
+                        liker_id:_this.uid,
+                        rid:_this.items[i].rid
+                      }}).then(response=>{
+                        if(response.data==1){
+                          console.log('之前'+_this.items[i].liked)
+                          _this.items[i].liked=true;
+                          console.log('之后'+_this.items[i].liked)
+                          this.$forceUpdate();
+                        }else{
+                          console.log('之前'+_this.items[i].liked)
+                        }
+                    })
+
                   })
 
                 }

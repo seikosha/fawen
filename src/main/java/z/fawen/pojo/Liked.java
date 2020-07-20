@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 public class Liked {
     private int id;
     private int liker_id;
-    private int receiver_id;
     private int rid;
 }
 

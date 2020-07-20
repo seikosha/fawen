@@ -90,9 +90,12 @@ public class UserController {
     @GetMapping("/queryContentByTitleAndTime")
     public List<Content> queryContentByTitleAndTime(String title, String create_time){return userMapper.queryContentByTitleAndTime(title,create_time);}
 
+    @GetMapping("/queryLiked")
+    public int queryLiked(int liker_id, int rid){return userMapper.queryLiked(liker_id,rid);}
+
     //add
     @GetMapping("/addUser")
-    public int addUser(User user){
+    public Integer addUser(User user){
         return userMapper.addUser(user);
     }
 
