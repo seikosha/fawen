@@ -103,6 +103,9 @@
             _this.items[index].like_success=false;
             _this.items[index].solve_success=true;
             _this.items[index].best_success=false;
+            for (let i = 0; i < _this.items.length ; i++) {
+              _this.items[i].solved=true;
+            }
             this.$forceUpdate();
           })
         },
@@ -117,6 +120,9 @@
             _this.items[index].like_success=false;
             _this.items[index].solve_success=false;
             _this.items[index].best_success=true;
+            for (let i = 0; i < _this.items.length ; i++) {
+              _this.items[i].bested=true;
+            }
             this.$forceUpdate();
           })
         },
@@ -187,7 +193,25 @@
                   cid:this.cid
                 },}).then(response=>{
                 for(let i=0;i<response.data.length;i++){
-                  _this.items.push({reply_time:response.data[i].create_time,replyer_uid: response.data[i].uid,reply_body: response.data[i].content,reply_star: response.data[i].stars,rid:response.data[i].id});
+                  _this.items.push({reply_time:response.data[i].create_time,replyer_uid: response.data[i].uid,reply_body: response.data[i].content,reply_star: response.data[i].stars,rid:response.data[i].id,
+                  bested:response.data[i].best,solved:response.data[i].solve});
+                  _this.items[i].liked=false;
+                  _this.items[i].like_success=false;
+                  _this.items[i].best_success=false;
+                  _this.items[i].solve_success=false;
+
+                  if(_this.items[i].solved==true){
+                    for (let i = 0; i < _this.items.length; i++) {
+                      _this.items[i].solved=true;
+                    }
+                  }
+
+
+                  if(_this.items[i].bested==true){
+                    for (let i = 0; i < _this.items.length; i++) {
+                      _this.items[i].bested=true;
+                    }
+                  }
                 }
                 _this.items.shift();
                 for (let i = 0; i < response.data.length ; i++) {
@@ -196,26 +220,15 @@
                       id:_this.items[i].replyer_uid
                     },}).then(response=>{
                     _this.items[i].replyer_uid=response.data;
-                    _this.items[i].liked=false;
-                    _this.items[i].solved=false;
-                    _this.items[i].bested=false;
-                    _this.items[i].like_success=false;
-                    _this.items[i].best_success=false;
-                    _this.items[i].solve_success=false;
-                    console.log('rid是：'+_this.items[i].rid)
-                    console.log('uid是:'+_this.uid)
+
                     axios.get('/queryLiked',{
                       params:{
                         liker_id:_this.uid,
                         rid:_this.items[i].rid
                       }}).then(response=>{
                         if(response.data==1){
-                          console.log('之前'+_this.items[i].liked)
                           _this.items[i].liked=true;
-                          console.log('之后'+_this.items[i].liked)
                           this.$forceUpdate();
-                        }else{
-                          console.log('之前'+_this.items[i].liked)
                         }
                     })
 
