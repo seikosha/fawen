@@ -51,8 +51,7 @@
         let rowTime = row.create_time;
         this.$store.commit('saveContent',{CurrentContent: rowTime+rowTitle});
         this.$router.push('/specific_content');
-      }
-
+        }
       },
       data() {
         return {
@@ -74,21 +73,22 @@
         }},
 
       beforeCreate() {
+
         let _this = this;
         const axios = require('axios')
-
         //authenticate user
         axios.get('/queryUserByUsername',{
           params:{
             username:this.$store.state.Authorization
-          },}).then(response=>(
+          },}).then(response=>{
           this.uid=response.data.id,
-
+          console.log(this.uid),
           //get table contents
           axios.get('/queryContentByUid',{
             params:{
               uid:this.uid
             },}).then(response=>{
+            console.log(response)
             for (let i = 0; i < response.data.length; i++) {
               _this.items.push({cid:response.data[i].id,uid:response.data[i].uid,title:response.data[i].title,content:response.data[i].content,category:response.data[i].category,location:response.data[i].location,create_time:response.data[i].create_time,reply_count:0,update_time:''})
             }
@@ -114,8 +114,7 @@
               })
             }
           })
-
-        ))
+      })
 
         if(_this.$store.state.Authorization==null|_this.$store.state.Authorization===''||_this.$store.state.Authorization===undefined){
           this.$router.push('/login')};

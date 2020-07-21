@@ -5,7 +5,7 @@
     <el-main>
       <div>
         <h1>{{content.title}}</h1>
-        <span><a href="#">{{this.$store.state.Authorization}}</a></span><span>{{' '+content.create_time}}</span>
+        <span><a href="#">{{content.username}}</a></span><span>{{' '+content.create_time}}</span>
         <hr>
         <div class="maintext">{{content.content}}</div>
 
@@ -56,6 +56,7 @@
         name: "specific_content",
       data() {
         return {
+          username:'',
           placeholder_text:'请输入您的回答',
           items:[{item:{reply_time:'',replyer_uid:0,reply_body:'',reply_star:0,rid:0,liked:false,solved:false,bested:false,like_success:false,best_success:false,solve_success:false}}],
           content:{},
@@ -171,7 +172,7 @@
         axios.get('/queryUserByUsername',{
           params:{
             username:this.$store.state.Authorization
-          },}).then(response=>(
+          },}).then(response=>{
           this.uid=response.data.id,
             conTime=this.$store.state.CurrentContent.slice(0,19),
             conTitle=this.$store.state.CurrentContent.replace(conTime,''),
@@ -183,9 +184,14 @@
                 title:conTitle,
                 create_time:conTime
               }}).then(response=>{
-
                 this.content=response.data[0]
                 this.cid=response.data[0].id,
+                  axios.get('/queryUsernameById',{
+                    params:{
+                      id:this.content.uid
+                    }}).then(response=>{
+                      this.content.username=response.data
+
 
               //get the replies of current post
               axios.get('/queryReplyByCid',{
@@ -200,14 +206,14 @@
                   _this.items[i].best_success=false;
                   _this.items[i].solve_success=false;
 
-                  if(_this.items[i].solved==true){
+
+                  if(_this.items[i].solved==true ||this.$store.state.Authorization!==this.username){
                     for (let i = 0; i < _this.items.length; i++) {
                       _this.items[i].solved=true;
                     }
                   }
 
-
-                  if(_this.items[i].bested==true){
+                  if(_this.items[i].bested==true ||this.$store.state.Authorization!==this.username){
                     for (let i = 0; i < _this.items.length; i++) {
                       _this.items[i].bested=true;
                     }
@@ -230,6 +236,7 @@
                           _this.items[i].liked=true;
                           this.$forceUpdate();
                         }
+
                     })
 
                   })
@@ -237,13 +244,14 @@
                 }
               })
             })
-
-        ))
+            })
+      })
 
 
         if(this.$store.state.Authorization==null|this.$store.state.Authorization===''||this.$store.state.Authorization===undefined){
           this.$router.push('/login');
         }
+
       },
 
     }
