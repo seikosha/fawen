@@ -113,6 +113,14 @@ module.exports = {
         '/queryLiked':{
           target:'http://127.0.0.1:8080',
           changeOrigin:true
+        },
+        '/queryCidByTitleAndTime':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
+        },
+        '/queryContentByCid':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
         }
 
     },

@@ -8,6 +8,8 @@
         <el-table
           style="width: 100%"
           :data="items"
+          @row-click="forward"
+          id="column"
           >
           <template v-for="(item,index) in tableHead">
             <el-table-column align="center" :prop="item.column_name" :label="item.column_comment" :key="item.update_time"></el-table-column>
@@ -40,7 +42,18 @@
           return 'success-row';
         }
         return '';
-      }},
+      },
+
+      forward(row){
+        let thisRowData=this;
+        thisRowData=row;
+        let rowTitle = row.title;
+        let rowTime = row.create_time;
+        this.$store.commit('saveContent',{CurrentContent: rowTime+rowTitle});
+        this.$router.push('/specific_content');
+      }
+
+      },
       data() {
         return {
           tableHead:[
@@ -120,6 +133,10 @@
 <style scoped>
 .block{
   float:left;
+}
+
+#column{
+  cursor: pointer;
 }
 </style>
 

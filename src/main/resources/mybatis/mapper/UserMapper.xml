@@ -121,5 +121,13 @@
         select if (exists(select id from liked where liker_id=#{liker_id} and rid=#{rid}),1,0);
     </select>
 
+    <select id="queryCidByTitleAndTime" resultType="int">
+        select cid from reply where content = #{title} and create_time=#{time}
+    </select>
+
+    <select id="queryContentByCid" resultType="Content">
+        select * from content where id=#{cid}
+    </select>
+
 
 </mapper>

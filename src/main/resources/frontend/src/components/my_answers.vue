@@ -30,6 +30,8 @@
           <el-table
             style="width: 100%"
             :data="items"
+            @row-click="forward"
+            id="column"
           >
             <template v-for="(item,index) in tableHead">
               <el-table-column align="center" :prop="item.column_name" :label="item.column_comment" :key="item.create_time"></el-table-column>
@@ -84,7 +86,41 @@
             return 'success-row';
           }
           return '';
-        }},
+        },
+
+        forward(row){
+          let thisRowData=this;
+          const axios = require('axios')
+          thisRowData=row;
+          console.log(row.title)
+
+          let rowTitle = row.title;
+          let rowTime = row.create_time;
+          let rowCid = 0;
+          axios.get('/queryCidByTitleAndTime',{
+            params:{
+              title:rowTitle,
+              time:rowTime
+            }}).then(response=>{
+              rowCid=response.data;
+              console.log(rowCid)
+              axios.get('/queryContentByCid',{
+                params:{
+                  cid:rowCid
+                }}).then(response=>{
+                  console.log(response.data)
+                  rowTitle=response.data.title,
+                  rowTime=response.data.create_time
+                this.$store.commit('saveContent',{CurrentContent: rowTime+rowTitle});
+                this.$router.push('/specific_content');
+              })
+          })
+
+        }
+
+
+
+        },
       data(){
         return{
           tableHead:[
@@ -169,5 +205,9 @@
 
   .el-container:nth-child(7) .el-aside {
     line-height: 320px;
+  }
+
+  #column{
+    cursor: pointer;
   }
 </style>

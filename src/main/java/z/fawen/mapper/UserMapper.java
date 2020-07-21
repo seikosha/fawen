@@ -44,6 +44,10 @@ public interface UserMapper {
 
     List<Content> queryContentByTitleAndTime(String title,String create_time);
 
+    int queryCidByTitleAndTime(String title,String time);
+
+    Content queryContentByCid(int cid);
+
     Integer queryLiked(int liker_id,int rid);
 
     int addUser(User user);
