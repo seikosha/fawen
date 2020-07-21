@@ -70,4 +70,6 @@ public interface UserMapper {
 
     int deleteUser(int id);
 
+    int addMail(Mail mail);
+
 }

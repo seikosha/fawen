@@ -55,12 +55,11 @@
               .then(response=>{
                 if(response.data[0].username === this.ruleForm.username){
                   this.userToken = response.data[0].username;
-                  console.log('userToken:'+this.userToken);
-                  console.log('before:'+this.$store.state.Authorization);
+
                   this.$store.commit('changeLogin',{Authorization: this.userToken});
                   this.$router.push('/');
                   this.refresh();
-                  console.log('after:'+this.$store.state.Authorization);
+
                 }
               }).catch(err => {
                 console.log('服务器连接失败');

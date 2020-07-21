@@ -8,7 +8,7 @@
           <span>个人资料信息</span>
         </div>
         <div class="text item">
-          <router-link to="#" tag="a">发送私信</router-link>
+          <router-link to="/send_mail" tag="a">发送私信</router-link>
           <br><br>
           <router-link to="/personal_specific" tag="a">查看数据</router-link>
 

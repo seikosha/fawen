@@ -128,6 +128,7 @@ public class UserController {
     @GetMapping("/addChallenge")
     public int addChallenge(int id){return userMapper.addChallenge(id);}
 
-
+    @GetMapping("/addMail")
+    public int addMail(Mail mail){return userMapper.addMail(mail);}
 
 }

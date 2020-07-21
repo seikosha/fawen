@@ -32,6 +32,11 @@
         values(#{cid},#{uid},#{content},#{create_time})
     </insert>
 
+    <insert id="addMail" parameterType="Mail">
+        insert into mail (sender_id,receiver_id,title,content,send_time)
+        values(#{sender_id},#{receiver_id},#{title},#{content},#{send_time})
+    </insert>
+
     <insert id="addLiked" parameterType="Liked">
         insert into liked (liker_id,rid)
         values(#{liker_id},#{rid})
