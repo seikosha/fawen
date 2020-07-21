@@ -32,6 +32,8 @@ import store from './store';
 import content from "./components/content";
 import test from "./components/test";
 import specific_content from "./components/specific_content";
+import personal_specific from "./components/personal_specific";
+import send_mail from "./components/send_mail";
 
   export default {
     store,
@@ -52,7 +54,9 @@ import specific_content from "./components/specific_content";
       header2,
       content,
       test,
-      specific_content
+      specific_content,
+      personal_specific,
+      send_mail
     },
 
 

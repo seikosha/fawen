@@ -5,7 +5,7 @@
     <el-main>
       <div>
         <h1>{{content.title}}</h1>
-        <span><a href="#">{{content.username}}</a></span><span>{{' '+content.create_time}}</span>
+        <router-link  to="/personal_specific" ><a @click="save_user">{{content.username}}</a></router-link><span>{{' '+content.create_time}}</span>
         <hr>
         <div class="maintext">{{content.content}}</div>
 
@@ -13,7 +13,7 @@
 
       <el-row v-for="(item,index) in items" :key="item.reply_time">
         <hr>
-        <span>回复人：<a href="#">{{item.replyer_uid}}</a></span><span>{{' '+item.reply_time}}</span>
+        <span>回复人：<router-link to="/personal_specific"><a @click="save_replyer($event)">{{item.replyer_uid}}</a></router-link></span><span>{{' '+item.reply_time}}</span>
         <span>获赞数：{{item.reply_star}}</span>
         <div class="maintext">{{item.reply_body}}</div>
 
@@ -72,6 +72,12 @@
         }
       },
       methods:{
+        save_replyer(e){
+          this.$store.commit('saveUser',{CurrentUser:e.target.innerText});
+        },
+        save_user(){
+          this.$store.commit('saveUser',{CurrentUser:this.content.username});
+        },
         like:function(index){
           let _this=this;
           const axios = require('axios')

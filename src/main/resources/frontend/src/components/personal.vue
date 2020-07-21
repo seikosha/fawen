@@ -1,22 +1,18 @@
 <template>
 <el-container>
 <el-aside width="200px" id="leftside">
-  <span>尊敬的{{username}}，<br>
-  您已经在本站：</span>
-  <el-card class="box-card" style="margin-top: 30px">
-    <div slot="header" class="clearfix">
-      <span>已获得的评价</span>
-    </div>
-    <div v-for="o in 4" :key="o" class="text item">
-      {{'列表内容 ' + o }}
-    </div>
-  </el-card>
+  <span>尊敬的{{username}}</span>
+
   <el-card class="box-card" style="margin-top: 30px">
     <div slot="header" class="clearfix">
       <span>个人资料信息</span>
     </div>
-    <div v-for="o in 4" :key="o" class="text item">
-      {{'列表内容 ' + o }}
+    <div class="text item">
+      <router-link to="#" tag="span">账号密码</router-link>
+      <br><br>
+      <router-link to="/personal" tag="span">个人资料</router-link>
+      <br><br>
+      <router-link to="/personal" tag="span">个人统计</router-link>
     </div>
   </el-card>
 </el-aside>
