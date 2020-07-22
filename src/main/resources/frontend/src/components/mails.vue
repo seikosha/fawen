@@ -1,15 +1,6 @@
 <template>
 <el-container>
-  <el-col span="6" style="margin-top: 15px">
-    <el-card class="box-card" style="margin-top: 30px" id="leftside">
-      <div slot="header" class="clearfix">
-        <span>站内私信</span>
-      </div>
-      <div v-for="o in 4" :key="o" class="text item">
-        {{'列表内容 ' + o }}
-      </div>
-    </el-card>
-  </el-col>
+  <el-col span="4" style="margin-top: 15px"></el-col>
 
 
   <el-col span="16" style="margin-top: 15px" id="main">
@@ -17,16 +8,17 @@
     <el-table
       style="width: 100%"
       :data="items"
+      @row-click="forward"
+      id="column"
     >
       <template v-for="(item,index) in tableHead">
         <el-table-column align="center" :prop="item.column_name" :label="item.column_comment" :key="item.create_time"></el-table-column>
       </template>
 
     </el-table>
-
-
-
   </el-col>
+
+  <el-col span="4" style="margin-top: 15px"></el-col>
 </el-container>
 </template>
 
@@ -48,6 +40,17 @@
             ],
             items:[{column_name:'',title:'标题',sender_name:'',send_time:''}],
         }},
+
+      methods:{
+        forward(row){
+          let thisRowData=this;
+          thisRowData=row;
+          let rowTitle = thisRowData.title;
+          let rowTime = thisRowData.send_time;
+          this.$store.commit('saveMail',{CurrentMail:rowTime+rowTitle});
+          this.$router.push('/mail_specific')
+        }
+      },
 
       beforeCreate() {
         let _this = this;
@@ -94,5 +97,9 @@
   #main{
     position:relative;
     left:20px;
+  }
+
+  #column{
+    cursor: pointer;
   }
 </style>

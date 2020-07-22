@@ -130,6 +130,10 @@
         select cid from reply where content = #{title} and create_time=#{time}
     </select>
 
+    <select id="queryMailByTitleAndTime" resultType="Mail">
+        select * from mail where title = #{title} and send_time=#{send_time}
+    </select>
+
     <select id="queryContentByCid" resultType="Content">
         select * from content where id=#{cid}
     </select>

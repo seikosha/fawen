@@ -8,7 +8,8 @@ export default new Vuex.Store({
     // // 存储token
      Authorization: localStorage.getItem('Authorization') ? localStorage.getItem('Authorization') : '',
      CurrentContent: localStorage.getItem('CurrentContent') ? localStorage.getItem('CurrentContent') : '',
-     CurrentUser: localStorage.getItem('CurrentUser') ? localStorage.getItem('CurrentUser') : ''
+     CurrentUser: localStorage.getItem('CurrentUser') ? localStorage.getItem('CurrentUser') : '',
+     CurrentMail: localStorage.getItem('CurrentMail') ? localStorage.getItem('CurrentMail') : ''
   },
 
   mutations: {
@@ -22,6 +23,12 @@ export default new Vuex.Store({
       state.CurrentContent=content.CurrentContent;
       console.log("成功暂存帖子信息");
       localStorage.setItem('CurrentContent',content.CurrentContent);
+    },
+
+    saveMail(state,mail){
+      state.CurrentMail = mail.CurrentMail;
+      console.log("成功暂存当前私信");
+      localStorage.setItem('CurrentMail',mail.CurrentMail);
     },
 
     saveUser(state,user){

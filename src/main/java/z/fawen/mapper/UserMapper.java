@@ -44,6 +44,8 @@ public interface UserMapper {
 
     List<Content> queryContentByTitleAndTime(String title,String create_time);
 
+    List<Mail> queryMailByTitleAndTime(String title,String send_time);
+
     int queryCidByTitleAndTime(String title,String time);
 
     Content queryContentByCid(int cid);
@@ -71,5 +73,7 @@ public interface UserMapper {
     int deleteUser(int id);
 
     int addMail(Mail mail);
+
+
 
 }

@@ -95,6 +95,9 @@ public class UserController {
     @GetMapping("/queryContentByTitleAndTime")
     public List<Content> queryContentByTitleAndTime(String title, String create_time){return userMapper.queryContentByTitleAndTime(title,create_time);}
 
+    @GetMapping("/queryMailByTitleAndTime")
+    public List<Mail> queryMailByTitleAndTime(String title,String send_time){return userMapper.queryMailByTitleAndTime(title,send_time);}
+
     @GetMapping("/queryCidByTitleAndTime")
     public int queryCidByTitleAndTime(String title, String time){return userMapper.queryCidByTitleAndTime(title,time);}
 
