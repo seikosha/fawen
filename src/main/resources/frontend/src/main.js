@@ -28,6 +28,7 @@ import test from "./components/test";
 import specific_content from "./components/specific_content";
 import personal_specific from "./components/personal_specific";
 import send_mail from "./components/send_mail";
+import mail_success from "./components/mail_success";
 
 
 Vue.use(VueRouter)
@@ -57,7 +58,8 @@ const routes = [
   { path: '/test', component: test},
   { path: '/specific_content', component: specific_content},
   { path: '/personal_specific', component: personal_specific},
-  { path: '/send_mail', component: send_mail}
+  { path: '/send_mail', component: send_mail},
+  { path: '/mail_success', component: mail_success}
 ]
 
 const router = new VueRouter({

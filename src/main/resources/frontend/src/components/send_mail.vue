@@ -30,6 +30,8 @@
         name: "send_mail",
         data(){
           return{
+            sender_id:0,
+            receiver_id:0,
             username:'',
             ruleForm: {
               title:'',
@@ -54,9 +56,32 @@
           },
           submitForm(formName){
             const axios = require('axios');
+            let myDate = new Date();
             this.$refs[formName].validate((valid)=>{
               if(valid){
-
+                axios.get('/queryUserByUsername',{
+                  params:{
+                    username:this.$store.state.Authorization
+                  }}).then(response=>{
+                    this.sender_id=response.data.id
+                    axios.get('/queryUserByUsername',{
+                      params:{
+                        username:this.$store.state.CurrentUser
+                      }}).then(response=>{
+                        this.receiver_id=response.data.id
+                        axios.get('/addMail',{
+                          params:{
+                            sender_id:this.sender_id,
+                            receiver_id:this.receiver_id,
+                            title:this.ruleForm.title,
+                            content:this.ruleForm.mail,
+                            send_time:myDate.getFullYear()+'-'+(myDate.getMonth()+1)+'-'+myDate.getDate()+' '+myDate.getHours()+':'+myDate.getMinutes()+':'+myDate.getSeconds(),
+                          }}).then(response=>{
+                            console.log('私信已发出！')
+                          this.$router.push('/mail_success')
+                        })
+                    })
+                })
               }
             })
           }
