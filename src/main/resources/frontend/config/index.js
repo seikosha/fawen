@@ -129,6 +129,14 @@ module.exports = {
         '/queryMailByTitleAndTime':{
           target:'http://127.0.0.1:8080',
           changeOrigin:true
+        },
+        '/addReplyMail':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
+        },
+        '/queryReplyMailByMid':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
         }
 
     },

@@ -5,29 +5,19 @@
     <el-main>
       <div>
         <h1>{{mail.title}}</h1>
-        <router-link  to="/personal_specific" ><a @click="save_user">{{mail.username}}</a></router-link><span>{{' '+mail.send_time}}</span>
+        <router-link  to="/personal_specific" ><a @click="save_user($event)">{{mail.username}}</a></router-link><span>{{' '+mail.send_time}}</span>
         <hr>
         <div class="maintext">{{mail.content}}</div>
 
       </div>
 
-<!--      <el-row v-for="(item,index) in items" :key="item.reply_time">-->
-<!--        <hr>-->
-<!--        <span>回复人：<router-link to="/personal_specific"><a @click="save_replyer($event)">{{item.replyer_uid}}</a></router-link></span><span>{{' '+item.reply_time}}</span>-->
-<!--        <span>获赞数：{{item.reply_star}}</span>-->
-<!--        <div class="maintext">{{item.reply_body}}</div>-->
+      <el-row v-for="(item,index) in items" :key="item.reply_time">
+        <hr>
+        <span>回复人：<router-link to="/personal_specific"><a @click="save_user($event)">{{item.replyer_id}}</a></router-link></span><span>{{' '+item.reply_time}}</span>
+        <div class="maintext">{{item.content}}</div>
 
-<!--        <div style="float: right; margin-top:30px">-->
-<!--          <span v-show="item.like_success">点赞成功！</span>-->
-<!--          <span v-show="item.best_success">此回答为最佳答案！</span>-->
-<!--          <span v-show="item.solve_success">成功解决问题！</span>-->
-<!--          <el-button type="primary" size="small" plain @click="like(index)" v-bind:disabled="item.liked">赞同</el-button>-->
-<!--          <el-button type="danger" size="small" plain @click="challenge(index)">挑战</el-button>-->
-<!--          <el-button type="warning" plain size="small" @click="best(index)" v-bind:disabled="item.bested">最佳</el-button>-->
-<!--          <el-button type="success" plain size="small" @click="solve(index)" v-bind:disabled="item.solved">已解决问题</el-button>-->
-<!--        </div>-->
-<!--      </el-row>-->
-<!--      <hr>-->
+      </el-row>
+      <hr>
 
 
 
@@ -58,9 +48,10 @@
       return {
         username:'',
         placeholder_text:'请输入您的回答',
-        items:[{item:{reply_time:'',replyer_uid:0,reply_body:'',reply_star:0,rid:0,liked:false,solved:false,bested:false,like_success:false,best_success:false,solve_success:false}}],
+        items:[{item:{reply_time:'',replyer_id:0,content:''}}],
         mail:{},
-        cid:0,
+        mid:0,
+        uid:0,
         ruleForm:{
           reply: ''
         },
@@ -72,101 +63,32 @@
       }
     },
     methods:{
-      save_replyer(e){
+      save_user(e){
         this.$store.commit('saveUser',{CurrentUser:e.target.innerText});
-      },
-      save_user(){
-        this.$store.commit('saveUser',{CurrentUser:this.content.username});
-      },
-      like:function(index){
-        let _this=this;
-        const axios = require('axios')
-        axios.get('/addStar',{
-          params:{
-            id:_this.items[index].rid
-          },}).then(response=>{
-          _this.items[index].liked=true;
-          _this.items[index].like_success=true;
-          _this.items[index].solve_success=false;
-          _this.items[index].best_success=false;
-          this.$forceUpdate();
-          axios.get('/addLiked',{
-            params:{
-              liker_id:_this.uid,
-              rid:_this.items[index].rid
-            }}).then(response=>{
-            console.log('添加liked成功！')
-          })
-        })
-      },
-      solve:function(index){
-        let _this=this;
-        const axios = require('axios')
-        axios.get('/addSolve',{
-          params:{
-            id:_this.items[index].rid
-          },}).then(response=>{
-          _this.items[index].solved=true;
-          _this.items[index].like_success=false;
-          _this.items[index].solve_success=true;
-          _this.items[index].best_success=false;
-          for (let i = 0; i < _this.items.length ; i++) {
-            _this.items[i].solved=true;
-          }
-          this.$forceUpdate();
-        })
-      },
-      best:function(index){
-        let _this=this;
-        const axios = require('axios')
-        axios.get('/addBest',{
-          params:{
-            id:_this.items[index].rid
-          },}).then(response=>{
-          _this.items[index].bested=true;
-          _this.items[index].like_success=false;
-          _this.items[index].solve_success=false;
-          _this.items[index].best_success=true;
-          for (let i = 0; i < _this.items.length ; i++) {
-            _this.items[i].bested=true;
-          }
-          this.$forceUpdate();
-        })
-      },
-      challenge:function(index){
-        let _this=this;
-        const axios = require('axios')
-        axios.get('/addChallenge',{
-          params:{
-            id:_this.items[index].rid
-          },}).then(response=>{
-          document.getElementById("reply").scrollIntoView();
-          _this.ruleForm.reply="我对"+_this.items[index].replyer_uid+"提出的如下意见存有不同看法："+_this.items[index].reply_body;
-        })
-      },
-      refresh:function(){
-        this.$router.go(0)
       },
       submit(formName){
         const axios = require('axios')
         let myDate = new Date();
         this.$refs[formName].validate((valid) => {if(valid){
-          axios.get('/addReply',{
+          axios.get('/addReplyMail',{
             params:{
-              cid:this.cid,
-              uid:this.uid,
+              mid:this.mid,
               content: this.ruleForm.reply,
-              create_time:myDate.getFullYear()+'-'+(myDate.getMonth()+1)+'-'+myDate.getDate()+' '+myDate.getHours()+':'+myDate.getMinutes()+':'+myDate.getSeconds(),
+              reply_time:myDate.getFullYear()+'-'+(myDate.getMonth()+1)+'-'+myDate.getDate()+' '+myDate.getHours()+':'+myDate.getMinutes()+':'+myDate.getSeconds(),
+              replyer_id:this.uid
             },}).then(response=>(
-            console.log('回复发布成功！'),
+            console.log('回复发送成功！'),
               this.refresh()
           ))
         } else{
-          console.log('问题发布失败');
+          console.log('回复发布失败');
           return false;
         }
         })
       },
+      refresh:function(){
+        this.$router.go(0)
+      }
     },
 
     beforeCreate() {
@@ -184,20 +106,40 @@
           conTitle=this.$store.state.CurrentMail.replace(conTime,''),
 
 
-          // get the selected post
+          // get the selected mail
           axios.get('/queryMailByTitleAndTime',{
             params:{
               title:conTitle,
               send_time:conTime
             }}).then(response=>{
             this.mail=response.data[0]
-            this.cid=response.data[0].id,
+            this.mid=response.data[0].id
+            this.sender_id=response.data[0].sender_id
               axios.get('/queryUsernameById',{
                 params:{
                   id:this.mail.sender_id
                 }}).then(response=>{
                 this.mail.username=response.data
-                console.log(this.mail.username)
+
+                //get the replies of the current mail
+                axios.get('/queryReplyMailByMid',{
+                  params:{
+                    mid:this.mid
+                  }}).then(response=>{
+                  for (let i = 0; i < response.data.length ; i++) {
+                    _this.items.push({reply_time:response.data[i].reply_time,replyer_id:response.data[i].replyer_id,content:response.data[i].content})
+                  }
+                  _this.items.shift();
+                  for (let i = 0; i < response.data.length ; i++) {
+                    axios.get('/queryUsernameById',{
+                      params:{
+                        id:_this.items[i].replyer_id
+                      }}).then(response=>{
+                        _this.items[i].replyer_id=response.data;
+
+                    })
+                  }
+                })
                 })
               })
       })

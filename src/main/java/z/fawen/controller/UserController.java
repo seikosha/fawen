@@ -104,6 +104,9 @@ public class UserController {
     @GetMapping("/queryLiked")
     public int queryLiked(int liker_id, int rid){return userMapper.queryLiked(liker_id,rid);}
 
+    @GetMapping("/queryReplyMailByMid")
+    public List<Reply_Mail> queryReplyMailByMid(int mid){return userMapper.queryReplyMailByMid(mid);}
+
     //add
     @GetMapping("/addUser")
     public Integer addUser(User user){
@@ -133,5 +136,8 @@ public class UserController {
 
     @GetMapping("/addMail")
     public int addMail(Mail mail){return userMapper.addMail(mail);}
+
+    @GetMapping("/addReplyMail")
+    public int addReplyMail(Reply_Mail reply_mail){return userMapper.addReplyMail(reply_mail);}
 
 }

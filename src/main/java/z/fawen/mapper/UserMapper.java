@@ -52,6 +52,8 @@ public interface UserMapper {
 
     Integer queryLiked(int liker_id,int rid);
 
+    List<Reply_Mail>queryReplyMailByMid(int mid);
+
     int addUser(User user);
 
     int addContent(Content content);
@@ -73,6 +75,8 @@ public interface UserMapper {
     int deleteUser(int id);
 
     int addMail(Mail mail);
+
+    int addReplyMail(Reply_Mail reply_mail);
 
 
 

@@ -37,6 +37,11 @@
         values(#{sender_id},#{receiver_id},#{title},#{content},#{send_time})
     </insert>
 
+    <insert id="addReplyMail" parameterType="Reply_Mail">
+        insert into reply_mail (mid,content,reply_time,replyer_id)
+        values(#{mid},#{content},#{reply_time},#{replyer_id})
+    </insert>
+
     <insert id="addLiked" parameterType="Liked">
         insert into liked (liker_id,rid)
         values(#{liker_id},#{rid})
@@ -136,6 +141,10 @@
 
     <select id="queryContentByCid" resultType="Content">
         select * from content where id=#{cid}
+    </select>
+
+    <select id="queryReplyMailByMid" resultType="Reply_Mail">
+        select * from reply_mail where mid = #{mid}
     </select>
 
 
