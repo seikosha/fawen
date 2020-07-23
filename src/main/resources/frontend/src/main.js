@@ -30,6 +30,7 @@ import personal_specific from "./components/personal_specific";
 import send_mail from "./components/send_mail";
 import mail_success from "./components/mail_success";
 import mail_specific from "./components/mail_specific";
+import search_result from "./components/search_result";
 
 
 Vue.use(VueRouter)
@@ -61,7 +62,8 @@ const routes = [
   { path: '/personal_specific', component: personal_specific},
   { path: '/send_mail', component: send_mail},
   { path: '/mail_success', component: mail_success},
-  { path: '/mail_specific', component: mail_specific}
+  { path: '/mail_specific', component: mail_specific},
+  { path: '/search_result', component: search_result}
 ]
 
 const router = new VueRouter({

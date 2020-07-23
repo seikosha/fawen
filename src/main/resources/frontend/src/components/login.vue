@@ -51,15 +51,17 @@
           const axios = require('axios');
           this.$refs[formName].validate((valid) => {
             if (valid) {
-              axios.get('/loginQuery?username='+this.ruleForm.username+'&password='+this.ruleForm.password+'')
-              .then(response=>{
+              axios.get('/loginQuery',{
+                params:{
+                  username:this.ruleForm.username,
+                  password:this.ruleForm.password
+                }}).then(response=>{
+                console.log(response.data[0].username)
                 if(response.data[0].username === this.ruleForm.username){
                   this.userToken = response.data[0].username;
-
                   this.$store.commit('changeLogin',{Authorization: this.userToken});
                   this.$router.push('/');
                   this.refresh();
-
                 }
               }).catch(err => {
                 console.log('服务器连接失败');

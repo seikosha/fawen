@@ -125,9 +125,13 @@
         axios.get('/queryUserByUsername',{
           params:{
             username:this.$store.state.Authorization
-          },}).then(response=>(
+          }}).then(response=>(
+            console.log('名字放进去'+response.data.id),
           this.uid=response.data.id,
+            console.log('uid赋值'+this.uid),
+
           axios.get('/queryContentList').then(response=>{
+            console.log('提取内容列表'+response.data)
             for (let i = 0; i < response.data.length; i++) {
               _this.items.push({poster:response.data[i].uid,title:response.data[i].title,category:response.data[i].category,location:response.data[i].location,create_time:response.data[i].create_time})
             }
@@ -139,19 +143,22 @@
                 }}).then(response=>{
                   _this.items[i].poster=response.data
               })
+
             }
+
           })
+      ))
 
 
 
 
-        ))
         if(_this.$store.state.Authorization==null|_this.$store.state.Authorization===''||_this.$store.state.Authorization===undefined){
           this.$router.push('/login')};
       }
 
 
     }
+
 </script>
 
 <style scoped>

@@ -11,6 +11,9 @@
       <el-form-item label="密码：" prop="password">
         <el-input type="password" v-model="ruleForm.password"></el-input>
       </el-form-item>
+      <el-form-item label="确认密码" prop="checkPass">
+        <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
+      </el-form-item>
       <el-form-item label="邮箱地址：" prop="email">
         <el-input v-model="ruleForm.email"></el-input>
       </el-form-item>
@@ -94,6 +97,24 @@
           callback();
         }
       }
+      let usernameExp = /^\w+$/;
+      let checkUsername = (rule, value, callback) => {
+        if(!usernameExp.test(value)){
+          return callback(new Error('用户名不是英数字'));
+        }else{
+          callback();
+        }
+      }
+
+      let validatePass2 = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('请再次输入密码'));
+        } else if (value !== this.ruleForm.password) {
+          callback(new Error('两次输入密码不一致!'));
+        } else {
+          callback();
+        }
+      };
       return {
         ruleForm: {
           username: '',
@@ -105,12 +126,15 @@
         },
         rules: {
           username: [
-            { required: true, message: '请输入用户名', trigger: 'blur' },
-            { min: 4, max: 12, message: '长度在 4-12 个字符之间', trigger: 'blur' }
+            { required:true, validator:checkUsername, trigger:'blur' },
+            {min:4, max:12, message:'请输入长度在4-12个字符之间的英数字（注意不要是中文）',trigger:'blur'}
           ],
           password: [
             { required: true, message: '请输入密码', trigger: 'blur' },
             { min: 4, max: 12, message: '长度在 6-12 个字符之间', trigger: 'blur' }
+          ],
+          checkPass: [
+            { required:true, validator: validatePass2, trigger: 'blur' }
           ],
           email: [
             { required: true, validator: checkEmail,trigger: 'blur'},
@@ -140,7 +164,10 @@
               status:this.ruleForm.status,
               description:this.ruleForm.description,
             },}).then(response=>(
-            this.$router.push('/'),
+
+            this.$store.commit('changeLogin',{Authorization: this.ruleForm.username}),
+          this.$router.push('/'),
+              this.$router.go(0),
             console.log('User Add Successful!')))
         } else{
           console.log('注册失败');
