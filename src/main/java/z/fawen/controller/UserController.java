@@ -149,4 +149,6 @@ public class UserController {
     @GetMapping("/addReplyMail")
     public int addReplyMail(Reply_Mail reply_mail){return userMapper.addReplyMail(reply_mail);}
 
+    @GetMapping("/addUpdateTime")
+    public int addUpdateTime(int id, String update_time){return userMapper.addUpdateTime(id, update_time);}
 }

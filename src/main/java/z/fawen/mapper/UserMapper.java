@@ -84,6 +84,9 @@ public interface UserMapper {
 
     int addReplyMail(Reply_Mail reply_mail);
 
+    int addUpdateTime(int id, String update_time);
+
+
 
 
 }

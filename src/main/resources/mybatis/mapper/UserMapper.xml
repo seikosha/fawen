@@ -67,6 +67,10 @@
         update reply set challenges = challenges + 1 where id=#{id}
     </update>
 
+    <update id="addUpdateTime" parameterType="Content">
+        update content set update_time = #{update_time} where id=#{id}
+    </update>
+
     <delete id="deleteUser" parameterType="int">
         delete from user where id = #{id}
     </delete>

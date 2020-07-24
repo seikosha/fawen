@@ -157,15 +157,16 @@
                 uid:this.uid,
                 content: this.ruleForm.reply,
                 create_time:myDate.getFullYear()+'-'+(myDate.getMonth()+1)+'-'+myDate.getDate()+' '+myDate.getHours()+':'+myDate.getMinutes()+':'+myDate.getSeconds(),
-              },}).then(response=>(
-              console.log('回复发布成功！'),
-                this.refresh()
-            ))
-          } else{
-            console.log('问题发布失败');
-            return false;
-          }
-          })
+              },}).then(response=>{
+                axios.get('/addUpdateTime',{
+                  params:{
+                    update_time:myDate.getFullYear()+'-'+(myDate.getMonth()+1)+'-'+myDate.getDate()+' '+myDate.getHours()+':'+myDate.getMinutes()+':'+myDate.getSeconds(),
+                    id:this.cid
+                  }}).then(response=>{
+                  console.log('回复发布成功！')
+                    // this.refresh()
+                })
+          })}})
         },
       },
 
