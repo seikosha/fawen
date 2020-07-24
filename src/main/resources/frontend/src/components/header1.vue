@@ -1,15 +1,12 @@
 <template>
-  <el-row id="header">
     <el-header>
       <el-col :span="5" id="title">
         <router-link to="/" tag="a" id="title_link">法问</router-link>
       </el-col>
       <el-col :span="14">
         <el-menu
-          :default-active="activeIndex"
           class="el-menu-demo"
           mode="horizontal"
-          @select="handleSelect"
           text-color="#000000"
           gutter="20"
         >
@@ -23,22 +20,38 @@
         </el-menu>
       </el-col>
       <el-col :span="5">
+
         <el-row gutter="2px">
           <el-col :span="20">
-            <el-input placeholder="请输入内容" v-model="input3" class="input-with-select"></el-input>
+            <el-input placeholder="请输入内容" v-model="input" class="input-with-select"></el-input>
           </el-col>
           <el-col :span="4">
-            <el-button icon="el-icon-search" type="info" plain></el-button>
+            <el-button icon="el-icon-search" type="info" plain @click="search(input)"></el-button>
           </el-col>
+
         </el-row>
+
+
       </el-col>
     </el-header>
-  </el-row>
+
 </template>
 
 <script>
     export default {
-        name: "header1"
+      name: "header1",
+      data(){
+        return{
+            input:'',
+        }
+      },
+      methods:{
+        search(input){
+          this.$store.commit('saveKeyword',{CurrentKeyword: this.input});
+          this.$router.push('/search_result');
+        }
+      }
+
     }
 </script>
 

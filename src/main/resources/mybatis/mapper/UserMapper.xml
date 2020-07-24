@@ -147,5 +147,9 @@
         select * from reply_mail where mid = #{mid}
     </select>
 
+    <select id="queryContentByKeyword" resultType="Content">
+        select * from content where title like concat(concat('%',#{keyword}),'%') or content like concat(concat('%',#{keyword}),'%')
+    </select>
+
 
 </mapper>

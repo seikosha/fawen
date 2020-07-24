@@ -107,6 +107,9 @@ public class UserController {
     @GetMapping("/queryReplyMailByMid")
     public List<Reply_Mail> queryReplyMailByMid(int mid){return userMapper.queryReplyMailByMid(mid);}
 
+    @GetMapping("/queryContentByKeyword")
+    public List<Content> queryContentByKeyword(String keyword){return userMapper.queryContentByKeyword(keyword);}
+
     //add
     @GetMapping("/addUser")
     public Integer addUser(User user){

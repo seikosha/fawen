@@ -48,6 +48,8 @@ public interface UserMapper {
 
     int queryCidByTitleAndTime(String title,String time);
 
+    List<Content> queryContentByKeyword(String keyword);
+
     Content queryContentByCid(int cid);
 
     Integer queryLiked(int liker_id,int rid);

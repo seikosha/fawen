@@ -6,10 +6,8 @@
       </el-col>
       <el-col :span="14">
         <el-menu
-          :default-active="activeIndex"
           class="el-menu-demo"
           mode="horizontal"
-          @select="handleSelect"
           text-color="#000000"
           gutter="20"
         >
@@ -25,10 +23,10 @@
       <el-col :span="5">
         <el-row gutter="2px">
           <el-col :span="20">
-            <el-input placeholder="请输入内容" v-model="input3" class="input-with-select"></el-input>
+            <el-input placeholder="请输入内容" v-model="input" class="input-with-select" @click="search($event)"></el-input>
           </el-col>
           <el-col :span="4">
-            <el-button icon="el-icon-search" type="info" plain></el-button>
+            <el-button icon="el-icon-search" type="info" plain @click="search(input)"></el-button>
           </el-col>
 
         </el-row>
@@ -42,7 +40,14 @@
         name: "header2",
         data() {
           return {
-            username: ''+this.$store.state.Authorization+''
+            username: ''+this.$store.state.Authorization+'',
+            input:''
+          }
+        },
+        methods:{
+          search(input){
+            this.$store.commit('saveKeyword',{CurrentKeyword: this.input});
+            this.$router.push('/search_result');
           }
         }
     }
