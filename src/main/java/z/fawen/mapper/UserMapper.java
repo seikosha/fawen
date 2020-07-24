@@ -50,6 +50,10 @@ public interface UserMapper {
 
     List<Content> queryContentByKeyword(String keyword);
 
+    List<Reply> queryReplyByKeyword(String keyword);
+
+    List<User> queryUserByKeyword(String keyword);
+
     Content queryContentByCid(int cid);
 
     Integer queryLiked(int liker_id,int rid);

@@ -110,6 +110,12 @@ public class UserController {
     @GetMapping("/queryContentByKeyword")
     public List<Content> queryContentByKeyword(String keyword){return userMapper.queryContentByKeyword(keyword);}
 
+    @GetMapping("/queryReplyByKeyword")
+    public List<Reply> queryReplyByKeyword(String keyword){return userMapper.queryReplyByKeyword(keyword);}
+
+    @GetMapping("/queryUserByKeyword")
+    public List<User> queryUserByKeyword(String keyword){return userMapper.queryUserByKeyword(keyword);}
+
     //add
     @GetMapping("/addUser")
     public Integer addUser(User user){

@@ -48,6 +48,7 @@
           search(input){
             this.$store.commit('saveKeyword',{CurrentKeyword: this.input});
             this.$router.push('/search_result');
+            this.$router.go(0)
           }
         }
     }

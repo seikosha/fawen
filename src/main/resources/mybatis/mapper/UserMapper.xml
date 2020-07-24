@@ -151,5 +151,13 @@
         select * from content where title like concat(concat('%',#{keyword}),'%') or content like concat(concat('%',#{keyword}),'%')
     </select>
 
+    <select id="queryReplyByKeyword" resultType="Reply">
+        select * from reply where content like concat(concat('%',#{keyword}),'%')
+    </select>
+
+    <select id="queryUserByKeyword" resultType="User">
+        select * from user where username like concat(concat('%',#{keyword}),'%')
+    </select>
+
 
 </mapper>
