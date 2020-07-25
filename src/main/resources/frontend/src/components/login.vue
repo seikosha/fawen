@@ -49,6 +49,7 @@
         },
         submitForm(formName) {
           const axios = require('axios');
+          let myDate = new Date();
           this.$refs[formName].validate((valid) => {
             if (valid) {
               axios.get('/loginQuery',{
@@ -57,17 +58,21 @@
                   password:this.ruleForm.password
                 }}).then(response=>{
                 console.log(response.data[0].username)
+                this.userToken = response.data[0].username;
+                this.$store.commit('changeLogin',{Authorization: this.userToken});
                 if(response.data[0].username === this.ruleForm.username){
-                  this.userToken = response.data[0].username;
-                  this.$store.commit('changeLogin',{Authorization: this.userToken});
-                  this.$router.push('/');
-                  this.refresh();
-                }
-              }).catch(err => {
+                  axios.get('/updateLoginTime',{
+                    params:{
+                      last_login_time:myDate.getFullYear()+'-'+(myDate.getMonth()+1)+'-'+myDate.getDate()+' '+myDate.getHours()+':'+myDate.getMinutes()+':'+myDate.getSeconds(),
+                      username:response.data[0].username
+                    }}).then(response=>{
+                    this.$router.push('/');
+                    this.refresh();
+                  })
+                }}).catch(err => {
                 console.log('服务器连接失败');
                 console.log(err);
-              })
-            } else {
+              })} else {
               console.log('用户信息错误!!');
               return false;
             }

@@ -71,6 +71,10 @@
         update content set update_time = #{update_time} where id=#{id}
     </update>
 
+    <update id="updateLoginTime" parameterType="User">
+        update user set last_login_time=#{last_login_time} where username=#{username}
+    </update>
+
     <delete id="deleteUser" parameterType="int">
         delete from user where id = #{id}
     </delete>

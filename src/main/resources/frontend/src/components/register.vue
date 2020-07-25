@@ -154,6 +154,7 @@
      methods: {
       submit(formName){
         const axios = require('axios')
+        let myDate = new Date();
         this.$refs.ruleForm.validate((valid)=>{if(valid){
 
           axios.get('/addUser',{
@@ -164,6 +165,7 @@
               location:this.ruleForm.location,
               status:this.ruleForm.status,
               description:this.ruleForm.description,
+              create_time:myDate.getFullYear()+'-'+(myDate.getMonth()+1)+'-'+myDate.getDate()+' '+myDate.getHours()+':'+myDate.getMinutes()+':'+myDate.getSeconds(),
             },}).then(response=>(
 
             this.$store.commit('changeLogin',{Authorization: this.ruleForm.username}),

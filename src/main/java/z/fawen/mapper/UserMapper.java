@@ -94,4 +94,6 @@ public interface UserMapper {
 
     List<Content> queryContentBySelection();
 
+    int updateLoginTime(String last_login_time,String username);
+
 }
