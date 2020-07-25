@@ -86,7 +86,9 @@ public interface UserMapper {
 
     int addUpdateTime(int id, String update_time);
 
+    List<Content> queryContentByCountLocation();
 
+    List<Content> queryContentByLocation(String location);
 
 
 }

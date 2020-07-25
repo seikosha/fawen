@@ -39,6 +39,8 @@ import mail_specific from "./components/mail_specific";
 import search_result from "./components/search_result";
 import hot from "./components/hot";
 import about from "./components/about";
+import more_locations from "./components/more_locations";
+import specific_location from "./components/specific_location";
 
   export default {
     store,
@@ -66,7 +68,9 @@ import about from "./components/about";
       mail_specific,
       search_result,
       hot,
-      about
+      about,
+      more_locations,
+      specific_location
     },
 
 

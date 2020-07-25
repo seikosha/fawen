@@ -33,6 +33,9 @@ import mail_specific from "./components/mail_specific";
 import search_result from "./components/search_result";
 import hot from "./components/hot";
 import about from "./components/about";
+import more_locations from "./components/more_locations";
+import specific_location from "./components/specific_location";
+
 
 
 Vue.use(VueRouter)
@@ -67,7 +70,9 @@ const routes = [
   { path: '/mail_specific', component: mail_specific},
   { path: '/search_result', component: search_result},
   { path: '/hot',component:hot},
-  { path: '/about', component: about}
+  { path: '/about', component: about},
+  { path: '/more_locations', component: more_locations},
+  { path: '/specific_location', component: specific_location}
 ]
 
 const router = new VueRouter({

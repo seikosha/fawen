@@ -153,6 +153,14 @@ module.exports = {
         '/addUpdateTime':{
           target:'http://127.0.0.1:8080',
           changeOrigin:true
+        },
+        '/queryContentByCountLocation':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
+        },
+        '/queryContentByLocation':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
         }
 
     },

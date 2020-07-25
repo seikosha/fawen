@@ -163,5 +163,13 @@
         select * from user where username like concat(concat('%',#{keyword}),'%')
     </select>
 
+    <select id="queryContentByCountLocation" resultType="Content">
+        select location, count(location) as num from content group by location order by num DESC;
+    </select>
+
+    <select id="queryContentByLocation" resultType="Content">
+        select * from content where location = #{location}
+    </select>
+
 
 </mapper>

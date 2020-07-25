@@ -10,7 +10,8 @@ export default new Vuex.Store({
      CurrentContent: localStorage.getItem('CurrentContent') ? localStorage.getItem('CurrentContent') : '',
      CurrentUser: localStorage.getItem('CurrentUser') ? localStorage.getItem('CurrentUser') : '',
      CurrentMail: localStorage.getItem('CurrentMail') ? localStorage.getItem('CurrentMail') : '',
-     CurrentKeyword: localStorage.getItem('CurrentKeyword') ? localStorage.getItem('CurrentKeyword') : ''
+     CurrentKeyword: localStorage.getItem('CurrentKeyword') ? localStorage.getItem('CurrentKeyword') : '',
+     CurrentLocation: localStorage.getItem('CurrentLocation') ? localStorage.getItem('CurrentLocation') : ''
   },
 
   mutations: {
@@ -42,6 +43,12 @@ export default new Vuex.Store({
       state.CurrentKeyword=keyword.CurrentKeyword;
       console.log('成功保存关键字');
       localStorage.setItem('CurrentKeyword',keyword.CurrentKeyword);
+    },
+
+    saveLocation(state,location){
+      state.CurrentLocation=location.CurrentLocation;
+      console.log('成功保存当前地区信息');
+      localStorage.setItem('CurrentLocation',location.CurrentLocation);
     }
   }
 });
