@@ -175,5 +175,9 @@
         select * from content where category = #{category}
     </select>
 
+    <select id="queryContentBySelection" resultType="Content">
+        select * from content where selection = 1;
+    </select>
+
 
 </mapper>

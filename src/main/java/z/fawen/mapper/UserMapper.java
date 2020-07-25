@@ -92,5 +92,6 @@ public interface UserMapper {
 
     List<Content> queryContentByCategory(String category);
 
+    List<Content> queryContentBySelection();
 
 }
