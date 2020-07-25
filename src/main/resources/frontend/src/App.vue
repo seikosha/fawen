@@ -37,6 +37,8 @@ import send_mail from "./components/send_mail";
 import mail_success from "./components/mail_success";
 import mail_specific from "./components/mail_specific";
 import search_result from "./components/search_result";
+import hot from "./components/hot";
+import about from "./components/about";
 
   export default {
     store,
@@ -62,7 +64,9 @@ import search_result from "./components/search_result";
       send_mail,
       mail_success,
       mail_specific,
-      search_result
+      search_result,
+      hot,
+      about
     },
 
 

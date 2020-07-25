@@ -155,6 +155,7 @@
       submit(formName){
         const axios = require('axios')
         this.$refs.ruleForm.validate((valid)=>{if(valid){
+
           axios.get('/addUser',{
             params:{
               username: this.ruleForm.username,

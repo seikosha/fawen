@@ -31,6 +31,8 @@ import send_mail from "./components/send_mail";
 import mail_success from "./components/mail_success";
 import mail_specific from "./components/mail_specific";
 import search_result from "./components/search_result";
+import hot from "./components/hot";
+import about from "./components/about";
 
 
 Vue.use(VueRouter)
@@ -63,7 +65,9 @@ const routes = [
   { path: '/send_mail', component: send_mail},
   { path: '/mail_success', component: mail_success},
   { path: '/mail_specific', component: mail_specific},
-  { path: '/search_result', component: search_result}
+  { path: '/search_result', component: search_result},
+  { path: '/hot',component:hot},
+  { path: '/about', component: about}
 ]
 
 const router = new VueRouter({

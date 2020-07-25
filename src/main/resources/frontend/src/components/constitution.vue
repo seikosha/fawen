@@ -4,6 +4,8 @@
 
   <el-main>
   <h2> 法问社区公约 </h2>
+
+  <p></p>
   </el-main>
 
   <right_card></right_card>
@@ -16,10 +18,10 @@ import right_card from "./right_card";
 
     export default {
         name: "constitution",
-      components:{
-          left_card,
-        right_card
-      }
+        components:{
+            left_card,
+          right_card
+        }
     }
 </script>
 

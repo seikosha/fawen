@@ -8,7 +8,9 @@
         <router-link to="/historic_selection" tag="span" class="left_card">历史精选贴</router-link><br><br>
         <router-link to="/star_user" tag="span" class="left_card">明星回答者</router-link><br><br>
         <router-link to="/constitution" tag="span" class="left_card">论坛公约</router-link><br><br>
-        <router-link to="/posts" tag="span" class="left_card">网站公告</router-link>
+        <router-link to="/posts" tag="span" class="left_card">网站公告</router-link><br><br>
+        <router-link to="/hot" tag="span" class="left_card">热点问题</router-link><br><br>
+        <router-link to="/about" tag="span" class="left_card">关于法问</router-link>
       </div>
     </el-card>
   </el-aside>
@@ -18,9 +20,7 @@
 
 
     export default {
-        name: "left_card",
-      constitution:{
-      }
+        name: "left_card"
     }
 </script>
 
