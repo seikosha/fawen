@@ -2,7 +2,7 @@
   <el-container>
     <left_card></left_card>
     <el-main>
-      位于全国各地的案件：<br>
+      法问上的{{this.$store.state.CurrentCategory}}案件：<br>
       <el-col :span="2"><span>&nbsp;</span></el-col>
       <el-col :span="20">
         <div style="margin-top: 15px">
@@ -37,7 +37,7 @@
   import left_card from "./left_card";
   import right_card from "./right_card";
   export default {
-    name: "more_locations",
+    name: "specific_category",
     components:{
       left_card,
       right_card
@@ -95,7 +95,10 @@
         this.uid=response.data.id,
           console.log(this.uid),
           //get table contents
-          axios.get('/queryContentList').then(response=>{
+          axios.get('/queryContentByCategory',{
+            params:{
+              category:this.$store.state.CurrentCategory
+            },}).then(response=>{
             console.log(response)
             for (let i = 0; i < response.data.length; i++) {
               _this.items.push({cid:response.data[i].id,uid:response.data[i].uid,title:response.data[i].title,content:response.data[i].content,category:response.data[i].category,location:response.data[i].location,create_time:response.data[i].create_time,reply_count:0,update_time:''})

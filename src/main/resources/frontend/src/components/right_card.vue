@@ -12,11 +12,17 @@
     </el-card>
     <el-card class="box-card">
       <div slot="header" class="clearfix">
-        <span>按类型浏览历史回答</span>
+        <span>按类型浏览历史问题</span>
 
       </div>
-      <div v-for="(item,index) in items1" :key="o" class="text item">
-        {{}}
+      <div id="links2">
+        <router-link @click.native="saveCategory($event)" tag="span" to="/specific_category" style="font-size:small" >刑事</router-link>
+        <br><br>
+        <router-link @click.native="saveCategory($event)" tag="span" to="/specific_category" style="font-size:small" >民事</router-link>
+        <br><br>
+        <router-link @click.native="saveCategory($event)" tag="span" to="/specific_category" style="font-size:small" >行政</router-link>
+        <br><br>
+        <router-link @click.native="saveCategory($event)" tag="span" to="/specific_category" style="font-size:small" >不清楚</router-link>
       </div>
     </el-card>
   </el-aside>
@@ -35,6 +41,11 @@
             this.$store.commit('saveLocation',{CurrentLocation: this.items[index].location});
             console.log(this.$store.state.CurrentLocation)
             this.$router.push('/specific_location');
+            this.$router.go(0)
+          },
+          saveCategory(e){
+            this.$store.commit('saveCategory',{CurrentCategory:e.target.innerText});
+            this.$router.go(0)
           }
         },
 
@@ -59,7 +70,7 @@
     right:16px;
   }
 
-  #links, #links1{
+  #links, #links1, #links2{
     cursor: pointer;
   }
 </style>

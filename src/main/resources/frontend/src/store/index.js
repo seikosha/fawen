@@ -11,7 +11,8 @@ export default new Vuex.Store({
      CurrentUser: localStorage.getItem('CurrentUser') ? localStorage.getItem('CurrentUser') : '',
      CurrentMail: localStorage.getItem('CurrentMail') ? localStorage.getItem('CurrentMail') : '',
      CurrentKeyword: localStorage.getItem('CurrentKeyword') ? localStorage.getItem('CurrentKeyword') : '',
-     CurrentLocation: localStorage.getItem('CurrentLocation') ? localStorage.getItem('CurrentLocation') : ''
+     CurrentLocation: localStorage.getItem('CurrentLocation') ? localStorage.getItem('CurrentLocation') : '',
+     CurrentCategory: localStorage.getItem('CurrentCategory') ? localStorage.getItem('CurrentCategory') : ''
   },
 
   mutations: {
@@ -49,6 +50,12 @@ export default new Vuex.Store({
       state.CurrentLocation=location.CurrentLocation;
       console.log('成功保存当前地区信息');
       localStorage.setItem('CurrentLocation',location.CurrentLocation);
+    },
+
+    saveCategory(state,category){
+      state.CurrentCategory=category.CurrentCategory;
+      console.log('成功保存当前案件类别');
+      localStorage.setItem('CurrentCategory',category.CurrentCategory);
     }
   }
 });

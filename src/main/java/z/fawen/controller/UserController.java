@@ -122,6 +122,9 @@ public class UserController {
     @GetMapping("/queryContentByLocation")
     public List<Content> queryContentByLocation(String location){return userMapper.queryContentByLocation(location);}
 
+    @GetMapping("/queryContentByCategory")
+    public List<Content> queryContentByCategory(String category){return userMapper.queryContentByCategory(category);}
+
     //add
     @GetMapping("/addUser")
     public Integer addUser(User user){

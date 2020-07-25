@@ -3,8 +3,8 @@
     <left_card></left_card>
     <el-main>
       位于{{this.$store.state.CurrentLocation}}的案件：<br>
-      <el-col :span="5"><span>&nbsp;</span></el-col>
-      <el-col :span="14">
+      <el-col :span="2"><span>&nbsp;</span></el-col>
+      <el-col :span="20">
         <div style="margin-top: 15px">
           <el-table
             style="width: 100%"
@@ -26,7 +26,7 @@
           </el-pagination>
         </div>
       </el-col>
-      <el-col :span="5"><span>&nbsp;</span></el-col>
+      <el-col :span="2"><span>&nbsp;</span></el-col>
 
     </el-main>
     <right_card></right_card>

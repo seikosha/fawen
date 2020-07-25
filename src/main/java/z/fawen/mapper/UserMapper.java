@@ -90,5 +90,7 @@ public interface UserMapper {
 
     List<Content> queryContentByLocation(String location);
 
+    List<Content> queryContentByCategory(String category);
+
 
 }

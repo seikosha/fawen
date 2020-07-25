@@ -35,6 +35,7 @@ import hot from "./components/hot";
 import about from "./components/about";
 import more_locations from "./components/more_locations";
 import specific_location from "./components/specific_location";
+import specific_category from "./components/specific_category";
 
 
 
@@ -72,7 +73,8 @@ const routes = [
   { path: '/hot',component:hot},
   { path: '/about', component: about},
   { path: '/more_locations', component: more_locations},
-  { path: '/specific_location', component: specific_location}
+  { path: '/specific_location', component: specific_location},
+  { path: '/specific_category', component: specific_category}
 ]
 
 const router = new VueRouter({

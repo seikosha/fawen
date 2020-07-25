@@ -41,6 +41,7 @@ import hot from "./components/hot";
 import about from "./components/about";
 import more_locations from "./components/more_locations";
 import specific_location from "./components/specific_location";
+import specific_category from "./components/specific_category";
 
   export default {
     store,
@@ -70,7 +71,8 @@ import specific_location from "./components/specific_location";
       hot,
       about,
       more_locations,
-      specific_location
+      specific_location,
+      specific_category
     },
 
 

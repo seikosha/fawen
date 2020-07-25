@@ -171,5 +171,9 @@
         select * from content where location = #{location}
     </select>
 
+    <select id="queryContentByCategory" resultType="Content">
+        select * from content where category = #{category}
+    </select>
+
 
 </mapper>
