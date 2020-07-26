@@ -99,7 +99,6 @@
               params:{
                 location:this.$store.state.CurrentLocation
               },}).then(response=>{
-              console.log(response)
               for (let i = 0; i < response.data.length; i++) {
                 _this.items.push({cid:response.data[i].id,uid:response.data[i].uid,title:response.data[i].title,content:response.data[i].content,category:response.data[i].category,location:response.data[i].location,create_time:response.data[i].create_time,reply_count:0,update_time:''})
               }

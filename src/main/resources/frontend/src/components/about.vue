@@ -37,6 +37,14 @@
       国内并不缺法律问答网站，但是这一类网站要不过于执着于盈利，要不就不能给回答者以足够的激励或是不能让提问者感到放心，结合stackoverflow的方式
       有助于把评判权利更多地交给提问者，而不是由回答者通过制造劣质答案来刷流量。也许通过这种方式，能做出更合用的法律问答网站。
       </p>
+      <br><br>
+      <hr>
+      <h4> 联系方式 </h4>
+      <p style="text-align: left; padding-left:30px; padding-right:10px">
+      &nbsp&nbsp&nbsp&nbsp站长邮箱：zi.xiong@foxmail.com
+      <br><br>
+      &nbsp&nbsp&nbsp&nbsp欢迎给我来信，对网站提任何意见！
+      </p>
 
     </el-main>
 

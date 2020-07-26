@@ -96,4 +96,10 @@ public interface UserMapper {
 
     int updateLoginTime(String last_login_time,String username);
 
+    List<Reply> queryReplyList();
+
+    List<Points> queryPoints();
+
+    List<User> queryUserById(int id);
+
 }

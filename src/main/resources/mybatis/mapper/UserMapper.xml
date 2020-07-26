@@ -183,5 +183,17 @@
         select * from content where selection = 1;
     </select>
 
+    <select id="queryReplyList" resultType="Reply">
+        select * from reply;
+    </select>
+
+    <select id="queryPoints" resultType="Points">
+        select uid,sum(stars) as sum_stars,sum(best) as sum_best,sum(solve) as sum_solve,(sum(stars)+sum(best)*5+sum(solve)*5) as points from reply group by uid order by points desc;
+    </select>
+
+    <select id="queryUserById" resultType="User">
+        select * from user where id = #{id}
+    </select>
+
 
 </mapper>

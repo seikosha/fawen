@@ -16,13 +16,13 @@
 
       </div>
       <div id="links2">
-        <router-link @click.native="saveCategory($event)" tag="span" to="/specific_category" style="font-size:small" >刑事</router-link>
+        <router-link @click.native="saveCategory($event)" tag="span" to="/specific_category">刑事</router-link>
         <br><br>
-        <router-link @click.native="saveCategory($event)" tag="span" to="/specific_category" style="font-size:small" >民事</router-link>
+        <router-link @click.native="saveCategory($event)" tag="span" to="/specific_category">民事</router-link>
         <br><br>
-        <router-link @click.native="saveCategory($event)" tag="span" to="/specific_category" style="font-size:small" >行政</router-link>
+        <router-link @click.native="saveCategory($event)" tag="span" to="/specific_category">行政</router-link>
         <br><br>
-        <router-link @click.native="saveCategory($event)" tag="span" to="/specific_category" style="font-size:small" >不清楚</router-link>
+        <router-link @click.native="saveCategory($event)" tag="span" to="/specific_category">不清楚</router-link>
       </div>
     </el-card>
   </el-aside>

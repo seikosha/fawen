@@ -173,6 +173,18 @@ module.exports = {
         '/updateLoginTime':{
           target:'http://127.0.0.1:8080',
           changeOrigin:true
+        },
+        '/queryReplyList':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
+        },
+        '/queryPoints':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
+        },
+        '/queryUserById':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
         }
 
     },

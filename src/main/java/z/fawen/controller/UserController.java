@@ -15,6 +15,12 @@ public class UserController {
     private UserMapper userMapper;
 
     //query
+    @GetMapping("/queryPoints")
+    public List<Points> queryPoints(){
+        List<Points> pointlist = userMapper.queryPoints();
+        return pointlist;
+    }
+
     @GetMapping("/queryUserList")
     public List<User> queryUserList() {
         List<User> userList = userMapper.queryUserList();
@@ -25,6 +31,12 @@ public class UserController {
     public List<Content> queryContentList() {
         List<Content> contentList = userMapper.queryContentList();
         return contentList;
+    }
+
+    @GetMapping("/queryReplyList")
+    public List<Reply> queryReplyList(){
+        List<Reply> replylist = userMapper.queryReplyList();
+        return replylist;
     }
 
     @GetMapping("/queryUserByUsername")
@@ -43,6 +55,12 @@ public class UserController {
     public List<Content> queryContentByUid(int uid) {
         List<Content> contentList = userMapper.queryContentByUid(uid);
         return contentList;
+    }
+
+    @GetMapping("/queryUserById")
+    public List<User> queryUserById(int id){
+        List<User> userlist = userMapper.queryUserById(id);
+        return userlist;
     }
 
     @GetMapping("/queryReplyByCid")
