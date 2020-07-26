@@ -20,7 +20,6 @@ import historic_selection from "./components/historic_selection";
 import star_user from "./components/star_user";
 import left_card from "./components/left_card";
 import right_card from "./components/right_card";
-import constitution from "./components/constitution";
 import posts from "./components/posts";
 import logout from "./components/logout";
 import content from "./components/content";
@@ -31,7 +30,6 @@ import send_mail from "./components/send_mail";
 import mail_success from "./components/mail_success";
 import mail_specific from "./components/mail_specific";
 import search_result from "./components/search_result";
-import hot from "./components/hot";
 import about from "./components/about";
 import more_locations from "./components/more_locations";
 import specific_location from "./components/specific_location";
@@ -59,7 +57,6 @@ const routes = [
   { path: '/star_user', component: star_user},
   { path: '/left_card', component: left_card},
   { path: '/right_card', component: right_card},
-  { path: '/constitution', component: constitution},
   { path: '/posts', component: posts},
   { path: '/logout', component: logout},
   { path: '/content', component: content},
@@ -70,7 +67,6 @@ const routes = [
   { path: '/mail_success', component: mail_success},
   { path: '/mail_specific', component: mail_specific},
   { path: '/search_result', component: search_result},
-  { path: '/hot',component:hot},
   { path: '/about', component: about},
   { path: '/more_locations', component: more_locations},
   { path: '/specific_location', component: specific_location},

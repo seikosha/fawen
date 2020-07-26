@@ -1,28 +1,12 @@
 <template>
   <el-container>
-    <el-col span="5">
+    <el-col span="4">
     <el-aside width="160px" id="leftside">
-      <el-card class="box-card">
-        <div slot="header" class="clearfix">
-          <span>今日的赞同：{{agrees}}</span>
-        </div>
-        <div v-for="o in 4" :key="o" class="text item">
-          {{'列表内容 ' + o }}
-        </div>
-      </el-card>
 
-      <el-card class="box-card">
-        <div slot="header" class="clearfix">
-          <span>今日的挑战：{{battles}}</span>
-        </div>
-        <div v-for="o in 4" :key="o" class="text item">
-          {{'列表内容 ' + o }}
-        </div>
-      </el-card>
     </el-aside>
     </el-col>
 
-    <el-col span="14">
+    <el-col span="16">
     <el-main>
       您的回复：<br>
       <div style="margin-top: 20px">
@@ -50,26 +34,9 @@
         </el-main>
     </el-col>
 
-    <el-col span="5">
+    <el-col span="4">
         <el-aside id="rightside" width="160px">
-          <el-card class="box-card">
-            <div slot="header" class="clearfix">
-              <span>按状态浏览回答</span>
 
-            </div>
-            <div v-for="o in 4" :key="o" class="text item">
-              {{'列表内容 ' + o }}
-            </div>
-          </el-card>
-          <el-card class="box-card">
-            <div slot="header" class="clearfix">
-              <span>按类型浏览回答</span>
-
-            </div>
-            <div v-for="o in 4" :key="o" class="text item">
-              {{'列表内容 ' + o }}
-            </div>
-          </el-card>
         </el-aside>
     </el-col>
   </el-container>

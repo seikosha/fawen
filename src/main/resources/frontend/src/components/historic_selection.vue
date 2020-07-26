@@ -2,7 +2,7 @@
   <el-container>
     <left_card></left_card>
     <el-main>
-      法问上备受瞩目的案件：<br>
+      法问上最具参考性的案件：<br>
       <el-col :span="2"><span>&nbsp;</span></el-col>
       <el-col :span="20">
         <div style="margin-top: 15px">

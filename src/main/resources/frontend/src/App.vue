@@ -25,7 +25,6 @@ import register from "./components/register";
 import login from "./components/login";
 import historic_selection from "./components/historic_selection";
 import star_user from "./components/star_user";
-import constitution from "./components/constitution";
 import header1 from "./components/header1";
 import header2 from "./components/header2";
 import store from './store';
@@ -37,7 +36,6 @@ import send_mail from "./components/send_mail";
 import mail_success from "./components/mail_success";
 import mail_specific from "./components/mail_specific";
 import search_result from "./components/search_result";
-import hot from "./components/hot";
 import about from "./components/about";
 import more_locations from "./components/more_locations";
 import specific_location from "./components/specific_location";
@@ -57,7 +55,6 @@ import specific_category from "./components/specific_category";
       login,
       historic_selection,
       star_user,
-      constitution,
       header1,
       header2,
       content,
@@ -68,7 +65,6 @@ import specific_category from "./components/specific_category";
       mail_success,
       mail_specific,
       search_result,
-      hot,
       about,
       more_locations,
       specific_location,
