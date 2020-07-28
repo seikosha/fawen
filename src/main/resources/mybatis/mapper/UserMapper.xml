@@ -176,7 +176,7 @@
     </select>
 
     <select id="queryContentByCategory" resultType="Content">
-        select * from content where category = #{category}
+        select * from content where category = #{category} limit #{start},#{limit}
     </select>
 
     <select id="queryContentBySelection" resultType="Content">
@@ -201,6 +201,10 @@
 
     <select id="queryContentPage" resultType="ContentPage">
         select count(*) as totalNum, ceiling(count(*)/ #{limit}) as totalPage from content where uid = #{uid};
+    </select>
+
+    <select id="queryContentPageByCategory" resultType="ContentPage">
+        select count(*) as totalNum, ceiling(count(*)/ #{limit}) as totalPage from content where category = #{category};
     </select>
 
     <select id="queryContentPageWithoutUid" resultType="ContentPage">

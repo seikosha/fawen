@@ -90,7 +90,7 @@ public interface UserMapper {
 
     List<Content> queryContentByLocation(String location);
 
-    List<Content> queryContentByCategory(String category);
+    List<Content> queryContentByCategory(Integer start, Integer limit, String category);
 
     List<Content> queryContentBySelection();
 
@@ -109,6 +109,8 @@ public interface UserMapper {
     MailPage queryMailPage(Integer limit, Integer uid);
 
     ContentPage queryContentPageByKeyword(Integer limit,String keyword);
+
+    ContentPage queryContentPageByCategory(Integer limit, String category);
 
     ReplyPage queryReplyPageByKeyword(Integer limit, String keyword);
 

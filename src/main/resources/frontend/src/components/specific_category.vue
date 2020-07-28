@@ -22,7 +22,10 @@
         <div class="block">
           <el-pagination
             layout="prev, pager, next"
-            :total="1000">
+            @current-change="handleCurrentChange"
+            :page-size="limit"
+            current-page="current_page"
+            :total="total">
           </el-pagination>
         </div>
       </el-col>
@@ -59,10 +62,52 @@
         let rowTime = row.create_time;
         this.$store.commit('saveContent',{CurrentContent: rowTime+rowTitle});
         this.$router.push('/specific_content');
+      },
+
+      handleCurrentChange(val){
+        let _this=this;
+        const axios = require('axios')
+        this.current_page=val;
+        this.start = (val-1)*10;
+        axios.get('/queryContentByCategory',{
+          params:{
+            start:this.start,
+            limit:this.limit,
+            category:this.$store.state.CurrentCategory
+          }}).then(response=>{
+            _this.items=[];
+          for (let i = 0; i < response.data.length; i++) {
+            _this.items.push({cid:response.data[i].id,uid:response.data[i].uid,title:response.data[i].title,content:response.data[i].content,category:response.data[i].category,location:response.data[i].location,create_time:response.data[i].create_time,reply_count:0,update_time:''})
+          }
+
+          //get reply_count & update_time
+          for (let i = 0; i < response.data.length ; i++) {
+            axios.get('/queryReplyCount',{
+              params:{
+                uid:_this.items[i].uid,
+                cid:_this.items[i].cid
+              },}).then(response=>{
+              _this.items[i].reply_count=response.data;
+
+              //get last update time
+              axios.get('/queryLastUpdateTime',{
+                params:{
+                  cid:_this.items[i].cid
+                },}).then(response=>{
+                _this.items[i].update_time=response.data;
+              })
+
+            })
+          }
+        })
       }
     },
     data() {
       return {
+        total:0,
+        limit:10,
+        start:0,
+        current_page:1,
         tableHead:[
           {
             column_name:"title",column_comment:"标题"
@@ -93,38 +138,46 @@
           username:this.$store.state.Authorization
         },}).then(response=>{
         this.uid=response.data.id,
-          console.log(this.uid),
-          //get table contents
-          axios.get('/queryContentByCategory',{
+          axios.get('/queryContentPageByCategory',{
             params:{
+              limit:this.limit,
               category:this.$store.state.CurrentCategory
-            },}).then(response=>{
-            console.log(response)
-            for (let i = 0; i < response.data.length; i++) {
-              _this.items.push({cid:response.data[i].id,uid:response.data[i].uid,title:response.data[i].title,content:response.data[i].content,category:response.data[i].category,location:response.data[i].location,create_time:response.data[i].create_time,reply_count:0,update_time:''})
-            }
-            _this.items.shift();
+            }}).then(response=>{
+              this.total=response.data.totalNum;
+            //get table contents
+            axios.get('/queryContentByCategory',{
+              params:{
+                start:this.start,
+                limit:this.limit,
+                category:this.$store.state.CurrentCategory
+              },}).then(response=>{
+              for (let i = 0; i < response.data.length; i++) {
+                _this.items.push({cid:response.data[i].id,uid:response.data[i].uid,title:response.data[i].title,content:response.data[i].content,category:response.data[i].category,location:response.data[i].location,create_time:response.data[i].create_time,reply_count:0,update_time:''})
+              }
+              _this.items.shift();
 
-            //get reply_count & update_time
-            for (let i = 0; i < response.data.length ; i++) {
-              axios.get('/queryReplyCount',{
-                params:{
-                  uid:_this.items[i].uid,
-                  cid:_this.items[i].cid
-                },}).then(response=>{
-                _this.items[i].reply_count=response.data;
-
-                //get last update time
-                axios.get('/queryLastUpdateTime',{
+              //get reply_count & update_time
+              for (let i = 0; i < response.data.length ; i++) {
+                axios.get('/queryReplyCount',{
                   params:{
+                    uid:_this.items[i].uid,
                     cid:_this.items[i].cid
                   },}).then(response=>{
-                  _this.items[i].update_time=response.data;
-                })
+                  _this.items[i].reply_count=response.data;
 
-              })
-            }
+                  //get last update time
+                  axios.get('/queryLastUpdateTime',{
+                    params:{
+                      cid:_this.items[i].cid
+                    },}).then(response=>{
+                    _this.items[i].update_time=response.data;
+                  })
+
+                })
+              }
+            })
           })
+
       })
     }}
 

@@ -63,6 +63,12 @@ public class UserController {
         return contentPage;
     }
 
+    @GetMapping("/queryContentPageByCategory")
+    public ContentPage queryContentPageByCategory(Integer limit, String category){
+        ContentPage contentPage = userMapper.queryContentPageByCategory(limit,category);
+        return contentPage;
+    }
+
     @GetMapping("/queryContentPageWithoutUid")
     public ContentPage queryContentPageWithoutUid(Integer limit){
         ContentPage contentPage = userMapper.queryContentPageWithoutUid(limit);
@@ -231,8 +237,8 @@ public class UserController {
     }
 
     @GetMapping("/queryContentByCategory")
-    public List<Content> queryContentByCategory(String category) {
-        return userMapper.queryContentByCategory(category);
+    public List<Content> queryContentByCategory(Integer start, Integer limit, String category) {
+        return userMapper.queryContentByCategory(start, limit,category);
     }
 
     @GetMapping("/queryContentBySelection")
