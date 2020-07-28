@@ -156,11 +156,11 @@
     </select>
 
     <select id="queryContentByKeyword" resultType="Content">
-        select * from content where title like concat(concat('%',#{keyword}),'%') or content like concat(concat('%',#{keyword}),'%')
+        select * from content where title like concat(concat('%',#{keyword}),'%') or content like concat(concat('%',#{keyword}),'%') limit #{start},#{limit}
     </select>
 
     <select id="queryReplyByKeyword" resultType="Reply">
-        select * from reply where content like concat(concat('%',#{keyword}),'%')
+        select * from reply where content like concat(concat('%',#{keyword}),'%') limit #{start},#{limit}
     </select>
 
     <select id="queryUserByKeyword" resultType="User">
@@ -195,12 +195,36 @@
         select count(*) as totalNum, ceiling(count(*)/ #{limit}) as totalPage from reply where uid = #{uid};
     </select>
 
+    <select id="queryReplyPageByKeyword" resultType="ReplyPage">
+        select count(*) as totalNum, ceiling(count(*)/ #{limit}) as totalPage from reply where content like concat(concat('%',#{keyword}),'%')
+    </select>
+
+    <select id="queryContentPage" resultType="ContentPage">
+        select count(*) as totalNum, ceiling(count(*)/ #{limit}) as totalPage from content where uid = #{uid};
+    </select>
+
+    <select id="queryContentPageByKeyword" resultType="ContentPage">
+        select count(*) as totalNum, ceiling(count(*)/ #{limit}) as totalPage from content where title like concat(concat('%',#{keyword}),'%') or content like concat(concat('%',#{keyword}),'%')
+    </select>
+
+    <select id="queryMailPage" resultType="MailPage">
+        select count(*) as totalNum, ceiling(count(*)/ #{limit}) as totalPage from mail where receiver_id = #{uid};
+    </select>
+
     <select id="queryUserById" resultType="User">
         select * from user where id = #{id}
     </select>
 
     <select id="queryReplyWithPage" resultType="Reply">
         select * from reply where uid = #{uid} order by create_time desc limit #{start},#{limit}
+    </select>
+
+    <select id="queryContentWithPage" resultType="Content">
+        select * from content where uid = #{uid} order by create_time desc limit #{start},#{limit}
+    </select>
+
+    <select id="queryMailWithPage" resultType="Mail">
+        select * from mail where receiver_id = #{receiver_id} order by send_time desc limit #{start},#{limit}
     </select>
 
 

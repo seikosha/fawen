@@ -193,6 +193,30 @@ module.exports = {
         '/queryReplyWithPage':{
           target:'http://127.0.0.1:8080',
           changeOrigin:true
+        },
+        '/queryContentPage':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
+        },
+        '/queryContentWithPage':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
+        },
+        '/queryMailPage':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
+        },
+        '/queryMailWithPage':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
+        },
+        '/queryContentPageByKeyword':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
+        },
+        '/queryReplyPageByKeyword':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
         }
 
     },

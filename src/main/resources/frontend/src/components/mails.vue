@@ -16,6 +16,16 @@
       </template>
 
     </el-table>
+
+    <div class="block">
+      <el-pagination
+        layout="prev, pager, next"
+        @current-change="handleCurrentChange"
+        :page-size="limit"
+        current-page="current_page"
+        :total="total">
+      </el-pagination>
+    </div>
   </el-col>
 
   <el-col span="4" style="margin-top: 15px"></el-col>
@@ -27,6 +37,10 @@
         name: "mails",
         data() {
           return {
+            total:0,
+            limit:10,
+            start:0,
+            current_page:1,
             tableHead:[
               {
                 column_name:"title",column_comment:"标题"
@@ -49,6 +63,33 @@
           let rowTime = thisRowData.send_time;
           this.$store.commit('saveMail',{CurrentMail:rowTime+rowTitle});
           this.$router.push('/mail_specific')
+        },
+        handleCurrentChange(val){
+          let _this = this;
+          const axios = require('axios')
+          this.current_page=val;
+          this.start = (val-1)*10;
+          axios.get('/queryMailWithPage',{
+            params:{
+              receiver_id:_this.uid,
+              start:this.start,
+              limit:this.limit
+            }}).then(response=>{
+              _this.items=[];
+            for (let i = 0; i < response.data.length ; i++) {
+              _this.items.push({title:response.data[i].title,send_time:response.data[i].send_time,sender_name:response.data[i].sender_id});
+            }
+            _this.items.shift();
+
+            for (let i = 0; i < response.data.length ; i++) {
+              axios.get('/queryUsernameById',{
+                params:{
+                  id:response.data[i].sender_id
+                }}).then(response=>{
+                _this.items[i].sender_name=response.data;
+              })
+            }
+          })
         }
       },
 
@@ -61,23 +102,32 @@
             username:this.$store.state.Authorization
           },}).then(response=>(
           this.uid=response.data.id,
-            axios.get('/queryMail',{
+            axios.get('/queryMailPage',{
               params:{
-                receiver_id:_this.uid
-              },}).then(response=>{
-              for (let i = 0; i < response.data.length ; i++) {
-                _this.items.push({title:response.data[i].title,send_time:response.data[i].send_time,sender_name:response.data[i].sender_id});
-              }
-              _this.items.shift();
+                limit:this.limit,
+                uid:this.uid
+              }}).then(response=>{
+                this.total=response.data.totalNum;
+              axios.get('/queryMailWithPage',{
+                params:{
+                  receiver_id:_this.uid,
+                  start:this.start,
+                  limit:this.limit
+                },}).then(response=>{
+                for (let i = 0; i < response.data.length ; i++) {
+                  _this.items.push({title:response.data[i].title,send_time:response.data[i].send_time,sender_name:response.data[i].sender_id});
+                }
+                _this.items.shift();
 
-              for (let i = 0; i < response.data.length ; i++) {
-                axios.get('/queryUsernameById',{
-                  params:{
-                    id:response.data[i].sender_id
-                  }}).then(response=>{
-                  _this.items[i].sender_name=response.data;
-                })
-              }
+                for (let i = 0; i < response.data.length ; i++) {
+                  axios.get('/queryUsernameById',{
+                    params:{
+                      id:response.data[i].sender_id
+                    }}).then(response=>{
+                    _this.items[i].sender_name=response.data;
+                  })
+                }
+              })
             })
         ))
         if(this.$store.state.Authorization==null|this.$store.state.Authorization===''||this.$store.state.Authorization===undefined){

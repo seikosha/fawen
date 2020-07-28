@@ -16,6 +16,16 @@
           </el-table>
         </div>
 
+      <div class="block">
+        <el-pagination
+          layout="prev, pager, next"
+          @current-change="handleCurrentChange"
+          :page-size="limit"
+          current-page="current_page"
+          :total="total">
+        </el-pagination>
+      </div>
+
       <br><br>
       <span>关键字为:"{{this.$store.state.CurrentKeyword}}"的回答</span><br>
 
@@ -32,6 +42,16 @@
           </template>
 
         </el-table>
+      </div>
+
+      <div class="block">
+        <el-pagination
+          layout="prev, pager, next"
+          @current-change="handleCurrentChange1"
+          :page-size="limit1"
+          current-page="current_page1"
+          :total="total1">
+        </el-pagination>
       </div>
 
     </el-main>
@@ -86,6 +106,53 @@
               this.$router.push('/specific_content');
             })
           })
+        },
+        handleCurrentChange(val){
+          let _this=this;
+          const axios = require('axios')
+          this.current_page = val;
+          this.start = (val-1)*10;
+          axios.get('/queryContentByKeyword',{
+            params:{
+              keyword:this.$store.state.CurrentKeyword,
+              start:this.start,
+              limit:this.limit
+            }}).then(response=>{
+              _this.items=[];
+            for (let i = 0; i < response.data.length; i++) {
+              _this.items.push({poster:response.data[i].uid,title:response.data[i].title,category:response.data[i].category,location:response.data[i].location,create_time:response.data[i].create_time})
+            }
+            for (let i = 0; i < response.data.length; i++) {
+              axios.get('/queryUsernameById',{
+                params:{
+                  id:_this.items[i].poster
+                }}).then(response=>{
+                _this.items[i].poster=response.data
+              })
+            }
+          })
+        },
+        handleCurrentChange1(val){
+          let _this = this;
+          const axios = require('axios')
+          this.current_page1 = val;
+          this.start1 = (val-1)*10;
+          axios.get('/queryReplyByKeyword',{
+            params:{
+              keyword:this.$store.state.CurrentKeyword,
+              start:this.start1,
+              limit:this.limit1
+            }}).then(response=>{
+              _this.items1=[];
+            for (let i = 0; i < response.data.length ; i++) {
+              _this.items1.push({title:response.data[i].content,create_time:response.data[i].create_time,stars:response.data[i].stars,challenges:response.data[i].challenges,solved:response.data[i].solve});
+              if(_this.items1[i].solved === true){
+                _this.items1[i].solved = '是';
+              }else{
+                _this.items1[i].solved ='否';
+              }
+            }
+          })
         }
 
 
@@ -93,6 +160,14 @@
       },
       data() {
         return {
+          total:0,
+          total1:0,
+          limit:10,
+          limit1:10,
+          start:0,
+          start1:0,
+          current_page:1,
+          current_page1:1,
           keyword:'',
           tableHead:[
             {
@@ -143,10 +218,18 @@
             username:this.$store.state.Authorization
           }}).then(response=>(
           this.uid=response.data.id,
-
+          axios.get('/queryContentPageByKeyword',{
+            params:{
+              limit:this.limit,
+              keyword:this.$store.state.CurrentKeyword
+            }}).then(response=>{
+              console.log(response.data)
+              this.total=response.data.totalNum;
             axios.get('/queryContentByKeyword',{
               params:{
-                keyword:this.$store.state.CurrentKeyword
+                keyword:this.$store.state.CurrentKeyword,
+                start:this.start,
+                limit:this.limit,
               }
             }).then(response=>{
               for (let i = 0; i < response.data.length; i++) {
@@ -162,21 +245,33 @@
                 })
               }
             })
+          })
         ))
-        axios.get('/queryReplyByKeyword',{
+        axios.get('/queryReplyPageByKeyword',{
           params:{
+            limit:this.limit1,
             keyword:this.$store.state.CurrentKeyword
           }}).then(response=>{
-          for (let i = 0; i < response.data.length ; i++) {
-            _this.items1.push({title:response.data[i].content,create_time:response.data[i].create_time,stars:response.data[i].stars,challenges:response.data[i].challenges,solved:response.data[i].solve});
-            if(_this.items1[i].solved === true){
-              _this.items1[i].solved = '是';
-            }else{
-              _this.items1[i].solved ='否';
+            console.log(response.data)
+            this.total1=response.data.totalNum;
+          axios.get('/queryReplyByKeyword',{
+            params:{
+              keyword:this.$store.state.CurrentKeyword,
+              start:this.start1,
+              limit:this.limit1
+            }}).then(response=>{
+            for (let i = 0; i < response.data.length ; i++) {
+              _this.items1.push({title:response.data[i].content,create_time:response.data[i].create_time,stars:response.data[i].stars,challenges:response.data[i].challenges,solved:response.data[i].solve});
+              if(_this.items1[i].solved === true){
+                _this.items1[i].solved = '是';
+              }else{
+                _this.items1[i].solved ='否';
+              }
             }
-          }
-          _this.items1.shift();
+            _this.items1.shift();
+          })
         })
+
 
 
 

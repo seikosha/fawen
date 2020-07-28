@@ -48,9 +48,9 @@ public interface UserMapper {
 
     int queryCidByTitleAndTime(String title,String time);
 
-    List<Content> queryContentByKeyword(String keyword);
+    List<Content> queryContentByKeyword(int start, int limit,String keyword);
 
-    List<Reply> queryReplyByKeyword(String keyword);
+    List<Reply> queryReplyByKeyword(Integer start, Integer limit,String keyword);
 
     List<User> queryUserByKeyword(String keyword);
 
@@ -102,8 +102,22 @@ public interface UserMapper {
 
     ReplyPage queryReplyPage(Integer limit, Integer uid);
 
+    ContentPage queryContentPage(Integer limit, Integer uid);
+
+    MailPage queryMailPage(Integer limit, Integer uid);
+
+    ContentPage queryContentPageByKeyword(Integer limit,String keyword);
+
+    ReplyPage queryReplyPageByKeyword(Integer limit, String keyword);
+
     List<Reply> queryReplyWithPage(int start, int limit, int uid);
 
+    List<Content> queryContentWithPage(int start, int limit, int uid);
+
+    List<Mail> queryMailWithPage(int start, int limit, int receiver_id);
+
     List<User> queryUserById(int id);
+
+
 
 }

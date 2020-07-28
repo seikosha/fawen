@@ -27,6 +27,24 @@ public class UserController {
         return replyPage;
     }
 
+    @GetMapping("/queryMailPage")
+    public MailPage queryMailPage(Integer limit,Integer uid){
+        MailPage mailPage = userMapper.queryMailPage(limit,uid);
+        return mailPage;
+    }
+
+    @GetMapping("/queryContentPageByKeyword")
+    public ContentPage queryContentPageByKeyword(Integer limit, String keyword){
+        ContentPage contentPage = userMapper.queryContentPageByKeyword(limit,keyword);
+        return contentPage;
+    }
+
+    @GetMapping("/queryReplyPageByKeyword")
+    public ReplyPage queryReplyPageByKeyword(Integer limit, String keyword){
+        ReplyPage replyPage = userMapper.queryReplyPageByKeyword(limit,keyword);
+        return replyPage;
+    }
+
     @GetMapping("/queryUserList")
     public List<User> queryUserList() {
         List<User> userList = userMapper.queryUserList();
@@ -39,6 +57,12 @@ public class UserController {
         return contentList;
     }
 
+    @GetMapping("/queryContentPage")
+    public ContentPage queryContentPage(Integer limit,Integer uid){
+        ContentPage contentPage = userMapper.queryContentPage(limit,uid);
+        return contentPage;
+    }
+
     @GetMapping("/queryReplyList")
     public List<Reply> queryReplyList(){
         List<Reply> replylist = userMapper.queryReplyList();
@@ -49,6 +73,18 @@ public class UserController {
     public List<Reply> queryReplyWithPage(int start, int limit, int uid){
         List<Reply> replyList = userMapper.queryReplyWithPage(start,limit,uid);
         return replyList;
+    }
+
+    @GetMapping("/queryContentWithPage")
+    public List<Content> queryContentWithPage(int start, int limit, int uid){
+        List<Content> contentList = userMapper.queryContentWithPage(start,limit,uid);
+        return contentList;
+    }
+
+    @GetMapping("/queryMailWithPage")
+    public List<Mail> queryMailWithPage(int start, int limit, int receiver_id){
+        List<Mail> mailList = userMapper.queryMailWithPage(start,limit,receiver_id);
+        return mailList;
     }
 
     @GetMapping("/queryUserByUsername")
@@ -164,13 +200,13 @@ public class UserController {
     }
 
     @GetMapping("/queryContentByKeyword")
-    public List<Content> queryContentByKeyword(String keyword) {
-        return userMapper.queryContentByKeyword(keyword);
+    public List<Content> queryContentByKeyword(Integer start, Integer limit,String keyword) {
+        return userMapper.queryContentByKeyword(start,limit,keyword);
     }
 
     @GetMapping("/queryReplyByKeyword")
-    public List<Reply> queryReplyByKeyword(String keyword) {
-        return userMapper.queryReplyByKeyword(keyword);
+    public List<Reply> queryReplyByKeyword(int start, int limit,String keyword) {
+        return userMapper.queryReplyByKeyword(start,limit,keyword);
     }
 
     @GetMapping("/queryUserByKeyword")
