@@ -100,6 +100,10 @@ public interface UserMapper {
 
     List<Points> queryPoints();
 
+    ReplyPage queryReplyPage(Integer limit, Integer uid);
+
+    List<Reply> queryReplyWithPage(int start, int limit, int uid);
+
     List<User> queryUserById(int id);
 
 }

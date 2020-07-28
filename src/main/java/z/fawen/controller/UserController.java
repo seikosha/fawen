@@ -21,6 +21,12 @@ public class UserController {
         return pointlist;
     }
 
+    @GetMapping("/queryReplyPage")
+    public ReplyPage queryReplyPage(Integer limit,Integer uid){
+        ReplyPage replyPage = userMapper.queryReplyPage(limit,uid);
+        return replyPage;
+    }
+
     @GetMapping("/queryUserList")
     public List<User> queryUserList() {
         List<User> userList = userMapper.queryUserList();
@@ -37,6 +43,12 @@ public class UserController {
     public List<Reply> queryReplyList(){
         List<Reply> replylist = userMapper.queryReplyList();
         return replylist;
+    }
+
+    @GetMapping("/queryReplyWithPage")
+    public List<Reply> queryReplyWithPage(int start, int limit, int uid){
+        List<Reply> replyList = userMapper.queryReplyWithPage(start,limit,uid);
+        return replyList;
     }
 
     @GetMapping("/queryUserByUsername")

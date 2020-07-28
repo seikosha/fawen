@@ -164,7 +164,7 @@
                     id:this.cid
                   }}).then(response=>{
                   console.log('回复发布成功！')
-                    // this.refresh()
+                    this.refresh()
                 })
           })}})
         },

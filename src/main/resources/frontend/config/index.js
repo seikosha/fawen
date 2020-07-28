@@ -185,6 +185,14 @@ module.exports = {
         '/queryUserById':{
           target:'http://127.0.0.1:8080',
           changeOrigin:true
+        },
+        '/queryReplyPage':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
+        },
+        '/queryReplyWithPage':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
         }
 
     },
