@@ -1,21 +1,9 @@
 <template>
   <el-container>
+    <left_card></left_card>
     <el-main>
-      <span>最新问题：</span><br>
-      <el-col :span="5">
-        <el-aside id="leftside" width="200px">
-          <el-card class="box-card">
-            <div slot="header" class="clearfix">
-              <span>按照类型浏览案件</span>
-
-            </div>
-            <div v-for="o in 4" :key="o" class="text item">
-              {{'列表内容 ' + o }}
-            </div>
-          </el-card>
-        </el-aside>
-      </el-col>
-      <el-col :span="14">
+      <el-col :span="2"><span>&nbsp;</span></el-col>
+      <el-col :span="22">
         <div  style="margin-top: 15px">
 
           <el-table
@@ -29,50 +17,35 @@
             </template>
 
           </el-table>
-
-
-
         </div>
 
         <div class="block">
           <el-pagination
             layout="prev, pager, next"
-            :total="1000">
+            @current-change="handleCurrentChange"
+            :page-size="limit"
+            current-page="current_page"
+            :total="total">
           </el-pagination>
         </div>
 
       </el-col>
 
-      <el-col :span="5">
-        <el-aside id="rightside" width="200px">
-          <el-card class="box-card">
-            <div slot="header" class="clearfix">
-              <span>如何解答法律问题？</span>
-
-            </div>
-            <div v-for="o in 4" :key="o" class="text item">
-              {{'列表内容 ' + o }}
-            </div>
-          </el-card>
-          <el-card class="box-card">
-            <div slot="header" class="clearfix">
-              <span>历史精选答案</span>
-
-            </div>
-            <div v-for="o in 4" :key="o" class="text item">
-              {{'列表内容 ' + o }}
-            </div>
-          </el-card>
-        </el-aside>
-      </el-col>
-
     </el-main>
+    <right_card></right_card>
   </el-container>
 </template>
 
 <script>
+    import left_card from "./left_card";
+    import right_card from "./right_card";
+
     export default {
         name: "answer",
+      components:{
+        left_card,
+        right_card
+      },
       methods: {
         tableRowClassName({row, rowIndex}) {
           if (rowIndex === 1) {
@@ -90,13 +63,40 @@
           let rowTime = row.create_time;
           this.$store.commit('saveContent',{CurrentContent: rowTime+rowTitle});
           this.$router.push('/specific_content');
+        },
+
+        handleCurrentChange(val){
+          let _this=this;
+          const axios = require('axios')
+          this.current_page=val;
+          this.start = (val-1)*10;
+          axios.get('/queryContentList',{
+            params:{
+              start:this.start,
+              limit:this.limit
+            }}).then(response=>{
+              _this.items=[];
+            for (let i = 0; i < response.data.length; i++) {
+              _this.items.push({poster:response.data[i].uid,title:response.data[i].title,category:response.data[i].category,location:response.data[i].location,create_time:response.data[i].create_time})
+            }
+            for (let i = 0; i < response.data.length; i++) {
+              axios.get('/queryUsernameById',{
+                params:{
+                  id:_this.items[i].poster
+                }}).then(response=>{
+                _this.items[i].poster=response.data
+              })
+            }
+          })
         }
-
-
 
         },
       data() {
         return {
+          total:0,
+          limit:10,
+          start:0,
+          current_page:1,
           tableHead:[
             {
               column_name:"poster",column_comment:"提问人"
@@ -127,28 +127,31 @@
             username:this.$store.state.Authorization
           }}).then(response=>(
           this.uid=response.data.id,
-
-          axios.get('/queryContentList').then(response=>{
-            for (let i = 0; i < response.data.length; i++) {
-              _this.items.push({poster:response.data[i].uid,title:response.data[i].title,category:response.data[i].category,location:response.data[i].location,create_time:response.data[i].create_time})
-            }
-            _this.items.shift();
-            for (let i = 0; i < response.data.length; i++) {
-              axios.get('/queryUsernameById',{
-                params:{
-                  id:_this.items[i].poster
-                }}).then(response=>{
+          axios.get('/queryContentPageWithoutUid',{
+            params:{
+              limit:this.limit,
+            }}).then(response=>{
+              this.total=response.data.totalNum;
+            axios.get('/queryContentList',{
+              params:{
+                start:this.start,
+                limit:this.limit
+              }}).then(response=>{
+              for (let i = 0; i < response.data.length; i++) {
+                _this.items.push({poster:response.data[i].uid,title:response.data[i].title,category:response.data[i].category,location:response.data[i].location,create_time:response.data[i].create_time})
+              }
+              _this.items.shift();
+              for (let i = 0; i < response.data.length; i++) {
+                axios.get('/queryUsernameById',{
+                  params:{
+                    id:_this.items[i].poster
+                  }}).then(response=>{
                   _this.items[i].poster=response.data
-              })
-
-            }
-
+                })
+              }
+            })
           })
       ))
-
-
-
-
         if(_this.$store.state.Authorization==null|_this.$store.state.Authorization===''||_this.$store.state.Authorization===undefined){
           this.$router.push('/login')};
       }

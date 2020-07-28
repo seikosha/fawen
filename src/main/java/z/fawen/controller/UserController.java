@@ -52,14 +52,20 @@ public class UserController {
     }
 
     @GetMapping("/queryContentList")
-    public List<Content> queryContentList() {
-        List<Content> contentList = userMapper.queryContentList();
+    public List<Content> queryContentList(int start,int limit) {
+        List<Content> contentList = userMapper.queryContentList(start,limit);
         return contentList;
     }
 
     @GetMapping("/queryContentPage")
     public ContentPage queryContentPage(Integer limit,Integer uid){
         ContentPage contentPage = userMapper.queryContentPage(limit,uid);
+        return contentPage;
+    }
+
+    @GetMapping("/queryContentPageWithoutUid")
+    public ContentPage queryContentPageWithoutUid(Integer limit){
+        ContentPage contentPage = userMapper.queryContentPageWithoutUid(limit);
         return contentPage;
     }
 

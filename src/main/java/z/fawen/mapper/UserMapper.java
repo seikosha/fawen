@@ -12,7 +12,7 @@ public interface UserMapper {
 
     List<User> queryUserList();
 
-    List<Content> queryContentList();
+    List<Content> queryContentList(int start,int limit);
 
     User queryUserByUsername(String username);
 
@@ -103,6 +103,8 @@ public interface UserMapper {
     ReplyPage queryReplyPage(Integer limit, Integer uid);
 
     ContentPage queryContentPage(Integer limit, Integer uid);
+
+    ContentPage queryContentPageWithoutUid(Integer limit);
 
     MailPage queryMailPage(Integer limit, Integer uid);
 

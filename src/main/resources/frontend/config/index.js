@@ -217,6 +217,10 @@ module.exports = {
         '/queryReplyPageByKeyword':{
           target:'http://127.0.0.1:8080',
           changeOrigin:true
+        },
+        '/queryContentListWithouUid':{
+          target:'http://127.0.0.1:8080',
+          changeOrigin:true
         }
 
     },
