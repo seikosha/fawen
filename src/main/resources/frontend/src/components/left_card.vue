@@ -30,13 +30,13 @@
   #leftside
   {
     position:relative;
-    top:20px;
+
     left:33px;
   }
 
-  @media screen and (max-width: 479px) {
-     #leftside{
-       visibility: hidden;
-     }
+  @media screen and (max-width: 768px) {
+    #leftside{
+      visibility: hidden;
+    }
   }
 </style>

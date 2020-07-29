@@ -3,10 +3,9 @@
     <el-container>
       <header1 id="header1" v-show="header1_token" ></header1>
       <header2 id="header2" v-show="header2_token" ></header2>
-      <header3 id="header3"></header3>
-
-      <router-view></router-view>
-
+      <header3 id="header3" v-show="header1_token"></header3>
+      <header4 id="header4" v-show="header2_token"></header4>
+      <router-view style="text-align: center"></router-view>
       <el-footer>
       </el-footer>
     </el-container>
@@ -42,6 +41,7 @@ import more_locations from "./components/more_locations";
 import specific_location from "./components/specific_location";
 import specific_category from "./components/specific_category";
 import header3 from "./components/header3";
+import header4 from "./components/header4";
 
   export default {
     store,
@@ -71,7 +71,8 @@ import header3 from "./components/header3";
       more_locations,
       specific_location,
       specific_category,
-      header3
+      header3,
+      header4
     },
 
 
@@ -119,26 +120,9 @@ import header3 from "./components/header3";
   .el-aside {
     color: #333;
     text-align: center;
+    line-height:20px;
   }
 
-  .el-main {
-    color: #333;
-    text-align: center;
-    /*line-height: 160px;*/
-  }
-
-  body > .el-container {
-    margin-bottom: 40px;
-  }
-
-  .el-container:nth-child(5) .el-aside,
-  .el-container:nth-child(6) .el-aside {
-    line-height: 260px;
-  }
-
-  .el-container:nth-child(7) .el-aside {
-    line-height: 320px;
-  }
 
   #app {
     font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
@@ -180,15 +164,19 @@ import header3 from "./components/header3";
   text-decoration: none;
 }
 
-  @media screen and (min-width: 480px) {
+  @media screen and (min-width: 769px) {
     #header3{
       visibility:hidden;
     }
+    #header4{
+     display:none;
+    }
   }
 
-  @media screen and (max-width: 479px) {
+  @media screen and (max-width: 768px) {
     #header1,#header2{
       visibility:hidden;
+
     }
     #header3{
       visibility: visible;

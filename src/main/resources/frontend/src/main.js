@@ -35,6 +35,7 @@ import more_locations from "./components/more_locations";
 import specific_location from "./components/specific_location";
 import specific_category from "./components/specific_category";
 import header3 from "./components/header3";
+import header4 from "./components/header4";
 
 
 
@@ -72,7 +73,8 @@ const routes = [
   { path: '/more_locations', component: more_locations},
   { path: '/specific_location', component: specific_location},
   { path: '/specific_category', component: specific_category},
-  { path: '/header3', component: header3}
+  { path: '/header3', component: header3},
+  { path: '/header4', component: header4}
 ]
 
 const router = new VueRouter({

@@ -1,7 +1,7 @@
 <template>
 <el-container>
-  <el-col span="5"></el-col>
-  <el-col span="14" style="margin-top: 20px">
+  <el-col span="5" :xs="10" id="leftside"></el-col>
+  <el-col span="14" :xs="10"  style="margin-top:20px">
     <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
       <el-form-item label="用户名" prop="username">
         <el-input type="username" v-model="ruleForm.username" autocomplete="off"></el-input>
@@ -15,7 +15,7 @@
       </el-form-item>
     </el-form>
   </el-col>
-  <el-col span="5"></el-col>
+  <el-col span="5" :xs="4"></el-col>
 </el-container>
 </template>
 
@@ -87,5 +87,4 @@
 </script>
 
 <style scoped>
-
 </style>

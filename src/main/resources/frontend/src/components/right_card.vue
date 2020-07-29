@@ -66,7 +66,6 @@
 <style scoped>
   #rightside{
     position:relative;
-    top:20px;
     right:16px;
   }
 
@@ -74,7 +73,7 @@
     cursor: pointer;
   }
 
-  @media screen and (max-width: 479px) {
+  @media screen and (max-width: 768px) {
     #rightside{
       visibility: hidden;
     }
