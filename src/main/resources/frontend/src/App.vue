@@ -1,8 +1,9 @@
 <template>
   <div id="app">
     <el-container>
-      <header1 v-show="header1_token" ></header1>
-      <header2 v-show="header2_token" ></header2>
+      <header1 id="header1" v-show="header1_token" ></header1>
+      <header2 id="header2" v-show="header2_token" ></header2>
+      <header3 id="header3"></header3>
 
       <router-view></router-view>
 
@@ -40,6 +41,7 @@ import about from "./components/about";
 import more_locations from "./components/more_locations";
 import specific_location from "./components/specific_location";
 import specific_category from "./components/specific_category";
+import header3 from "./components/header3";
 
   export default {
     store,
@@ -68,7 +70,8 @@ import specific_category from "./components/specific_category";
       about,
       more_locations,
       specific_location,
-      specific_category
+      specific_category,
+      header3
     },
 
 
@@ -176,6 +179,21 @@ import specific_category from "./components/specific_category";
 #title_link{
   text-decoration: none;
 }
+
+  @media screen and (min-width: 480px) {
+    #header3{
+      visibility:hidden;
+    }
+  }
+
+  @media screen and (max-width: 479px) {
+    #header1,#header2{
+      visibility:hidden;
+    }
+    #header3{
+      visibility: visible;
+    }
+  }
 
 
 </style>

@@ -48,5 +48,10 @@
     left:20px;
   }
 
+  @media screen and (max-width: 479px) {
+    #main{
+      visibility: hidden;
+    }
+  }
 
 </style>

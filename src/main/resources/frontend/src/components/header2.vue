@@ -21,7 +21,7 @@
         </el-menu>
       </el-col>
       <el-col :span="5">
-        <el-row gutter="2px">
+        <el-row>
           <el-col :span="20">
             <el-input placeholder="请输入内容" v-model="input" class="input-with-select" @click="search($event)"></el-input>
           </el-col>

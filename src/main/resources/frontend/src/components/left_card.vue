@@ -33,4 +33,10 @@
     top:20px;
     left:33px;
   }
+
+  @media screen and (max-width: 479px) {
+     #leftside{
+       visibility: hidden;
+     }
+  }
 </style>

@@ -73,4 +73,10 @@
   #links, #links1, #links2{
     cursor: pointer;
   }
+
+  @media screen and (max-width: 479px) {
+    #rightside{
+      visibility: hidden;
+    }
+  }
 </style>
