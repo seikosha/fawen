@@ -1,10 +1,10 @@
 <template>
   <el-container>
     <left_card></left_card>
-    <el-main>
+    <el-main id="maintable">
       位于全国各地的案件：<br>
-      <el-col :span="2"><span>&nbsp;</span></el-col>
-      <el-col :span="20">
+      <el-col :span="2" :xs="4"><span>&nbsp;</span></el-col>
+      <el-col :span="20" :xs="18">
         <div style="margin-top: 15px">
           <el-table
             style="width: 100%"
@@ -189,5 +189,12 @@
 
   #column{
     cursor: pointer;
+  }
+  @media screen and (max-width: 768px) {
+    #maintable{
+      position:relative;
+      left:80px;
+      bottom:40px;
+    }
   }
 </style>

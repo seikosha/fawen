@@ -3,6 +3,7 @@
     <left_card></left_card>
 
     <el-main>
+      <el-col :xs="18" id="maintext">
       <h2> 网站简介 </h2>
       <h4> 建站初衷 </h4>
       <p style="text-align: left; padding-left:30px; padding-right:10px">
@@ -45,7 +46,7 @@
       <br><br>
       &nbsp&nbsp&nbsp&nbsp欢迎给我来信，对网站提任何意见！
       </p>
-
+      </el-col>
     </el-main>
 
     <right_card></right_card>
@@ -66,5 +67,11 @@
 </script>
 
 <style scoped>
-
+  @media screen and (max-width: 768px) {
+    #maintext{
+      position:relative;
+      left:180px;
+      bottom:40px;
+    }
+  }
 </style>

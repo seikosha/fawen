@@ -2,10 +2,10 @@
 <el-container>
 <left_card></left_card>
 
-<el-main>
+<el-main id="maintable">
   <el-col :span="4">&nbsp;</el-col>
   <el-col :span="16" id="main">
-
+    <h2 style="text-align: center">请提出您的问题：</h2>
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
       <el-form-item label="标题：" prop="title" >
         <el-input placeholder="请输入标题" v-model="ruleForm.title"></el-input>
@@ -71,24 +71,6 @@
 </el-main>
 
 <el-aside id="rightside" width="200px">
-  <el-card class="box-card">
-    <div slot="header" class="clearfix">
-      <span>如何正确描述问题？</span>
-
-    </div>
-    <div v-for="o in 4" :key="o" class="text item">
-      {{'列表内容 ' + o }}
-    </div>
-  </el-card>
-  <el-card class="box-card">
-    <div slot="header" class="clearfix">
-      <span>历史精选提问</span>
-
-    </div>
-    <div v-for="o in 4" :key="o" class="text item">
-      {{'列表内容 ' + o }}
-    </div>
-  </el-card>
 </el-aside>
 </el-container>
 </template>
@@ -191,6 +173,14 @@
     position:relative;
     top:20px;
     right:16px;
+  }
+
+  @media screen and (max-width: 768px) {
+    #maintable{
+      position:relative;
+      left:80px;
+      bottom:40px;
+    }
   }
 
 

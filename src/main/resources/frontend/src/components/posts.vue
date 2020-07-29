@@ -2,7 +2,7 @@
     <el-container>
       <left_card></left_card>
 
-      <el-main>
+      <el-main id="main">
         <h2>法问更新公告</h2>
       </el-main>
 
@@ -23,5 +23,11 @@
 </script>
 
 <style scoped>
-
+  @media screen and (max-width: 768px) {
+    #main{
+      position:relative;
+      left:80px;
+      bottom:40px;
+    }
+  }
 </style>

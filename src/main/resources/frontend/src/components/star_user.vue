@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <left_card></left_card>
-    <el-main>
+    <el-main id="maintable">
       法问上的明星回答者：<br>
       <el-col :span="2"><span>&nbsp;</span></el-col>
       <el-col :span="20">
@@ -120,5 +120,12 @@
 
   #column{
     cursor: pointer;
+  }
+  @media screen and (max-width: 768px) {
+    #maintable{
+      position:relative;
+      left:80px;
+      bottom:40px;
+    }
   }
 </style>

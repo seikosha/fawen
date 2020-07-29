@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <left_card></left_card>
-    <el-main>
+    <el-main id="maintable">
       法问上最具参考性的案件：<br>
       <el-col :span="2"><span>&nbsp;</span></el-col>
       <el-col :span="20">
@@ -134,5 +134,13 @@
 
   #column{
     cursor: pointer;
+  }
+
+  @media screen and (max-width: 768px) {
+    #maintable{
+      position:relative;
+      left:110px;
+      bottom:40px;
+    }
   }
 </style>

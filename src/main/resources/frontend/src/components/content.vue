@@ -2,7 +2,7 @@
     <el-container>
 <el-aside></el-aside>
 
-<el-main>
+<el-main :xd="18" id="maintext" >
   <div>
     <h1>{{content.title}}</h1>
     <span><a href="#">{{this.$store.state.Authorization}}</a></span><span>{{' '+content.create_time}}</span>
@@ -200,5 +200,13 @@
 
 #reply{
   margin-top:20px;
+}
+
+@media screen and (max-width: 768px) {
+  #maintext{
+    position:relative;
+    left:80px;
+    bottom:40px;
+  }
 }
 </style>

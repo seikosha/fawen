@@ -1,6 +1,6 @@
 <template>
     <el-container style="text-align: center">
-      <el-main>
+      <el-main id="main">
       <el-row style="margin-top: 30px">
       已成功向用户 {{username}} 发送私信
       </el-row>
@@ -28,5 +28,11 @@
 </script>
 
 <style scoped>
-
+  @media screen and (max-width: 768px) {
+    #main{
+      position:relative;
+      left:80px;
+      bottom:40px;
+    }
+  }
 </style>

@@ -1,12 +1,12 @@
 <template>
   <el-container>
-    <el-col span="2">
+    <el-col span="2" :xs="8">
     <el-aside width="160px" id="leftside">
 
     </el-aside>
     </el-col>
 
-    <el-col span="20">
+    <el-col span="20" :xs="16" id="maintable">
     <el-main>
       您的回复：<br>
       <div style="margin-top: 20px">
@@ -213,5 +213,12 @@
 
   #column{
     cursor: pointer;
+  }
+
+  @media screen and (max-width: 768px) {
+    #maintable{
+      position:relative;
+      bottom:40px;
+    }
   }
 </style>

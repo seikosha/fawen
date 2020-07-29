@@ -1,11 +1,11 @@
 <template>
   <el-container>
     <el-aside width="200px" id="leftside">
-      <span>用户{{username}}</span>
+      <span id="greeting">用户{{username}}</span>
 
       <el-card class="box-card" style="margin-top: 30px">
         <div slot="header" class="clearfix">
-          <span>个人资料信息</span>
+          <span>个人资料</span>
         </div>
         <div class="text item">
           <router-link to="/send_mail" tag="a">发送私信</router-link>
@@ -217,6 +217,20 @@
     position:relative;
     top:30px;
     left:33px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .box-card{
+      position:relative;
+      top:360px;
+      left:65px;
+      width:65%;
+    }
+
+    #greeting{
+      display:none;
+    }
+
   }
 
 </style>

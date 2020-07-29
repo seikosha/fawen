@@ -1,6 +1,8 @@
 <template>
   <el-container>
-    <el-main>
+    <el-main id="maintable">
+      <el-col :xs="8"></el-col>
+      <el-col :xs="16">
       <span>关键字为:"{{this.$store.state.CurrentKeyword}}"的提问</span><br>
 
         <div  style="margin-top: 15px">
@@ -53,7 +55,7 @@
           :total="total1">
         </el-pagination>
       </div>
-
+      </el-col>
     </el-main>
   </el-container>
 </template>
@@ -292,5 +294,12 @@
 <style scoped>
   #column,column1{
     cursor: pointer;
+  }
+  @media screen and (max-width: 768px) {
+    #maintable{
+      position:relative;
+      left:280px;
+      bottom:40px;
+    }
   }
 </style>

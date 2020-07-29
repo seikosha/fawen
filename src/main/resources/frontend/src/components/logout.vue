@@ -1,6 +1,6 @@
 <template>
     <el-container>
-      <el-main>
+      <el-main id="main">
         <p>您是否要登出当前账号？</p><br><br>
 
         <router-link to="/"
@@ -25,5 +25,11 @@
 </script>
 
 <style scoped>
-
+  @media screen and (max-width: 768px) {
+    #main{
+      position:relative;
+      left:110px;
+      bottom:40px;
+    }
+  }
 </style>

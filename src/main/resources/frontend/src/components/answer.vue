@@ -1,11 +1,11 @@
 <template>
   <el-container>
     <left_card></left_card>
-    <el-main>
-      <el-col :span="2"><span>&nbsp;</span></el-col>
-      <el-col :span="22">
+    <el-main id="maintable">
+      <el-col :span="1"><span>&nbsp;</span></el-col>
+      <el-col :span="23">
         <div  style="margin-top: 15px">
-
+          <h2>法问上的最新问题：</h2>
           <el-table
             style="width: 100%"
             :data="items"
@@ -178,6 +178,14 @@
 
 #column{
   cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  #maintable{
+    position:relative;
+    left:110px;
+    bottom:40px;
+  }
 }
 
 </style>

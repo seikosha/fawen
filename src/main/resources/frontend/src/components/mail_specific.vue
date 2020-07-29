@@ -2,7 +2,7 @@
   <el-container>
     <el-aside></el-aside>
 
-    <el-main>
+    <el-main id="maintext">
       <div>
         <h1>{{mail.title}}</h1>
         <router-link  to="/personal_specific" ><a @click="save_user($event)">{{mail.username}}</a></router-link><span>{{' '+mail.send_time}}</span>
@@ -161,6 +161,14 @@
 
   #reply{
     margin-top:20px;
+  }
+
+  @media screen and (max-width: 768px) {
+    #maintext{
+      position:relative;
+      left:80px;
+      bottom:40px;
+    }
   }
 </style>
 

@@ -2,8 +2,8 @@
 <el-container>
   <el-col :span="5"></el-col>
 
-  <el-col :span="14" style="margin-top: 20px">
-
+  <el-col :span="14" style="margin-top: 20px" id="maintable">
+    <h2>请您填写下表完成注册：</h2>
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
       <el-form-item label="用户名：" prop="username">
         <el-input v-model="ruleForm.username"></el-input>
@@ -187,4 +187,11 @@
 </script>
 
 <style scoped>
+  @media screen and (max-width: 768px) {
+    #maintable{
+      position:relative;
+      left:80px;
+      bottom:40px;
+    }
+  }
 </style>
