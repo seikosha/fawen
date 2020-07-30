@@ -15,6 +15,13 @@ public class UserController {
     private UserMapper userMapper;
 
     //query
+
+    @GetMapping("/queryRegister")
+    public int queryRegister(String value){
+        int legit = userMapper.queryRegister(value);
+        return legit;
+    }
+
     @GetMapping("/queryPoints")
     public List<Points> queryPoints(){
         List<Points> pointlist = userMapper.queryPoints();

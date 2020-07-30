@@ -139,6 +139,10 @@
         select if (exists(select id from liked where liker_id=#{liker_id} and rid=#{rid}),1,0);
     </select>
 
+    <select id="queryRegister" resultType="int">
+        select if (exists(select username from user where username=#{value}),1,0)
+    </select>
+
     <select id="queryCidByTitleAndTime" resultType="int">
         select cid from reply where content = #{title} and create_time=#{time}
     </select>
@@ -234,6 +238,8 @@
     <select id="queryMailWithPage" resultType="Mail">
         select * from mail where receiver_id = #{receiver_id} order by send_time desc limit #{start},#{limit}
     </select>
+
+
 
 
 </mapper>

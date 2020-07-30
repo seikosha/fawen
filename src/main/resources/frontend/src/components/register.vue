@@ -99,12 +99,19 @@
       }
       let usernameExp = /^\w+$/;
       let checkUsername = (rule, value, callback) => {
-        if(!usernameExp.test(value)){
-          return callback(new Error('用户名不是英数字'));
-        }else{
-          callback();
-        }
-      }
+        const axios = require('axios')
+        axios.get('/queryRegister',{
+          params:{
+            value:value
+          }}).then(response=>{
+          if(response.data===1){
+            return callback(new Error('该用户名已有人使用，请更换'))
+          }else if(!usernameExp.test(value)){
+            return callback(new Error('用户名不是英数字'))
+          }else{
+            callback();
+          }
+      })}
 
       let validatePass2 = (rule, value, callback) => {
         if (value === '') {

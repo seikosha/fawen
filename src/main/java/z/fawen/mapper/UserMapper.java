@@ -10,6 +10,8 @@ import java.util.List;
 @Repository
 public interface UserMapper {
 
+    int queryRegister(String value);
+
     List<User> queryUserList();
 
     List<Content> queryContentList(int start,int limit);
