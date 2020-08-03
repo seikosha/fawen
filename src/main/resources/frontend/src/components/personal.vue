@@ -5,12 +5,10 @@
 
   <el-card class="box-card" style="margin-top: 30px">
     <div slot="header" class="clearfix">
-      <span>个人资料</span>
+      <span>信息菜单</span>
     </div>
-    <div class="text item">
-      <router-link to="#" tag="span">账号密码</router-link>
-      <br><br>
-      <router-link to="/personal" tag="span">个人资料</router-link>
+    <div class="text-item">
+      <router-link to="#" tag="span">个人资料</router-link>
       <br><br>
       <router-link to="/personal" tag="span">个人统计</router-link>
     </div>
@@ -226,6 +224,10 @@
     position:relative;
     top:30px;
     left:33px;
+  }
+
+  .text-item:hover{
+    cursor: pointer;
   }
 
   @media screen and (max-width: 768px) {

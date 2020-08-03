@@ -7,10 +7,12 @@
         <div slot="header" class="clearfix">
           <span>个人资料</span>
         </div>
-        <div class="text item">
-          <router-link to="/send_mail" tag="a">发送私信</router-link>
+        <div class="text-item">
+          <router-link to="/send_mail" tag="span">发送私信</router-link>
           <br><br>
-          <router-link to="/personal_specific" tag="a">查看数据</router-link>
+          <router-link to="/my_profile" tag="span">个人资料</router-link>
+          <br><br>
+          <router-link to="/personal_specific" tag="span">查看数据</router-link>
 
         </div>
       </el-card>
@@ -217,6 +219,10 @@
     position:relative;
     top:30px;
     left:33px;
+  }
+
+  .text-item:hover{
+    cursor: pointer;
   }
 
   @media screen and (max-width: 768px) {

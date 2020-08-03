@@ -42,6 +42,7 @@ import specific_location from "./components/specific_location";
 import specific_category from "./components/specific_category";
 import header3 from "./components/header3";
 import header4 from "./components/header4";
+import my_profile from "./components/my_profile";
 
   export default {
     store,
@@ -72,7 +73,8 @@ import header4 from "./components/header4";
       specific_location,
       specific_category,
       header3,
-      header4
+      header4,
+      my_profile
     },
 
 
