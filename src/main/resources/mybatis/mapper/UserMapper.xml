@@ -75,10 +75,6 @@
         update user set last_login_time=#{last_login_time} where username=#{username}
     </update>
 
-    <delete id="deleteUser" parameterType="int">
-        delete from user where id = #{id}
-    </delete>
-
     <select id="loginQuery" parameterType="User" resultType="User">
         select * from user where username = #{username} and password = #{password}
     </select>
@@ -99,7 +95,7 @@
         select username from user where id = #{id}
     </select>
 
-    <select id="queryReplyCount" resultType="int">
+    <select id="queryReplyCount" resultType="Integer">
         select count(*) from reply where uid=#{uid} and cid = #{cid}
     </select>
 
@@ -139,11 +135,11 @@
         select if (exists(select id from liked where liker_id=#{liker_id} and rid=#{rid}),1,0);
     </select>
 
-    <select id="queryRegister" resultType="int">
+    <select id="queryRegister" resultType="Integer">
         select if (exists(select username from user where username=#{value}),1,0)
     </select>
 
-    <select id="queryCidByTitleAndTime" resultType="int">
+    <select id="queryCidByTitleAndTime" resultType="Integer">
         select cid from reply where content = #{title} and create_time=#{time}
     </select>
 

@@ -17,8 +17,8 @@ public class UserController {
     //query
 
     @GetMapping("/queryRegister")
-    public int queryRegister(String value){
-        int legit = userMapper.queryRegister(value);
+    public Integer queryRegister(String value){
+        Integer legit = userMapper.queryRegister(value);
         return legit;
     }
 
@@ -59,7 +59,7 @@ public class UserController {
     }
 
     @GetMapping("/queryContentList")
-    public List<Content> queryContentList(int start,int limit) {
+    public List<Content> queryContentList(Integer start,Integer limit) {
         List<Content> contentList = userMapper.queryContentList(start,limit);
         return contentList;
     }
@@ -89,19 +89,19 @@ public class UserController {
     }
 
     @GetMapping("/queryReplyWithPage")
-    public List<Reply> queryReplyWithPage(int start, int limit, int uid){
+    public List<Reply> queryReplyWithPage(Integer start, Integer limit, Integer uid){
         List<Reply> replyList = userMapper.queryReplyWithPage(start,limit,uid);
         return replyList;
     }
 
     @GetMapping("/queryContentWithPage")
-    public List<Content> queryContentWithPage(int start, int limit, int uid){
+    public List<Content> queryContentWithPage(Integer start, Integer limit, Integer uid){
         List<Content> contentList = userMapper.queryContentWithPage(start,limit,uid);
         return contentList;
     }
 
     @GetMapping("/queryMailWithPage")
-    public List<Mail> queryMailWithPage(int start, int limit, int receiver_id){
+    public List<Mail> queryMailWithPage(Integer start, Integer limit, Integer receiver_id){
         List<Mail> mailList = userMapper.queryMailWithPage(start,limit,receiver_id);
         return mailList;
     }
@@ -113,25 +113,25 @@ public class UserController {
     }
 
     @GetMapping("/queryContentByCid")
-    public Content queryContentByCid(int cid) {
+    public Content queryContentByCid(Integer cid) {
         Content content = userMapper.queryContentByCid(cid);
         return content;
     }
 
     @GetMapping("/queryContentByUid")
-    public List<Content> queryContentByUid(int uid) {
+    public List<Content> queryContentByUid(Integer uid) {
         List<Content> contentList = userMapper.queryContentByUid(uid);
         return contentList;
     }
 
     @GetMapping("/queryUserById")
-    public List<User> queryUserById(int id){
+    public List<User> queryUserById(Integer id){
         List<User> userlist = userMapper.queryUserById(id);
         return userlist;
     }
 
     @GetMapping("/queryReplyByCid")
-    public List<Reply> queryReplyByCid(int cid) {
+    public List<Reply> queryReplyByCid(Integer cid) {
         List<Reply> replyList = userMapper.queryReplyByCid(cid);
         return replyList;
     }
@@ -154,12 +154,12 @@ public class UserController {
     }
 
     @GetMapping("/queryReplyCount")
-    public int queryReplyCount(int uid, int cid) {
+    public Integer queryReplyCount(Integer uid, Integer cid) {
         return userMapper.queryReplyCount(uid, cid);
     }
 
     @GetMapping("/queryLastUpdateTime")
-    public String queryLastUpdateTime(int cid) {
+    public String queryLastUpdateTime(Integer cid) {
         return userMapper.queryLastUpdateTime(cid);
     }
 
@@ -169,27 +169,27 @@ public class UserController {
     }
 
     @GetMapping("/queryReplyData")
-    public Integer queryReplyData(int uid) {
+    public Integer queryReplyData(Integer uid) {
         return userMapper.queryReplyData(uid);
     }
 
     @GetMapping("/queryReplyStars")
-    public Integer queryReplyStars(int uid) {
+    public Integer queryReplyStars(Integer uid) {
         return userMapper.queryReplyStars(uid);
     }
 
     @GetMapping("/queryReplyBest")
-    public Integer queryReplyBest(int uid) {
+    public Integer queryReplyBest(Integer uid) {
         return userMapper.queryReplyBest(uid);
     }
 
     @GetMapping("/queryReplySolve")
-    public Integer queryReplySolve(int uid) {
+    public Integer queryReplySolve(Integer uid) {
         return userMapper.queryReplySolve(uid);
     }
 
     @GetMapping("/queryMail")
-    public List<Mail> queryMail(int receiver_id) {
+    public List<Mail> queryMail(Integer receiver_id) {
         return userMapper.queryMail(receiver_id);
     }
 
@@ -204,17 +204,17 @@ public class UserController {
     }
 
     @GetMapping("/queryCidByTitleAndTime")
-    public int queryCidByTitleAndTime(String title, String time) {
+    public Integer queryCidByTitleAndTime(String title, String time) {
         return userMapper.queryCidByTitleAndTime(title, time);
     }
 
     @GetMapping("/queryLiked")
-    public int queryLiked(int liker_id, int rid) {
+    public int queryLiked(Integer liker_id, Integer rid) {
         return userMapper.queryLiked(liker_id, rid);
     }
 
     @GetMapping("/queryReplyMailByMid")
-    public List<Reply_Mail> queryReplyMailByMid(int mid) {
+    public List<Reply_Mail> queryReplyMailByMid(Integer mid) {
         return userMapper.queryReplyMailByMid(mid);
     }
 
@@ -224,7 +224,7 @@ public class UserController {
     }
 
     @GetMapping("/queryReplyByKeyword")
-    public List<Reply> queryReplyByKeyword(int start, int limit,String keyword) {
+    public List<Reply> queryReplyByKeyword(Integer start, Integer limit,String keyword) {
         return userMapper.queryReplyByKeyword(start,limit,keyword);
     }
 
@@ -260,58 +260,58 @@ public class UserController {
     }
 
     @GetMapping("/addContent")
-    public int addContent(Content content) {
+    public Integer addContent(Content content) {
         return userMapper.addContent(content);
     }
 
     @GetMapping("/addReply")
-    public int addReply(Reply reply) {
+    public Integer addReply(Reply reply) {
         return userMapper.addReply(reply);
     }
 
     @GetMapping("/addLiked")
-    public int addLike(Liked liked) {
+    public Integer addLike(Liked liked) {
         return userMapper.addLiked(liked);
     }
 
     @GetMapping("/addStar")
-    public int addStar(int id) {
+    public Integer addStar(int id) {
         return userMapper.addStar(id);
     }
 
     @GetMapping("/addSolve")
-    public int addSolve(int id) {
+    public Integer addSolve(int id) {
         return userMapper.addSolve(id);
     }
 
     @GetMapping("/addBest")
-    public int addBest(int id) {
+    public Integer addBest(int id) {
         return userMapper.addBest(id);
     }
 
     @GetMapping("/addChallenge")
-    public int addChallenge(int id) {
+    public Integer addChallenge(int id) {
         return userMapper.addChallenge(id);
     }
 
     @GetMapping("/addMail")
-    public int addMail(Mail mail) {
+    public Integer addMail(Mail mail) {
         return userMapper.addMail(mail);
     }
 
     @GetMapping("/addReplyMail")
-    public int addReplyMail(Reply_Mail reply_mail) {
+    public Integer addReplyMail(Reply_Mail reply_mail) {
         return userMapper.addReplyMail(reply_mail);
     }
 
     @GetMapping("/addUpdateTime")
-    public int addUpdateTime(int id, String update_time) {
+    public Integer addUpdateTime(int id, String update_time) {
         return userMapper.addUpdateTime(id, update_time);
     }
 
     //update
     @GetMapping("/updateLoginTime")
-    public int updateLoginTime(String last_login_time,String username) {
+    public Integer updateLoginTime(String last_login_time,String username) {
         return userMapper.updateLoginTime(last_login_time,username);
     }
 

@@ -10,37 +10,37 @@ import java.util.List;
 @Repository
 public interface UserMapper {
 
-    int queryRegister(String value);
+    Integer queryRegister(String value);
 
     List<User> queryUserList();
 
-    List<Content> queryContentList(int start,int limit);
+    List<Content> queryContentList(Integer start,Integer limit);
 
     User queryUserByUsername(String username);
 
-    List<Content> queryContentByUid(int uid);
+    List<Content> queryContentByUid(Integer uid);
 
     List<User> loginQuery(String username, String password);
 
-    List<Reply> queryReplyByCid(int cid);
+    List<Reply> queryReplyByCid(Integer cid);
 
     List<Reply> queryReplyByUid(Integer uid);
 
     String queryUsernameById(Integer id);
 
-    int queryReplyCount(int uid, int cid);
+    Integer queryReplyCount(Integer uid, Integer cid);
 
-    String queryLastUpdateTime(int cid);
+    String queryLastUpdateTime(Integer cid);
 
     Integer queryCategory(Integer uid,String category);
 
-    Integer queryReplyData(int uid);
+    Integer queryReplyData(Integer uid);
 
-    Integer queryReplyStars(int uid);
+    Integer queryReplyStars(Integer uid);
 
-    Integer queryReplyBest(int uid);
+    Integer queryReplyBest(Integer uid);
 
-    Integer queryReplySolve(int uid);
+    Integer queryReplySolve(Integer uid);
 
     List<Mail> queryMail(int receiver_id);
 
@@ -48,45 +48,43 @@ public interface UserMapper {
 
     List<Mail> queryMailByTitleAndTime(String title,String send_time);
 
-    int queryCidByTitleAndTime(String title,String time);
+    Integer queryCidByTitleAndTime(String title,String time);
 
-    List<Content> queryContentByKeyword(int start, int limit,String keyword);
+    List<Content> queryContentByKeyword(Integer start, Integer limit,String keyword);
 
     List<Reply> queryReplyByKeyword(Integer start, Integer limit,String keyword);
 
     List<User> queryUserByKeyword(String keyword);
 
-    Content queryContentByCid(int cid);
+    Content queryContentByCid(Integer cid);
 
-    Integer queryLiked(int liker_id,int rid);
+    Integer queryLiked(Integer liker_id,Integer rid);
 
-    List<Reply_Mail>queryReplyMailByMid(int mid);
+    List<Reply_Mail>queryReplyMailByMid(Integer mid);
 
-    int addUser(User user);
+    Integer addUser(User user);
 
-    int addContent(Content content);
+    Integer addContent(Content content);
 
-    int addReply(Reply reply);
+    Integer addReply(Reply reply);
 
-    int addLiked(Liked liked);
+    Integer addLiked(Liked liked);
 
-    int addStar(int id);
+    Integer addStar(Integer id);
 
-    int addSolve(int id);
+    Integer addSolve(Integer id);
 
-    int addBest(int id);
+    Integer addBest(Integer id);
 
-    int addChallenge(int id);
+    Integer addChallenge(Integer id);
 
-    int updateUser(User user);
+    Integer updateUser(User user);
 
-    int deleteUser(int id);
+    Integer addMail(Mail mail);
 
-    int addMail(Mail mail);
+    Integer addReplyMail(Reply_Mail reply_mail);
 
-    int addReplyMail(Reply_Mail reply_mail);
-
-    int addUpdateTime(int id, String update_time);
+    Integer addUpdateTime(Integer id, String update_time);
 
     List<Content> queryContentByCountLocation();
 
@@ -96,7 +94,7 @@ public interface UserMapper {
 
     List<Content> queryContentBySelection();
 
-    int updateLoginTime(String last_login_time,String username);
+    Integer updateLoginTime(String last_login_time,String username);
 
     List<Reply> queryReplyList();
 
@@ -116,13 +114,13 @@ public interface UserMapper {
 
     ReplyPage queryReplyPageByKeyword(Integer limit, String keyword);
 
-    List<Reply> queryReplyWithPage(int start, int limit, int uid);
+    List<Reply> queryReplyWithPage(Integer start, Integer limit, Integer uid);
 
-    List<Content> queryContentWithPage(int start, int limit, int uid);
+    List<Content> queryContentWithPage(Integer start, Integer limit, Integer uid);
 
-    List<Mail> queryMailWithPage(int start, int limit, int receiver_id);
+    List<Mail> queryMailWithPage(Integer start, Integer limit, Integer receiver_id);
 
-    List<User> queryUserById(int id);
+    List<User> queryUserById(Integer id);
 
 
 
