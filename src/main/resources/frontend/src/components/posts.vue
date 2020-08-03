@@ -4,6 +4,8 @@
 
       <el-main id="main">
         <h2>法问更新公告</h2>
+        <br>
+        <p>1.遵守中华人民共和国法律法规</p>
       </el-main>
 
       <right_card></right_card>

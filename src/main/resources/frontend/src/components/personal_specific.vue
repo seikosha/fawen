@@ -3,7 +3,7 @@
     <el-aside width="200px" id="leftside">
       <span id="greeting">用户{{username}}</span>
 
-      <el-card class="box-card" style="margin-top: 30px">
+      <el-card class="box-card" style="margin-top: 30px" v-show="normal_card">
         <div slot="header" class="clearfix">
           <span>个人资料</span>
         </div>
@@ -14,6 +14,17 @@
           <br><br>
           <router-link to="/personal_specific" tag="span">查看数据</router-link>
 
+        </div>
+      </el-card>
+
+      <el-card class="box-card" style="margin-top: 30px" v-show="alternative_card">
+        <div slot="header" class="clearfix">
+          <span>信息菜单</span>
+        </div>
+        <div class="text-item">
+          <router-link to="#" tag="span">个人资料</router-link>
+          <br><br>
+          <router-link to="/personal" tag="span">个人统计</router-link>
         </div>
       </el-card>
     </el-aside>
@@ -41,10 +52,11 @@
         data_reply:0,
         data_stars:0,
         data_solved:0,
-        data_best:0
+        data_best:0,
+        normal_card:true,
+        alternative_card:false
       }
     },
-
 
     mounted(){
       let _this = this;
@@ -175,6 +187,12 @@
                           myChart1.setOption(option1);
                           window.addEventListener('resize',function() {myChart.resize()});
                           window.addEventListener('resize',function() {myChart1.resize()});
+                          if(this.$store.state.CurrentUser===this.$store.state.Authorization){
+                            this.normal_card=false;
+                            this.alternative_card=true;
+                          }else{
+
+                          }
                         })
                       })
                     })
@@ -186,21 +204,10 @@
               })
             })
           })
-
       ))
-
-
-
-
-
-
       if(this.$store.state.Authorization==null|this.$store.state.Authorization===''||this.$store.state.Authorization===undefined) {
         this.$router.push('/login');
       }
-
-
-
-
     }
   }
 </script>
@@ -236,7 +243,6 @@
     #greeting{
       display:none;
     }
-
   }
 
 </style>
