@@ -70,10 +70,11 @@
                     this.refresh();
                   })
                 }}).catch(err => {
-                console.log('服务器连接失败');
+                alert('账号与密码不正确！')
                 console.log(err);
               })} else {
               console.log('用户信息错误!!');
+              alert('账号与密码不正确')
               return false;
             }
           });
