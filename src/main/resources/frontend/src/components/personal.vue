@@ -8,7 +8,7 @@
       <span>信息菜单</span>
     </div>
     <div class="text-item">
-      <router-link to="#" tag="span">个人资料</router-link>
+      <router-link to="/update_profile" tag="span">个人资料</router-link>
       <br><br>
       <router-link to="/personal" tag="span">个人统计</router-link>
     </div>

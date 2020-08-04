@@ -315,5 +315,10 @@ public class UserController {
         return userMapper.updateLoginTime(last_login_time,username);
     }
 
+    @GetMapping("/updateUser")
+    public Integer updateUser(String username,String email,String location,String status,String description,String password){
+        return userMapper.updateUser(username,email,location,status,description,password);
+    }
+
 
 }

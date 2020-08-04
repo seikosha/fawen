@@ -5,12 +5,15 @@
 
     <el-card class="box-card" style="margin-top: 30px">
       <div slot="header" class="clearfix">
-        <span>信息菜单</span>
+        <span>个人资料</span>
       </div>
       <div class="text-item">
-        <router-link to="#" tag="span">个人资料</router-link>
+        <router-link to="/send_mail" tag="span">发送私信</router-link>
         <br><br>
-        <router-link to="/personal" tag="span">个人统计</router-link>
+        <router-link to="/my_profile" tag="span">个人资料</router-link>
+        <br><br>
+        <router-link to="/personal_specific" tag="span">查看数据</router-link>
+
       </div>
     </el-card>
   </el-aside>

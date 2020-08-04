@@ -43,6 +43,7 @@ import specific_category from "./components/specific_category";
 import header3 from "./components/header3";
 import header4 from "./components/header4";
 import my_profile from "./components/my_profile";
+import update_profile from "./components/update_profile";
 
   export default {
     store,
@@ -74,7 +75,8 @@ import my_profile from "./components/my_profile";
       specific_category,
       header3,
       header4,
-      my_profile
+      my_profile,
+      update_profile
     },
 
 

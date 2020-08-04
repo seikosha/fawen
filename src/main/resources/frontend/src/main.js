@@ -37,6 +37,7 @@ import specific_category from "./components/specific_category";
 import header3 from "./components/header3";
 import header4 from "./components/header4";
 import my_profile from "./components/my_profile";
+import update_profile from "./components/update_profile";
 
 
 
@@ -76,7 +77,8 @@ const routes = [
   { path: '/specific_category', component: specific_category},
   { path: '/header3', component: header3},
   { path: '/header4', component: header4},
-  { path: '/my_profile', component: my_profile}
+  { path: '/my_profile', component: my_profile},
+  { path: '/update_profile', component: update_profile}
 ]
 
 const router = new VueRouter({

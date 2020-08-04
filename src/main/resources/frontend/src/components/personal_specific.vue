@@ -191,7 +191,6 @@
                             this.normal_card=false;
                             this.alternative_card=true;
                           }else{
-
                           }
                         })
                       })
