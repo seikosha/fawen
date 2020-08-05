@@ -1,10 +1,10 @@
-version: '1.0'
+version: '3'
 services:
   mysql:                      # mysql容器
     container_name: mysql
     build:
       context: ./
-      dockerfile: ./docker/mysql/mysql-Dockerfile
+      dockerfile: ./docker/mysql/Dockerfile
     environment:
       MYSQL_DATABASE: fawen     # 创建名为blog的库
       MYSQL_ROOT_PASSWORD: belldandy5  # 设置root用户的密码
@@ -21,10 +21,10 @@ services:
     restart: always
     build:
       context: ./
-      dockerfile: ./docker/server-Dockerfile
+      dockerfile: ./docker/server/Dockerfile
     working_dir: /app         # 设置工作目录为容器内的app文件夹
     volumes:
-      - ./fawen:/app           # 将主机的blog文件夹(java代码)映射到容器内的app文件夹
+      - ./src:/app           # 将主机的blog文件夹(java代码)映射到容器内的app文件夹
       - ~/.m2:/root/.m2       # 映射主机和容器的maven
       - ./logs/:/app/log      # 映射容器产生的日志到主机的logs文件夹
     expose:
@@ -37,11 +37,11 @@ services:
     restart: always
     build:
       context: ./
-      dockerfile: ./docker/frontend-Dockerfile
+      dockerfile: ./docker/frontend/Dockerfile
     working_dir: /app
     volumes:
       - ./frontend:/app       # 将主机的frontend文件夹(vue.js代码)映射到容器内的app文件夹
-    command: npm run
+    command: npm run dev
     expose:
       - "8080"                # 暴露8080端口
     depends_on:
