@@ -67,7 +67,6 @@
   </el-col>
   <el-col :span="4">&nbsp;</el-col>
 
-
 </el-main>
 
 <el-aside id="rightside" width="200px">

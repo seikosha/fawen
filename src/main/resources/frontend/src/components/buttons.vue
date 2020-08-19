@@ -12,7 +12,6 @@
         name: "buttons",
       methods:{
           check_ask(){
-            console.log('点击提问时的按钮'+this.$store.state.Authorization)
             if(this.$store.state.Authorization!=null && this.$store.state.Authorization !== '' && this.$store.state.Authorization !== undefined){
               this.$router.push('/ask');
             }else{

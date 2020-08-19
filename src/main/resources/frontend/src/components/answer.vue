@@ -114,7 +114,7 @@
               column_name:"create_time",column_comment:"发帖时间"
             }
           ],
-          items:[{column_name:'',poster:'',title:'',category:'',location:'',create_time:'2020-1-1'}],
+          items:[{column_name:'',poster:'',title:'',category:'',location:'',create_time:''}],
         }},
 
       beforeCreate() {

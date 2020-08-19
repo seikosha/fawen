@@ -243,24 +243,18 @@
                           _this.items[i].liked=true;
                           this.$forceUpdate();
                         }
-
                     })
-
                   })
-
                 }
               })
             })
             })
       })
 
-
         if(this.$store.state.Authorization==null|this.$store.state.Authorization===''||this.$store.state.Authorization===undefined){
           this.$router.push('/login');
         }
-
       },
-
     }
 
 </script>

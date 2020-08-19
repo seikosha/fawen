@@ -133,7 +133,7 @@
               column_name: "solved",column_comment: "是否解决问题"
             }
           ],
-          items:[{column_name:'',title:'虽然很艰难',create_time:'',stars:0,challenges:0,solved:''}],
+          items:[{column_name:'',title:'',create_time:'',stars:0,challenges:0,solved:''}],
         }},
 
       beforeCreate() {

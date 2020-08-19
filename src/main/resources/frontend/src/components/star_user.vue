@@ -102,9 +102,7 @@
                 _this.items[i].username=response.data[0].username;
                 _this.items[i].location=response.data[0].location;
             })
-
           }
-
         })
       }
       }

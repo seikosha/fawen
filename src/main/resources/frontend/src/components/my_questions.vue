@@ -88,7 +88,6 @@
                 },}).then(response=>{
                 _this.items[i].update_time=response.data;
               })
-
             })
           }
         })
@@ -115,7 +114,7 @@
               column_name:"reply_count",column_comment: "回复数"
             }
           ],
-          items:[{column_name:'',cid:0,uid:0,title:'虽然很艰难',content:'日子还要过',category:'',location:'',create_time:'2020-1-1',update_time:'2020-1-2',reply_count:0}],
+          items:[{column_name:'',cid:0,uid:0,title:'',content:'',category:'',location:'',create_time:'',update_time:'',reply_count:0}],
         }},
 
       beforeCreate() {

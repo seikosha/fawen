@@ -89,7 +89,7 @@
   export default {
     name:"update_profile",
     data() {
-      let regExp = /^([a-zA-Z]|[0-9])(\w|\-|.)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4}).*([a-zA-Z]{2,4})*$/;
+      let regExp = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
       let checkEmail = (rule, value, callback) => {
         if(!regExp.test(value)){
           return callback(new Error('邮箱地址不正确'));

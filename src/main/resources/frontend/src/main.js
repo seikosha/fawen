@@ -23,7 +23,6 @@ import right_card from "./components/right_card";
 import posts from "./components/posts";
 import logout from "./components/logout";
 import content from "./components/content";
-import test from "./components/test";
 import specific_content from "./components/specific_content";
 import personal_specific from "./components/personal_specific";
 import send_mail from "./components/send_mail";
@@ -64,7 +63,6 @@ const routes = [
   { path: '/posts', component: posts},
   { path: '/logout', component: logout},
   { path: '/content', component: content},
-  { path: '/test', component: test},
   { path: '/specific_content', component: specific_content},
   { path: '/personal_specific', component: personal_specific},
   { path: '/send_mail', component: send_mail},

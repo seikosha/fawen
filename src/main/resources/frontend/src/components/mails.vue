@@ -52,7 +52,7 @@
                 column_name: "send_time",column_comment: "发信时间"
               }
             ],
-            items:[{column_name:'',title:'标题',sender_name:'',send_time:''}],
+            items:[{column_name:'',title:'',sender_name:'',send_time:''}],
         }},
 
       methods:{

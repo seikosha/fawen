@@ -29,7 +29,6 @@ import header1 from "./components/header1";
 import header2 from "./components/header2";
 import store from './store';
 import content from "./components/content";
-import test from "./components/test";
 import specific_content from "./components/specific_content";
 import personal_specific from "./components/personal_specific";
 import send_mail from "./components/send_mail";
@@ -62,7 +61,6 @@ import update_profile from "./components/update_profile";
       header1,
       header2,
       content,
-      test,
       specific_content,
       personal_specific,
       send_mail,

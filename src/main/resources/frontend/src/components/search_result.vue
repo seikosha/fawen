@@ -156,9 +156,6 @@
             }
           })
         }
-
-
-
       },
       data() {
         return {
@@ -188,7 +185,7 @@
               column_name:"create_time",column_comment:"发帖时间"
             }
           ],
-          items:[{column_name:'',poster:'',title:'',category:'',location:'',create_time:'2020-1-1'}],
+          items:[{column_name:'',poster:'',title:'',category:'',location:'',create_time:''}],
           tableHead1:[
             {
               column_name:"title",column_comment:"标题"
@@ -206,7 +203,7 @@
               column_name: "solved",column_comment: "是否解决问题"
             }
           ],
-          items1:[{column_name:'',title:'虽然很艰难',create_time:'',stars:0,challenges:0,solved:''}],
+          items1:[{column_name:'',title:'',create_time:'',stars:0,challenges:0,solved:''}],
         }},
 
       beforeCreate() {

@@ -19,10 +19,6 @@
       </el-row>
       <hr>
 
-
-
-
-
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm">
         <el-form-item label="回复内容" prop="reply" id="reply">
           <el-input

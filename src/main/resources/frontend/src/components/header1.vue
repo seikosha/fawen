@@ -28,13 +28,9 @@
           <el-col :span="4">
             <el-button icon="el-icon-search" type="info" plain @click="search(input)"></el-button>
           </el-col>
-
         </el-row>
-
-
       </el-col>
     </el-header>
-
 </template>
 
 <script>

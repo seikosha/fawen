@@ -90,7 +90,6 @@
         mounted() {
           this.username=this.$store.state.CurrentUser;
           console.log(this.$store.state.CurrentUser)
-
         }
     }
 </script>
