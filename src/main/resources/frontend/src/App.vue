@@ -79,7 +79,6 @@ import update_profile from "./components/update_profile";
 
     data(){
       return{
-
         message:{
           username:null
         },
@@ -88,8 +87,6 @@ import update_profile from "./components/update_profile";
         header2_token: false,
       }
     },
-
-
 
     created() {
       console.log('验证信息：'+this.$store.state.Authorization);
@@ -100,7 +97,6 @@ import update_profile from "./components/update_profile";
       }else{
         this.header1_token = false;
         this.header2_token = true;
-
       }
     },
 
@@ -186,7 +182,8 @@ import update_profile from "./components/update_profile";
     }
 
     #header1,#header2{
-      visibility:hidden;
+      /*visibility:hidden;*/
+      display: none;
     }
     #header3{
       visibility: visible;
@@ -195,7 +192,7 @@ import update_profile from "./components/update_profile";
       margin:0;
       padding:0;
       width:800px;
-      height:500px;
+      height:1200px;
     }
 
     .el-container {

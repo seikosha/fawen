@@ -1,6 +1,6 @@
 <template>
 <el-container>
-<left_card></left_card>
+<left_card id="left_card"></left_card>
 
 <el-main id="maintable">
   <el-col :span="4">&nbsp;</el-col>
@@ -177,8 +177,10 @@
   @media screen and (max-width: 768px) {
     #maintable{
       position:relative;
-      left:80px;
-      bottom:40px;
+    }
+
+    #left_card,#rightside{
+      display:none;
     }
   }
 

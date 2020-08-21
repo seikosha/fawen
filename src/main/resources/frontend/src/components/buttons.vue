@@ -63,11 +63,11 @@
   }
 
   #buttonl1{
-    right:30px;
+    right:20px;
   }
 
   #buttonr1{
-    left:30px;
+    left:20px;
   }
 
   @media screen and (max-width: 768px) {
