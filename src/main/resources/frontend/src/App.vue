@@ -5,13 +5,11 @@
       <header2 id="header2" v-show="header2_token" ></header2>
       <header3 id="header3" v-show="header1_token"></header3>
       <header4 id="header4" v-show="header2_token"></header4>
-      <router-view style="text-align: center"></router-view>
+      <router-view style="text-align: center" id="router_view"></router-view>
       <el-footer>
       </el-footer>
     </el-container>
-
   </div>
-
 </template>
 
 <script>
@@ -87,7 +85,7 @@ import update_profile from "./components/update_profile";
         },
         login_query:''+store.state.Authorization+'',
         header1_token: true,
-        header2_token: false
+        header2_token: false,
       }
     },
 
@@ -176,12 +174,33 @@ import update_profile from "./components/update_profile";
   }
 
   @media screen and (max-width: 768px) {
+    *{
+      margin:0;
+      padding:0;
+    }
+
+    #app{
+      width:100%;
+      height:100%;
+      position:absolute;
+    }
+
     #header1,#header2{
       visibility:hidden;
-
     }
     #header3{
       visibility: visible;
+    }
+    #router_view{
+      margin:0;
+      padding:0;
+      width:800px;
+      height:500px;
+    }
+
+    .el-container {
+      margin: auto;
+      width: 800px;
     }
   }
 
