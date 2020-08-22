@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-col span="4" :xs="10"></el-col>
+    <el-col span="4" ></el-col>
     <el-col span="16" style="margin-top: 20px">
 
       <br><br>

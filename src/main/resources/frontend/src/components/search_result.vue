@@ -1,8 +1,8 @@
 <template>
   <el-container>
     <el-main id="maintable">
-      <el-col :xs="8"></el-col>
-      <el-col :xs="16">
+      <el-col ></el-col>
+      <el-col >
       <span>关键字为:"{{this.$store.state.CurrentKeyword}}"的提问</span><br>
 
         <div  style="margin-top: 15px">
@@ -295,8 +295,6 @@
   @media screen and (max-width: 768px) {
     #maintable{
       position:relative;
-      left:280px;
-      bottom:40px;
     }
   }
 </style>

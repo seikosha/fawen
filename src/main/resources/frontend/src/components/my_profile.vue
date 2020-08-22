@@ -71,4 +71,9 @@
   .text-item:hover{
     cursor: pointer;
   }
+
+  .el-main{
+    position:relative;
+    top:30px;
+  }
 </style>

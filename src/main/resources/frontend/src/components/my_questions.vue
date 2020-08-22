@@ -2,8 +2,8 @@
   <el-container>
     <el-main id="maintable">
 
-      <el-col :span="2" :xs="8"><span>&nbsp;</span></el-col>
-      <el-col :span="20" :xs="16" >
+      <el-col :span="2" :xs="0"><span>&nbsp;</span></el-col>
+      <el-col :span="20" :xs="24" >
         <h2>您提过的问题：</h2>
         <div style="margin-top: 15px">
         <el-table
@@ -29,7 +29,7 @@
           </el-pagination>
         </div>
       </el-col>
-      <el-col :span="2"><span>&nbsp;</span></el-col>
+      <el-col :span="2" :xs="0"><span>&nbsp;</span></el-col>
 
     </el-main>
   </el-container>
@@ -189,7 +189,6 @@
 @media screen and (max-width: 768px) {
   #maintable{
     position:relative;
-    bottom:40px;
   }
 }
 </style>

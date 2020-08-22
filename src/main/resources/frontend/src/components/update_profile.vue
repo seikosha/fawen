@@ -195,8 +195,6 @@
   @media screen and (max-width: 768px) {
     #maintable{
       position:relative;
-      left:120px;
-      bottom:40px;
     }
   }
 </style>

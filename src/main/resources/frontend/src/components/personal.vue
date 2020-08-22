@@ -233,8 +233,6 @@
   @media screen and (max-width: 768px) {
     .box-card{
       position:relative;
-      top:360px;
-      left:65px;
       width:65%;
     }
 

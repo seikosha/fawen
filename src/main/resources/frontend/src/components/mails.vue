@@ -1,9 +1,8 @@
 <template>
 <el-container>
-  <el-col span="4" :xs="8" style="margin-top: 15px"></el-col>
+  <el-col span="4"  style="margin-top: 15px"></el-col>
 
-
-  <el-col span="16" :xs="10" style="margin-top: 15px" id="main">
+  <el-col span="16"  style="margin-top: 15px" id="main">
   <h2>您的站内私信：</h2>
     <el-table
       style="width: 100%"
@@ -156,8 +155,7 @@
   @media screen and (max-width: 768px) {
     #main{
       position:relative;
-      left:80px;
-      bottom:40px;
+
     }
   }
 </style>

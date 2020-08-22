@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <left_card></left_card>
+    <left_card id="left_card"></left_card>
     <el-main id="maintable">
       法问上的{{this.$store.state.CurrentCategory}}案件：<br>
       <el-col :span="2"><span>&nbsp;</span></el-col>
@@ -32,7 +32,7 @@
       <el-col :span="2"><span>&nbsp;</span></el-col>
 
     </el-main>
-    <right_card></right_card>
+    <right_card id="right_card"></right_card>
   </el-container>
 </template>
 
@@ -195,8 +195,9 @@
   @media screen and (max-width: 768px) {
     #maintable{
       position:relative;
-      left:80px;
-      bottom:40px;
+    }
+    #left_card,#right_card{
+      display:none;
     }
   }
 </style>

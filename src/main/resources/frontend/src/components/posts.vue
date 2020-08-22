@@ -28,8 +28,6 @@
   @media screen and (max-width: 768px) {
     #main{
       position:relative;
-      left:80px;
-      bottom:40px;
     }
   }
 </style>
