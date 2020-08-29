@@ -20,7 +20,7 @@
         <div style="float: right; margin-top:30px">
           <span v-show="item.like_success">点赞成功！</span>
           <span v-show="item.best_success">此回答为最佳答案！</span>
-          <span v-show="item.solve_success">成功解决问题！</span>
+          <span v-show="item.solve_success" style="color:green">成功解决问题！</span>
           <el-button type="primary" size="small" plain @click="like(index)" v-bind:disabled="item.liked">赞同</el-button>
           <el-button type="danger" size="small" plain @click="challenge(index)">挑战</el-button>
           <el-button type="warning" plain size="small" @click="best(index)" v-bind:disabled="item.bested">最佳</el-button>
@@ -28,10 +28,6 @@
         </div>
       </el-row>
       <hr>
-
-
-
-
 
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm">
         <el-form-item label="回复内容" prop="reply" id="reply">
@@ -56,7 +52,6 @@
         name: "specific_content",
       data() {
         return {
-          username:'',
           placeholder_text:'请输入您的回答',
           items:[{item:{reply_time:'',replyer_uid:0,reply_body:'',reply_star:0,rid:0,liked:false,solved:false,bested:false,like_success:false,best_success:false,solve_success:false}}],
           content:{},
@@ -184,7 +179,6 @@
             conTime=this.$store.state.CurrentContent.slice(0,19),
             conTitle=this.$store.state.CurrentContent.replace(conTime,''),
 
-
             // get the selected post
             axios.get('/queryContentByTitleAndTime',{
               params:{
@@ -199,7 +193,6 @@
                     }}).then(response=>{
                       this.content.username=response.data
 
-
               //get the replies of current post
               axios.get('/queryReplyByCid',{
                 params:{
@@ -211,16 +204,20 @@
                   _this.items[i].liked=false;
                   _this.items[i].like_success=false;
                   _this.items[i].best_success=false;
-                  _this.items[i].solve_success=false;
+
+                  _this.items[i].solve_success = !!(_this.items[i].solved = 1);
 
 
-                  if(_this.items[i].solved==true ||this.$store.state.Authorization!==this.username){
+
+                  if(_this.items[i].solved==true ||this.$store.state.Authorization!==this.content.username){
                     for (let i = 0; i < _this.items.length; i++) {
                       _this.items[i].solved=true;
                     }
                   }
 
-                  if(_this.items[i].bested==true ||this.$store.state.Authorization!==this.username){
+
+
+                  if(_this.items[i].bested==1 ||this.$store.state.Authorization!==this.content.username){
                     for (let i = 0; i < _this.items.length; i++) {
                       _this.items[i].bested=true;
                     }

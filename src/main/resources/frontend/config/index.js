@@ -12,226 +12,226 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/queryUserList':{
-        target:'http://127.0.0.1:8080',
+        target:'http://119.45.216.216:8080',
         changeOrigin:true},
         '/addUser':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/loginQuery':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/addContent':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryUserByUsername':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/addReply':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryContentByUid':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryReplyByCid':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryUsernameById':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/addStar':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/addSolve':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/addBest':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/addChallenge':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryReplyCount':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryLastUpdateTime':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryReplyByUid':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryCategory':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryReplyData':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryReplyStars':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryReplyBest':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryReplySolve':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryMail':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryContentList':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryContentByTitleAndTime':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/addLiked':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryLiked':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryCidByTitleAndTime':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryContentByCid':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/addMail':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryMailByTitleAndTime':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/addReplyMail':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryReplyMailByMid':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryContentByKeyword':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryReplyByKeyword':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryUserByKeyword':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/addUpdateTime':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryContentByCountLocation':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryContentByLocation':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryContentByCategory':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryContentBySelection':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/updateLoginTime':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryReplyList':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryPoints':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryUserById':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryReplyPage':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryReplyWithPage':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryContentPage':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryContentWithPage':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryMailPage':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryMailWithPage':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryContentPageByKeyword':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryReplyPageByKeyword':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryContentListWithouUid':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryContentPageByCategory':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/queryRegister':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         },
         '/updateUser':{
-          target:'http://127.0.0.1:8080',
+          target:'http://119.45.216.216:8080',
           changeOrigin:true
         }
 
