@@ -203,21 +203,17 @@
                   bested:response.data[i].best,solved:response.data[i].solve});
                   _this.items[i].liked=false;
                   _this.items[i].like_success=false;
-                  _this.items[i].best_success=false;
+                  if(_this.items[i+1].solved===true){
+                    _this.items[i+1].solve_success=true;
+                  }
 
-                  _this.items[i].solve_success = !!(_this.items[i].solved = 1);
-
-
-
-                  if(_this.items[i].solved==true ||this.$store.state.Authorization!==this.content.username){
+                  if(_this.items[i].solved===true ||this.$store.state.Authorization!==this.content.username){
                     for (let i = 0; i < _this.items.length; i++) {
                       _this.items[i].solved=true;
                     }
                   }
 
-
-
-                  if(_this.items[i].bested==1 ||this.$store.state.Authorization!==this.content.username){
+                  if(_this.items[i].bested===true ||this.$store.state.Authorization!==this.content.username){
                     for (let i = 0; i < _this.items.length; i++) {
                       _this.items[i].bested=true;
                     }
