@@ -28,7 +28,7 @@ public interface UserMapper {
 
     String queryUsernameById(Integer id);
 
-    Integer queryReplyCount(Integer uid, Integer cid);
+    Integer queryReplyCount(Integer cid);
 
     String queryLastUpdateTime(Integer cid);
 

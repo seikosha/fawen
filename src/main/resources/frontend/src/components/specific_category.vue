@@ -151,6 +151,7 @@
                 limit:this.limit,
                 category:this.$store.state.CurrentCategory
               },}).then(response=>{
+                console.log(response.data);
               for (let i = 0; i < response.data.length; i++) {
                 _this.items.push({cid:response.data[i].id,uid:response.data[i].uid,title:response.data[i].title,content:response.data[i].content,category:response.data[i].category,location:response.data[i].location,create_time:response.data[i].create_time,reply_count:0,update_time:''})
               }
@@ -160,7 +161,6 @@
               for (let i = 0; i < response.data.length ; i++) {
                 axios.get('/queryReplyCount',{
                   params:{
-                    uid:_this.items[i].uid,
                     cid:_this.items[i].cid
                   },}).then(response=>{
                   _this.items[i].reply_count=response.data;

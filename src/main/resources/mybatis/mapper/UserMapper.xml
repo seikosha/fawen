@@ -95,8 +95,8 @@
         select username from user where id = #{id}
     </select>
 
-    <select id="queryReplyCount" resultType="Integer">
-        select count(*) from reply where uid=#{uid} and cid = #{cid}
+    <select id="queryReplyCount" resultType="java.lang.Integer">
+        select count(*) from reply where TRIM(cid) = #{cid}
     </select>
 
     <select id="queryLastUpdateTime" resultType="String">

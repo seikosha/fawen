@@ -154,8 +154,8 @@ public class UserController {
     }
 
     @GetMapping("/queryReplyCount")
-    public Integer queryReplyCount(Integer uid, Integer cid) {
-        return userMapper.queryReplyCount(uid, cid);
+    public Integer queryReplyCount(Integer cid) {
+        return userMapper.queryReplyCount(cid);
     }
 
     @GetMapping("/queryLastUpdateTime")

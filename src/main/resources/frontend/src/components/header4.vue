@@ -37,10 +37,10 @@
     问题类型<i class="el-icon-arrow-down el-icon--right"></i>
   </span>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item><router-link to="/historic_selection" tag="span">刑事</router-link></el-dropdown-item>
-              <el-dropdown-item><router-link to="/star_user" tag="span">民事</router-link></el-dropdown-item>
-              <el-dropdown-item><router-link to="/posts" tag="span">行政</router-link></el-dropdown-item>
-              <el-dropdown-item><router-link to="/about" tag="span">不清楚</router-link></el-dropdown-item>
+              <el-dropdown-item><router-link to="/historic_selection" tag="span">刑事案件</router-link></el-dropdown-item>
+              <el-dropdown-item><router-link to="/star_user" tag="span">民事案件</router-link></el-dropdown-item>
+              <el-dropdown-item><router-link to="/posts" tag="span">行政案件</router-link></el-dropdown-item>
+              <el-dropdown-item><router-link to="/about" tag="span">不明类型</router-link></el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </el-col>
